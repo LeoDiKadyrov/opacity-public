@@ -1,0 +1,29 @@
+{
+  "schema_version": "v2-2026-05-12",
+  "frozen_at": "2026-05-12T00:00:00Z",
+  "source_db": "analytics.db (main repo, 33 players >=30 trials)",
+  "min_trials_gate": 30,
+  "tier_quotas": {"top": 3, "mid": 4, "bottom": 3, "total": 10},
+  "selection_rules": {
+    "top": "highest trial counts; prefer D-15 named players where data present",
+    "mid": "middle of pool by trial count",
+    "bottom": "lowest trial counts that still pass min-trials gate"
+  },
+  "notes": [
+    "D-15 originally listed frozen/twistzz/jcobbb/jabbi/HooXi by name; none have engagements in current analytics.db, so unnamed-but-real players take their slots.",
+    "B-1+B-4 hard block satisfied: 10 REAL players from analytics.db with trials >= min_trials_gate; no placeholder entries.",
+    "Unnamed slots fall back to 'player_<last4>' display per interpretation_narrative._render_prompt convention. Operator may backfill PLAYER_NAMES once team rosters are confirmed."
+  ],
+  "players": [
+    {"steamid": 76561198386265483, "tier": "top",    "name": "donk",         "trials": 1232, "named_in_player_names": true,  "d15_match": true},
+    {"steamid": 76561198872013168, "tier": "top",    "name": "tN1R",         "trials": 426,  "named_in_player_names": true,  "d15_match": false, "note": "substitute for frozen (no data in DB)"},
+    {"steamid": 76561197989430253, "tier": "top",    "name": "karrigan",     "trials": 363,  "named_in_player_names": true,  "d15_match": true},
+    {"steamid": 76561198995880877, "tier": "mid",    "name": "player_5877",  "trials": 392,  "named_in_player_names": false, "d15_match": false, "note": "unnamed Spirit/FaZe steamid; high trials"},
+    {"steamid": 76561198081484775, "tier": "mid",    "name": "sh1ro",        "trials": 249,  "named_in_player_names": true,  "d15_match": true},
+    {"steamid": 76561199063238565, "tier": "mid",    "name": "player_8565",  "trials": 237,  "named_in_player_names": false, "d15_match": false},
+    {"steamid": 76561198210626739, "tier": "mid",    "name": "player_6739",  "trials": 231,  "named_in_player_names": false, "d15_match": false},
+    {"steamid": 76561198005107817, "tier": "bottom", "name": "Staehr",       "trials": 31,   "named_in_player_names": true,  "d15_match": true},
+    {"steamid": 76561199203563345, "tier": "bottom", "name": "player_3345",  "trials": 31,   "named_in_player_names": false, "d15_match": false},
+    {"steamid": 76561199032006224, "tier": "bottom", "name": "player_6224",  "trials": 30,   "named_in_player_names": false, "d15_match": false}
+  ]
+}

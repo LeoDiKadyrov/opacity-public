@@ -1,0 +1,80 @@
+# Demo files (large binary, not source)
+*.dem
+*.dem.bz2
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Generated output (reproducible from code + data)
+analysis_plots/
+ddm_analysis.log
+marketing/WEEKLY.md
+
+# Marketing — local strategy + raw chat exports (NOT for git, can be 1+ GB each)
+marketing/ChatExport_*/
+marketing/_analyze/messages*.jsonl
+marketing/_analyze/REPORT*.md
+marketing/_analyze/_*.txt
+marketing/COMMUNITY_INSIGHTS_*.md
+marketing/log.md
+
+# Databases — personal player data (SteamIDs)
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# Phase v2 narrative coaching layer — fail-soft log (already covered by *.log
+# above; explicit entry for discoverability per Wave 0 plan)
+narrative_failures.log
+
+# CSV data files (personal data, not committed)
+*.csv
+
+# Legacy code/ folder (data files only, kept locally)
+code/
+
+# Claude Code local settings (not project source)
+.claude/
+
+# Obsidian workspace files
+.obsidian/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Git worktrees
+.worktrees/
+
+# Local-only files (not part of project)
+.coverage
+.impeccable.md
+Anti_AI_Writing_Guide.md
+Arystan_Content_Persona.md
+CONTENT_STRATEGY.md
+FACT_DOSSIER_ARYSTAN.md
+MARKETING_PLAYBOOK.md
+My_Voice_Profile.md
+POSITIONING.md
+REFACTORING_PLAN.md
+code-reviewer.md
+docs/
+skills/

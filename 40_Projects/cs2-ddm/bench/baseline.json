@@ -1,0 +1,55 @@
+{
+  "captured_at": "2026-05-07T12:24:02Z",
+  "demo_dir": "D:\\Obsidian\\opacity\\40_Projects\\for_analysis\\spirit",
+  "n_demos": 5,
+  "n_ok": 5,
+  "harness_walltime_s": 1557.503040800002,
+  "mean_walltime_s": 308.9207485800005,
+  "demos": [
+    {
+      "demo": "9z-vs-spirit-m1-overpass.dem",
+      "walltime_s": 356.6612423000006,
+      "step_seconds": {
+        "construct": 28.57760970000163
+      },
+      "n_moments": 9,
+      "ok": true
+    },
+    {
+      "demo": "9z-vs-spirit-m2-dust2.dem",
+      "walltime_s": 358.4175572999993,
+      "step_seconds": {
+        "construct": 22.841691399997217
+      },
+      "n_moments": 8,
+      "ok": true
+    },
+    {
+      "demo": "astralis-vs-spirit-m2-ancient.dem",
+      "walltime_s": 303.58064170000216,
+      "step_seconds": {
+        "construct": 44.097622400000546
+      },
+      "n_moments": 7,
+      "ok": true
+    },
+    {
+      "demo": "aurora-vs-spirit-m2-nuke.dem",
+      "walltime_s": 312.4982409000004,
+      "step_seconds": {
+        "construct": 7.533500499997899
+      },
+      "n_moments": 11,
+      "ok": true
+    },
+    {
+      "demo": "falcons-vs-spirit-m2-mirage.dem",
+      "walltime_s": 213.4460607000001,
+      "step_seconds": {
+        "construct": 5.509883200000331
+      },
+      "n_moments": 8,
+      "ok": true
+    }
+  ]
+}

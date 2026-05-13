@@ -1,0 +1,100 @@
+{
+  "captured_at": "2026-05-07T11:48:28Z",
+  "demo_dir": "D:\\Obsidian\\opacity\\40_Projects\\for_analysis",
+  "n_demos": 10,
+  "n_ok": 10,
+  "harness_walltime_s": 409.4456285999986,
+  "mean_walltime_s": 36.80844031000015,
+  "demos": [
+    {
+      "demo": "1-0e40d5ec-6b09-434a-addc-906803610807-1-1.dem",
+      "walltime_s": 41.91152599999987,
+      "step_seconds": {
+        "construct": 36.130215700002736
+      },
+      "n_moments": 0,
+      "ok": true
+    },
+    {
+      "demo": "1-aea4a2bd-ad2d-48cd-9a4b-6d399771187d-1-1.dem",
+      "walltime_s": 7.370982399999775,
+      "step_seconds": {
+        "construct": 5.440998899997794
+      },
+      "n_moments": 0,
+      "ok": true
+    },
+    {
+      "demo": "1-e1e6908c-7b0e-42d8-a247-d2266c8a01a0-1-1.dem",
+      "walltime_s": 10.088091400000849,
+      "step_seconds": {
+        "construct": 8.376019799998176
+      },
+      "n_moments": 0,
+      "ok": true
+    },
+    {
+      "demo": "1-4f7596fe-baae-4638-be53-070def22a4bb-1-1.dem",
+      "walltime_s": 24.35353220000252,
+      "step_seconds": {
+        "construct": 20.488069600000017
+      },
+      "n_moments": 0,
+      "ok": true
+    },
+    {
+      "demo": "1-808d62d3-f6f4-4277-8f2d-15fadf99ce07-1-1.dem",
+      "walltime_s": 139.21239549999882,
+      "step_seconds": {
+        "construct": 135.09681999999884
+      },
+      "n_moments": 0,
+      "ok": true
+    },
+    {
+      "demo": "1-e2075722-a10c-4788-831b-b483d6d09948-1-1.dem",
+      "walltime_s": 49.48393829999986,
+      "step_seconds": {
+        "construct": 46.3922120999996
+      },
+      "n_moments": 0,
+      "ok": true
+    },
+    {
+      "demo": "faze-vs-aimclub-m2-overpass.dem",
+      "walltime_s": 33.090954399998736,
+      "step_seconds": {
+        "construct": 28.873370599998452
+      },
+      "n_moments": 0,
+      "ok": true
+    },
+    {
+      "demo": "1-3efc4381-4ff3-4752-b1f6-248a1cfbfd3f-1-1.dem",
+      "walltime_s": 41.263815900001646,
+      "step_seconds": {
+        "construct": 38.11340890000065
+      },
+      "n_moments": 0,
+      "ok": true
+    },
+    {
+      "demo": "1-9d7757d4-16ec-42d8-a4fa-1cf91043e88e-1-1.dem",
+      "walltime_s": 9.743068499999936,
+      "step_seconds": {
+        "construct": 6.220202299999073
+      },
+      "n_moments": 0,
+      "ok": true
+    },
+    {
+      "demo": "1-74b11134-eadb-4cc0-98b6-55a6f26f21a2-1-1.dem",
+      "walltime_s": 11.566098499999498,
+      "step_seconds": {
+        "construct": 8.508577099997638
+      },
+      "n_moments": 0,
+      "ok": true
+    }
+  ]
+}

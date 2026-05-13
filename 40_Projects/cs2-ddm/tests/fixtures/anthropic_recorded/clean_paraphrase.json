@@ -1,0 +1,12 @@
+{
+  "text": "## Что у тебя получается\nХорошие пики на Mirage без явной слабости. Demo review укрепит ритуал.\n## Где теряешь время\nЕсть несколько медленных моментов.\n## Action этой недели\nПродолжай DM.",
+  "usage": {
+    "input_tokens": 4400,
+    "output_tokens": 700,
+    "cache_creation_input_tokens": 600,
+    "cache_read_input_tokens": 0
+  },
+  "model": "claude-sonnet-4-6",
+  "stop_reason": "end_turn",
+  "captured_at": "2026-05-13T10:00:00Z"
+}

@@ -1,0 +1,13 @@
+[bench] per-demo speedup (baseline → post-change), n=10:
+  1-0e40d5ec-6b09-434a-addc-906803610807-1-1.dem        51.34s →   41.83s   speedup= 1.23x
+  1-3efc4381-4ff3-4752-b1f6-248a1cfbfd3f-1-1.dem        40.24s →   42.14s   speedup= 0.95x
+  1-4f7596fe-baae-4638-be53-070def22a4bb-1-1.dem        30.15s →   26.06s   speedup= 1.16x
+  1-74b11134-eadb-4cc0-98b6-55a6f26f21a2-1-1.dem        13.74s →   12.27s   speedup= 1.12x
+  1-808d62d3-f6f4-4277-8f2d-15fadf99ce07-1-1.dem       130.36s →  136.57s   speedup= 0.95x
+  1-9d7757d4-16ec-42d8-a4fa-1cf91043e88e-1-1.dem        10.90s →    8.89s   speedup= 1.23x
+  1-aea4a2bd-ad2d-48cd-9a4b-6d399771187d-1-1.dem         9.43s →    8.49s   speedup= 1.11x
+  1-e1e6908c-7b0e-42d8-a247-d2266c8a01a0-1-1.dem        12.08s →   10.04s   speedup= 1.20x
+  1-e2075722-a10c-4788-831b-b483d6d09948-1-1.dem        47.67s →   42.32s   speedup= 1.13x
+  faze-vs-aimclub-m2-overpass.dem                       35.20s →   35.34s   speedup= 1.00x
+[bench] mean speedup across 10 demos: 1.11x
+[bench] SC5 gate (≥3.00x): FAIL

@@ -1,0 +1,39 @@
+Applying the "Ideabrowser" framework to the **CS2 DDM Reaction Analysis** project shifts it from a scientific research tool into a high-value diagnostic product.[cite: 1] Based on your current stage and positioning, here is how those six decisions can be applied to monetize and scale the project by the end of a "sprint" weekend:
+
+---
+
+### 1. Hard-Narrow the Audience
+While you have identified "CS2 semi-pros (FaceIT 8–10)" as the target, the "network" question is the killer.[cite: 2] 
+*   **The Shift:** Instead of marketing to every high-level player, target **CIS-based team captains or academy coaches** in your immediate Telegram network.[cite: 2] 
+*   **The Benefit:** Marketing to a "player" is a B2C sale (hard). Marketing to a "coach" who needs to decide which sub to start is a B2B efficiency sale (easier to monetize).[cite: 1]
+
+### 2. Pick the "Crisis Trigger"
+Don’t market "better data." Market to one specific pain point.[cite: 1] 
+*   **The Trigger:** **"The Plateau."** The player who has hit 2500 ELO but has stopped progressing despite grinding Aim Lab for 3 hours a day.[cite: 2]
+*   **The Message:** "You aren't stuck because of your aim; you're stuck because of your brain's T0→T1 processing speed, and no amount of deathmatch will fix that."[cite: 2]
+
+### 3. Lock the "Wedge" Positioning
+You’ve already identified the "Separation of perception from execution" as the core bet.
+*   **The Decision:** This becomes your **Hero Line** and "One Decision" that propagates everywhere.[cite: 1] 
+*   **Application:** Every Telegram post and every dataset walkthrough must start and end with this distinction.[cite: 2] It is the "wedge" that differentiates you from Leetify’s aggregate stats.
+
+### 4. Create the "Reaction Decomposition Index" (Lead Magnet)
+Replace a "dataset download" with a high-friction, high-value **Readiness Index**.[cite: 1]
+*   **The Mechanic:** Instead of just giving away the "donk dataset," create a **"Pro-Readiness Diagnostic."**[cite: 2]
+*   **The Flow:** Users provide their email to receive a PDF that compares "average Joe" metrics against your pro baseline (T0→T1 / T1→T2 splits). This creates the "spider chart" moment that proves they need your full analysis.[cite: 1]
+
+### 5. Automation Before Assets (The Email Cadence)
+Before the web app is live, use the email gate from the diagnostic tool to run a **4-day educational sequence.**[cite: 1]
+*   **Day 0:** Your Diagnostic Results (The "Donk" Benchmark).[cite: 2]
+*   **Day 2:** Why your Aim Lab score is lying to you (Perception vs. Execution).
+*   **Day 4:** How to submit a .dem for a manual "Deep Dive" report (The First Paid Offer).
+
+### 6. Establish the Single Source of Truth
+Ensure the output of your Python pipeline (cs2-ddm) feeds directly into the language used in your marketing copy.[cite: 1, 2]
+*   **The Goal:** If the tool measures `rt_visible_to_aim_ms`, the landing page shouldn't talk about "reaction time." It should talk about "Perceptual Delay."
+*   **The Result:** By pulling the specific metrics into your "Marketing Commitment Card," you ensure that the scientific accuracy of the tool is never "lost in translation" for the user.[cite: 1, 2]
+
+---
+
+**Next Step for the Weekend:**
+Which specific coach or community leader in your Telegram "CIS CS2" network could you send a "Pro-Readiness Report" to tomorrow morning to get your first inbound request?[cite: 1, 2]
