@@ -1,4 +1,4 @@
----
+﻿---
 type: meta
 tags: [research, queue, evergreen-worker]
 created: 2026-05-12
@@ -12,7 +12,7 @@ created: 2026-05-12
 
 ## Active queue
 
-- [ ] Lazarus modes concept graph — как Александр Ярцев в MentalTech Lab его моделирует, как соотносится с Психодемия модулем
+- [x] Lazarus modes concept graph — как Александр Ярцев в MentalTech Lab его моделирует, как соотносится с Психодемия модулем
 - [ ] Faktura DBO knowledge base patterns — какие типы вопросов от банков повторяются в 70+ имплементациях, как chromaDB структурировать
 - [ ] Nippard fatigue management — научный consensus по recovery markers для 5×/week split, что мерить помимо subjective RPE
 - [ ] Cs2-ddm scientific framing — какие peer-reviewed работы по reaction time analytics в esports существуют, что заявка про T0→T1 split добавляет к literature

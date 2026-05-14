@@ -71,10 +71,18 @@ def backfill(db_path: str, demo_dirs: list[str], dry_run: bool = False) -> dict:
         demos = [r[0] for r in cur.fetchall()]
         for demo_name in demos:
             demo_path = None
+            # Some legacy rows store demo_name WITHOUT .dem extension while newer
+            # rows (Phase 10a multi-player path) store WITH .dem. Try both.
+            name_variants = [demo_name]
+            if not demo_name.endswith(".dem"):
+                name_variants.append(demo_name + ".dem")
             for d in demo_dirs:
-                candidate = Path(d) / demo_name
-                if candidate.exists():
-                    demo_path = candidate
+                for name in name_variants:
+                    candidate = Path(d) / name
+                    if candidate.exists():
+                        demo_path = candidate
+                        break
+                if demo_path is not None:
                     break
             if demo_path is None:
                 stats["demos_missing"].append(demo_name)

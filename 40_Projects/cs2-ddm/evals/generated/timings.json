@@ -1,0 +1,67 @@
+{
+  "timings": [
+    {
+      "player_steamid": 76561198386265483,
+      "name": "donk",
+      "ok": true,
+      "elapsed_s": 87.24538790000224
+    },
+    {
+      "player_steamid": 76561198872013168,
+      "name": "tN1R",
+      "ok": true,
+      "elapsed_s": 68.20198510000046
+    },
+    {
+      "player_steamid": 76561197989430253,
+      "name": "karrigan",
+      "ok": true,
+      "elapsed_s": 125.9615679999988
+    },
+    {
+      "player_steamid": 76561198995880877,
+      "name": "player_5877",
+      "ok": true,
+      "elapsed_s": 95.96975869999733
+    },
+    {
+      "player_steamid": 76561198081484775,
+      "name": "sh1ro",
+      "ok": true,
+      "elapsed_s": 58.83724039999652
+    },
+    {
+      "player_steamid": 76561199063238565,
+      "name": "player_8565",
+      "ok": true,
+      "elapsed_s": 74.79958050000278
+    },
+    {
+      "player_steamid": 76561198210626739,
+      "name": "player_6739",
+      "ok": true,
+      "elapsed_s": 77.00383009999496
+    },
+    {
+      "player_steamid": 76561198005107817,
+      "name": "Staehr",
+      "ok": true,
+      "elapsed_s": 79.36141930000304
+    },
+    {
+      "player_steamid": 76561199203563345,
+      "name": "player_3345",
+      "ok": true,
+      "elapsed_s": 69.88959199999954
+    },
+    {
+      "player_steamid": 76561199032006224,
+      "name": "player_6224",
+      "ok": true,
+      "elapsed_s": 88.14852019999671
+    }
+  ],
+  "p95_s": 125.9615679999988,
+  "n_ok": 10,
+  "n_total": 10
+}

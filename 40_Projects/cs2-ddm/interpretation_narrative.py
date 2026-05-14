@@ -278,94 +278,33 @@ def _cache_put(
             )
 
 
-# ── LLM client (persistent `claude -p` stream-json — Path B sub mode) ───────
+# ── LLM client (one-shot `claude -p --output-format json` — Path B sub mode) ─
 #
-# Path B (chosen 2026-05-12): instead of anthropic SDK + API key, leverage
-# Claude Code Max subscription via subprocess. First implementation used
-# one-shot `claude -p` per call (fresh ~45k system prompt + OAuth bootstrap
-# every call → 60-90s wall, broke SC-3). Replaced with PERSISTENT stream-json
-# session — one CLI subprocess for many user messages, system prompt cached
-# across messages within session (~4s first call, ~1-2s subsequent).
+# Path B (chosen 2026-05-12): leverage Claude Code Max subscription via
+# subprocess. Persistent stream-json mode (commit ab23e90) initially used
+# for cache reuse, but Win-pipe broke when stdin user message exceeded ~5KB
+# (BrokenPipeError on write, subprocess closed stdin reader). Reverted
+# 2026-05-13 to one-shot `subprocess.run` mode using `--output-format json`,
+# which handles large input via communicate() reliably.
 #
 # Tradeoffs:
-# - Subscription absorbs marginal cost (no per-token billing)
-# - Cache is shared across messages within a session, not across sessions
-# - Each module-load spawns a fresh persistent process on first call_llm
-# - System prompt is set at process spawn via --append-system-prompt; if it
-#   changes between calls (different prompt template) → respawn required
+# - Each call spawns fresh process (~3-4s bootstrap)
+# - Cold cache_creation tax every call — but cache is shared 5min, so
+#   serial calls within 5min still hit cache_read on subsequent calls
+# - Subscription absorbs marginal cost
+# - Spawned with cwd=tempdir to skip project context discovery
+#
+# Live numbers (sonnet-4-6, ~4.5KB sys + ~10KB user, real eval payload):
+# - Cold first call: ~70s wall (cw~18k cr~21k partial cache hit from
+#   cross-session 1h ephemeral cache)
+# - Subsequent calls within 5min: cache_read hits keep cost down
 
-_CLAUDE_CLI_PER_MESSAGE_TIMEOUT_S: int = 120  # per-message read deadline (cold first call ~60s)
-_PERSISTENT_CLIENT: Optional[dict] = None  # {"proc": Popen, "system_hash": str}
+_CLAUDE_CLI_TIMEOUT_S: int = 240  # per-call wall budget (Path B cold call ~60-180s, headroom for Staehr-class)
 
 
 def _get_client():
-    """Return CLI binary path. Returns 'claude' (PATH-resolved). Kept for API
-    parity. Tests can monkeypatch to inject a custom binary or raise
-    NarrativeBuildError to simulate missing CLI."""
+    """Return CLI binary path. Tests can monkeypatch."""
     return "claude"
-
-
-def _spawn_persistent_cli(prompt_system: str) -> "subprocess.Popen":
-    """Open one `claude -p --input-format stream-json --output-format stream-json
-    --verbose` subprocess. System prompt fixed at spawn (cached across messages).
-
-    Spawned with cwd=tempdir to avoid claude CLI doing context discovery
-    (rg --files --hidden) on the project tree, which can hang >60s on large
-    repos. SessionStart hooks in project .claude/ also bypassed.
-    All data passes via prompt args, so cwd is irrelevant to coaching output."""
-    import subprocess
-    import tempfile
-    binary = _get_client()
-    model = os.environ.get("LLM_MODEL", LLM_MODEL)
-    cmd = [
-        binary, "-p",
-        "--input-format", "stream-json",
-        "--output-format", "stream-json",
-        "--verbose",
-        "--model", model,
-        "--append-system-prompt", prompt_system,
-        "--exclude-dynamic-system-prompt-sections",
-    ]
-    try:
-        return subprocess.Popen(
-            cmd,
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            bufsize=1,  # line-buffered — required for stream-json
-            cwd=tempfile.gettempdir(),
-        )
-    except FileNotFoundError as e:
-        raise NarrativeBuildError(
-            "claude CLI not found on PATH (need Claude Code installed)"
-        ) from e
-
-
-def _close_persistent_client() -> None:
-    """Close the singleton CLI subprocess (called by tests + atexit)."""
-    global _PERSISTENT_CLIENT
-    if _PERSISTENT_CLIENT is None:
-        return
-    try:
-        proc = _PERSISTENT_CLIENT["proc"]
-        try:
-            if proc.stdin and not proc.stdin.closed:
-                proc.stdin.close()
-        except Exception:
-            pass
-        try:
-            proc.terminate()
-            proc.wait(timeout=5)
-        except Exception:
-            try:
-                proc.kill()
-            except Exception:
-                pass
-    finally:
-        _PERSISTENT_CLIENT = None
 
 
 def call_llm(
@@ -373,111 +312,78 @@ def call_llm(
     prompt_user: str,
     max_tokens: int = _MAX_TOKENS,
 ) -> tuple[str, dict]:
-    """Persistent stream-json `claude -p` call. Returns (text, usage_dict).
+    """One-shot `claude -p --output-format json` call. Returns (text, usage_dict).
 
     PUBLIC per REQ-3 — single function abstracting LLM provider; renaming-safe
     interface for future v2.1 multi-provider swap.
 
-    Path B (Max sub mode): persistent CLI subprocess shared across calls. First
-    call within a session pays system-prompt cache_creation tax (~4s wall);
-    subsequent calls hit cache (~1-2s wall). System prompt change → respawn.
-    `max_tokens` retained for signature parity but NOT plumbed.
+    Path B (Max sub mode): each call is a fresh subprocess. `max_tokens` is
+    retained for signature parity but NOT plumbed (claude CLI has no per-call
+    cap arg). Spawned with cwd=tempdir so claude CLI skips project context
+    discovery + project-level SessionStart hooks (saves 30-60s + avoids
+    contention with parent Claude Code sessions).
 
     Error taxonomy → NarrativeBuildError:
     - claude binary missing                    — FileNotFoundError on spawn
-    - read timeout > per-message deadline      — subprocess.TimeoutExpired
-    - invalid stream-json line                 — JSONDecodeError
-    - is_error / api_error_status              — Claude API error in CLI output
-    - subtype == "refusal" or stop == "refusal"— content policy
+    - subprocess.TimeoutExpired                — > _CLAUDE_CLI_TIMEOUT_S
+    - non-zero returncode                      — CLI failure
+    - JSONDecodeError on stdout                — malformed CLI output
+    - payload["is_error"] true                 — Claude API error
     """
     import subprocess
-    import hashlib as _h
+    import tempfile
 
-    global _PERSISTENT_CLIENT
+    binary = _get_client()
+    model = os.environ.get("LLM_MODEL", LLM_MODEL)
+    cmd = [
+        binary, "-p",
+        "--output-format", "json",
+        "--model", model,
+        "--append-system-prompt", prompt_system,
+        "--exclude-dynamic-system-prompt-sections",
+    ]
+    try:
+        completed = subprocess.run(
+            cmd,
+            input=prompt_user,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=_CLAUDE_CLI_TIMEOUT_S,
+            cwd=tempfile.gettempdir(),
+        )
+    except FileNotFoundError as e:
+        raise NarrativeBuildError(
+            "claude CLI not found on PATH (need Claude Code installed)"
+        ) from e
+    except subprocess.TimeoutExpired as e:
+        raise NarrativeBuildError(
+            f"claude CLI timeout {_CLAUDE_CLI_TIMEOUT_S}s"
+        ) from e
 
-    sys_hash = _h.sha256(prompt_system.encode("utf-8")).hexdigest()[:16]
-
-    # Spawn or reuse persistent process. Respawn if system prompt changed OR
-    # process died (poll() != None).
-    if (
-        _PERSISTENT_CLIENT is None
-        or _PERSISTENT_CLIENT.get("system_hash") != sys_hash
-        or _PERSISTENT_CLIENT["proc"].poll() is not None
-    ):
-        _close_persistent_client()
-        _PERSISTENT_CLIENT = {
-            "proc": _spawn_persistent_cli(prompt_system),
-            "system_hash": sys_hash,
-        }
-
-    proc = _PERSISTENT_CLIENT["proc"]
-    msg = json.dumps({
-        "type": "user",
-        "message": {"role": "user", "content": prompt_user},
-    })
+    if completed.returncode != 0:
+        raise NarrativeBuildError(
+            f"claude CLI exit {completed.returncode}: {completed.stderr[:500]}"
+        )
 
     try:
-        proc.stdin.write(msg + "\n")
-        proc.stdin.flush()
-    except (BrokenPipeError, OSError) as e:
-        _close_persistent_client()
-        raise NarrativeBuildError(f"claude CLI stdin closed: {e}") from e
-
-    # Read stream-json lines until type=result for THIS turn arrives.
-    import time as _time
-    deadline = _time.monotonic() + _CLAUDE_CLI_PER_MESSAGE_TIMEOUT_S
-    result_payload: Optional[dict] = None
-    text_chunks: list[str] = []
-    while _time.monotonic() < deadline:
-        line = proc.stdout.readline()
-        if line == "":  # EOF
-            _close_persistent_client()
-            raise NarrativeBuildError("claude CLI EOF before result")
-        line = line.strip()
-        if not line:
-            continue
-        try:
-            evt = json.loads(line)
-        except json.JSONDecodeError:
-            continue  # tolerate non-JSON lines
-        etype = evt.get("type")
-        if etype == "assistant":
-            for block in evt.get("message", {}).get("content", []) or []:
-                if block.get("type") == "text" and block.get("text"):
-                    text_chunks.append(block["text"])
-        elif etype == "result":
-            result_payload = evt
-            break
-        elif etype == "system" and evt.get("subtype") == "init":
-            continue
-    else:
-        _close_persistent_client()
+        payload = json.loads(completed.stdout)
+    except json.JSONDecodeError as e:
         raise NarrativeBuildError(
-            f"claude CLI per-message timeout {_CLAUDE_CLI_PER_MESSAGE_TIMEOUT_S}s"
+            f"claude CLI invalid JSON: {completed.stdout[:300]}"
+        ) from e
+
+    if payload.get("is_error") or payload.get("api_error_status"):
+        raise NarrativeBuildError(
+            f"claude CLI api error: {payload.get('api_error_status')!r}"
         )
 
-    if result_payload is None:
-        _close_persistent_client()
-        raise NarrativeBuildError("claude CLI no result event in window")
-
-    if result_payload.get("is_error") or result_payload.get("api_error_status"):
-        raise NarrativeBuildError(
-            f"claude CLI api error: {result_payload.get('api_error_status')!r}"
-        )
-    if result_payload.get("stop_reason") == "refusal" or result_payload.get("subtype") == "refusal":
-        raise NarrativeBuildError(
-            f"Content policy refusal: {result_payload.get('stop_details')!r}"
-        )
-
-    text = result_payload.get("result") or "".join(text_chunks)
+    text = payload.get("result", "")
     if not text:
         raise NarrativeBuildError("claude CLI returned empty result")
 
-    cli_usage = result_payload.get("usage", {}) or {}
-    model = next(
-        iter((result_payload.get("modelUsage") or {}).keys()),
-        os.environ.get("LLM_MODEL", LLM_MODEL),
-    )
+    cli_usage = payload.get("usage", {}) or {}
     usage = {
         "input_tokens": cli_usage.get("input_tokens", 0),
         "output_tokens": cli_usage.get("output_tokens", 0),
@@ -485,13 +391,9 @@ def call_llm(
         "cache_read_input_tokens": cli_usage.get("cache_read_input_tokens", 0),
         "model": model,
         "subscription_mode": True,
-        "total_cost_usd_reported": result_payload.get("total_cost_usd", 0.0),
+        "total_cost_usd_reported": payload.get("total_cost_usd", 0.0),
     }
     return text, usage
-
-
-import atexit as _atexit
-_atexit.register(_close_persistent_client)
 
 
 def _failure_logger() -> logging.Logger:

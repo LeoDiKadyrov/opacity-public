@@ -5,11 +5,14 @@ auto_generated: true
 ---
 # Project Graph
 
-Auto-generated from PROJECT.md ledgers in `Claude_experiments/`. 18 projects across 7 domains.
+Auto-generated from PROJECT.md ledgers in `Claude_experiments/`. 20 projects across 8 domains.
 
-## ? (1 projects)
+## ? (2 projects)
 
 - • **Claude_experiments** — Персональная система второго мозга для Арыстана Кадырова. Автоматически компилирует источники знаний (Obsidian заметки, рабочие KB, Telegram канал, YouGile чаты) в Evergreen-заметки и ежедневный брифинг через Claude API. После v2.0 — pipeline self-aware (health, cost), cross-project linked (ledgers, memory router) и outbound-capable (drafts → gated autonomous). Запускается по расписанию в 7:00 GMT+5 + ручные вызовы.
+- • **china-ebat** — TODO: what
+
+_Cross-pollinate candidates within `?`:_ Claude_experiments, china-ebat
 
 ## ai (3 projects)
 
@@ -27,6 +30,12 @@ _Cross-pollinate candidates within `ai`:_ ai_interview_coach, health-agent-plugi
   GitHub-installable via `claude plugin install`. Designed for solo practitioners and supervision-heavy training programs.
 
 _Cross-pollinate candidates within `content`:_ arystan_health, psyskills
+
+## finance (1 projects)
+
+- ▶ **moex_tracker** — MOEX financial dashboard + personal finance planning tools. Collects annual IFRS financials from smart-lab.ru, price history and OFZ yields from MOEX ISS public API, runs dividend bounce backtests across 20 Russian blue-chip tickers. Personal finance layer: IIS-A tax refund calculator, savings trajectory tracker, portfolio allocator (RUB LQDT/OFZ + USD S&P500 via Freedom Finance Kazakhstan), live CBR/Yahoo Finance/CoinGecko rates.
+  
+  FastAPI web UI on port 8001, cross-linked with autorss_feed digest (port 8000). Pipeline runs daily via Windows Task Scheduler at 08:00. GitHub: LeoDiKadyrov/moex-tracker.
 
 ## gaming (4 projects)
 
@@ -78,11 +87,13 @@ _Cross-pollinate candidates within `work`:_ DBO_Faktura_KB, Digital_ruble, Olga_
 - `arystan-context` (personal, active)
 - `arystan_health` (content, active)
 - `autorss_feed` (productivity, active)
+- `china-ebat` (?, ?)
 - `cs2-ddm` (gaming, active)
 - `djok-landing` (gaming, active)
 - `health-agent-plugin` (ai, active)
 - `intercept` (ai, active)
 - `korzina_weekly` (productivity, active)
+- `moex_tracker` (finance, active)
 - `pedigree` (personal, active)
 - `pongayer` (gaming, active)
 - `psyskills` (content, active)

@@ -94,9 +94,9 @@ CREATE TABLE narrative_cache (
 
 **SC-2.** 0/10 reports contain hallucinated references — validator catches all on eval set. **(Hard gate.)**
 
-**SC-3.** P95 generation time ≤30s per report (cold-cache, single LLM call). Cached call ≤100ms.
+**SC-3.** ~~P95 generation time ≤30s per report (cold-cache, single LLM call). Cached call ≤100ms.~~ **DEFERRED 2026-05-13** — under Path B (Claude Code Max subscription via `claude -p` subprocess, see L-1 amendment) cold-call wall is 60-180s with no `cache_control` lever. Operator workflow at this stage is manual: user submits demo via landing → owner runs tool locally → report delivered within 48h. Speed not user-facing. SC-3 reactivates when project migrates to self-serve API (Anthropic SDK direct) at hosting/payment milestone. **(Not a ship gate at v2.)**
 
-**SC-4.** Cost ≤$0.10 per fresh report at default model (~5k input tokens, ~1.5k output @ sonnet-4-6 pricing).
+**SC-4.** ~~Cost ≤$0.10 per fresh report at default model (~5k input tokens, ~1.5k output @ sonnet-4-6 pricing).~~ **INFORMATIONAL under Path B** — Max sub absorbs token spend at flat rate. Cost telemetry preserved (`narrative_cache.usage_json`) for future migration; gate not enforced.
 
 **SC-5.** Fall-back rate ≤5% on 50-report stress sample (LLM failures + validator rejections combined). Validates REQ-10 is rare path, not common.
 
