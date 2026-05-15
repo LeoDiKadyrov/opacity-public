@@ -332,46 +332,7 @@ def test_wal_concurrent_multiprocess(tmp_path):
     assert count == 4, f"Expected 4 rows from 4 processes, got {count}"
 
 
-# ── Phase v2-interpretation-narrative Wave 0 — narrative_cache + round_number ──
-# v2-W0-narrative-cache (REQ-7) + v2-W0-round-migration (D-01)
-
-
-def test_narrative_cache_schema_created(tmp_path):
-    """v2-00-01 — init_db creates narrative_cache with full REQ-7 schema."""
-    db = str(tmp_path / "narrative.db")
-    db_utils.init_db(db)
-    with closing(sqlite3.connect(db)) as conn:
-        tables = {r[0] for r in conn.execute(
-            "SELECT name FROM sqlite_master WHERE type='table'"
-        ).fetchall()}
-        assert "narrative_cache" in tables
-        cols = {c[1] for c in conn.execute(
-            "PRAGMA table_info(narrative_cache)"
-        ).fetchall()}
-    expected = {
-        "player_steamid", "engagement_type", "content_hash",
-        "narrative_md", "model", "tokens_in", "tokens_out",
-        "cache_creation_input_tokens", "cache_read_input_tokens",
-        "generated_at", "prompt_hash",
-    }
-    assert expected <= cols, f"Missing cols: {expected - cols}"
-
-
-def test_narrative_cache_primary_key_composite(tmp_path):
-    """v2-00-01 — PK = (player_steamid, engagement_type, content_hash)."""
-    db = str(tmp_path / "narrative_pk.db")
-    db_utils.init_db(db)
-    with closing(sqlite3.connect(db)) as conn:
-        # PRAGMA table_info: pk column index (5) is non-zero for PK members,
-        # ordered by position in the composite key.
-        info = conn.execute("PRAGMA table_info(narrative_cache)").fetchall()
-        pk_cols = sorted(
-            [(row[5], row[1]) for row in info if row[5] > 0],
-            key=lambda x: x[0],
-        )
-    pk_names = [name for _, name in pk_cols]
-    assert pk_names == ["player_steamid", "engagement_type", "content_hash"], \
-        f"Composite PK wrong: {pk_names}"
+# ── round_number column migration (kept post-v2 discard for future v1 use) ──
 
 
 def test_round_number_migration_idempotent(tmp_path):
@@ -400,15 +361,15 @@ def test_round_number_migration_on_legacy_engagements(tmp_path):
     assert "round_number" in cols
 
 
-def test_allowed_tables_includes_narrative_cache():
-    """v2-00-03 — _ALLOWED_TABLES = exactly {engagements, duel_attempts, narrative_cache}."""
+def test_allowed_tables_set():
+    """_ALLOWED_TABLES = exactly {engagements, duel_attempts} (Phase 10a leak guard)."""
     assert db_utils._ALLOWED_TABLES == {
-        "engagements", "duel_attempts", "narrative_cache"
-    }, f"Unexpected _ALLOWED_TABLES={db_utils._ALLOWED_TABLES} (Phase 10a leak guard)"
+        "engagements", "duel_attempts"
+    }, f"Unexpected _ALLOWED_TABLES={db_utils._ALLOWED_TABLES}"
 
 
 def test_save_to_db_rejects_unknown_table_still(tmp_path):
-    """v2-00-04 — CR-01 invariant survives _ALLOWED_TABLES extension."""
+    """CR-01 invariant — unknown tables are rejected."""
     db = str(tmp_path / "reject.db")
     df = _sample_df()
     with pytest.raises(ValueError, match="Unknown table"):

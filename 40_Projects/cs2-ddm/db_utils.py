@@ -14,7 +14,7 @@ import pandas as pd
 # CR-01: whitelist allowed table names to prevent SQL injection via f-string interpolation
 # Phase v2-interpretation-narrative D-09 / R-11: explicitly DOES NOT include `ddm_fits`
 # (Phase 10a worktree leak guard — DDM dropped per project_ddm_validation_final_2026_05_12).
-_ALLOWED_TABLES = {"engagements", "duel_attempts", "narrative_cache"}
+_ALLOWED_TABLES = {"engagements", "duel_attempts"}
 
 
 def save_to_db(
@@ -126,27 +126,6 @@ def _migrate_schema(conn: sqlite3.Connection) -> None:
             match_id INTEGER NOT NULL,
             processed_at TEXT NOT NULL,
             PRIMARY KEY (demo_filename, player_steamid)
-        )
-    """)
-
-    # narrative_cache: Phase v2-interpretation-narrative REQ-7 — LLM coaching
-    # narratives keyed by (player, engagement_type, content_hash) so re-runs on
-    # unchanged inputs hit cache instead of re-calling Anthropic API.
-    # cache_creation/read columns track Anthropic prompt-cache savings (REQ-9 cost CLI).
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS narrative_cache (
-            player_steamid INTEGER NOT NULL,
-            engagement_type TEXT NOT NULL,
-            content_hash TEXT NOT NULL,
-            narrative_md TEXT NOT NULL,
-            model TEXT NOT NULL,
-            tokens_in INTEGER,
-            tokens_out INTEGER,
-            cache_creation_input_tokens INTEGER DEFAULT 0,
-            cache_read_input_tokens INTEGER DEFAULT 0,
-            generated_at TEXT NOT NULL,
-            prompt_hash TEXT,
-            PRIMARY KEY (player_steamid, engagement_type, content_hash)
         )
     """)
 

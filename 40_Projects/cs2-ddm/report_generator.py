@@ -1,18 +1,14 @@
 """HTML report generator for Djok reaction analysis reports."""
-
 from __future__ import annotations
 
 import base64
 import io
-import os
-import re
 import sqlite3
 from contextlib import closing
 from datetime import date
 from typing import Optional
 
 import matplotlib
-
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -42,41 +38,26 @@ _METRIC_LABELS: dict[str, str] = {
 _RT_METRICS = {"rt_visible_to_aim_ms", "rt_aim_to_hit_ms", "rt_visible_to_hit_ms"}
 
 _TIER_BADGE_STYLES: dict[str, str] = {
-    "Elite": f"background:{_SECONDARY};color:#4ecdc4",
-    "Good": f"background:{_SECONDARY};color:{_TEXT}",
-    "Average": f"background:{_SECONDARY};color:{_MUTED}",
+    "Elite":       f"background:{_SECONDARY};color:#4ecdc4",
+    "Good":        f"background:{_SECONDARY};color:{_TEXT}",
+    "Average":     f"background:{_SECONDARY};color:{_MUTED}",
     "Work needed": f"background:#1a1408;color:{_ACCENT}",
-    "n/a": f"background:{_SECONDARY};color:{_MUTED}",
+    "n/a":         f"background:{_SECONDARY};color:{_MUTED}",
 }
 
 _RAW_DATA_COL_PRIORITY = [
-    "match_id",
-    "engagement_type",
-    "moment_timestamp",
-    "rt_visible_to_hit_ms",
-    "rt_visible_to_aim_ms",
-    "rt_aim_to_hit_ms",
-    "crosshair_angle_at_t0_deg",
-    "player_velocity_at_t0_ups",
+    "match_id", "engagement_type", "moment_timestamp",
+    "rt_visible_to_hit_ms", "rt_visible_to_aim_ms", "rt_aim_to_hit_ms",
+    "crosshair_angle_at_t0_deg", "player_velocity_at_t0_ups",
     "enemy_velocity_at_t0_ups",
 ]
 
-_NUMERIC_COLS = frozenset(
-    {
-        "match_id",
-        "t0_manual_tick",
-        "t1_aim_start_tick",
-        "t2_first_hit_tick",
-        "rt_visible_to_aim_ms",
-        "rt_aim_to_hit_ms",
-        "rt_visible_to_hit_ms",
-        "player_velocity_at_t0_ups",
-        "enemy_velocity_at_t0_ups",
-        "crosshair_angle_at_t0_deg",
-        "player_steamid",
-        "target_enemy_id",
-    }
-)
+_NUMERIC_COLS = frozenset({
+    "match_id", "t0_manual_tick", "t1_aim_start_tick", "t2_first_hit_tick",
+    "rt_visible_to_aim_ms", "rt_aim_to_hit_ms", "rt_visible_to_hit_ms",
+    "player_velocity_at_t0_ups", "enemy_velocity_at_t0_ups",
+    "crosshair_angle_at_t0_deg", "player_steamid", "target_enemy_id",
+})
 
 # Metrics shown per engagement type — col names are internal, never user input
 _CHART_METRICS: dict[str, list[str]] = {
@@ -99,7 +80,6 @@ _KNOWN_COLS: frozenset[str] = frozenset(
 
 
 # ── Chart helpers ─────────────────────────────────────────────────────────────
-
 
 def _fig_to_b64(fig: "plt.Figure") -> str:
     """Serialize a matplotlib figure to a base64-encoded PNG string.
@@ -193,25 +173,19 @@ def _generate_charts_html(
 
                 # Player mean from interpretation rows if available
                 player_mean: Optional[float] = None
-                if (
-                    interpretation_rows_by_type
-                    and engagement_type in interpretation_rows_by_type
-                ):
+                if interpretation_rows_by_type and engagement_type in interpretation_rows_by_type:
                     for row in interpretation_rows_by_type[engagement_type]:
                         if row.get("metric") == col:
                             player_mean = row.get("player_value")
                             break
 
-                chart_html = _chart_for_metric(
-                    values, metric_label, engagement_type, player_mean
-                )
+                chart_html = _chart_for_metric(values, metric_label, engagement_type, player_mean)
                 parts.append(chart_html)
 
     return "\n".join(p for p in parts if p)
 
 
 # ── CSS ───────────────────────────────────────────────────────────────────────
-
 
 def _css() -> str:
     return f"""<style>
@@ -439,29 +413,10 @@ h1 {{
     color: {_MUTED};
     margin-bottom: 8px;
 }}
-/* Narrative section (v2 — coach narrative block) */
-.narrative {{
-    padding: 1rem;
-    background: #1a1a25;
-    border-left: 3px solid #6a8caf;
-    margin-bottom: 1.5rem;
-}}
-.narrative-header {{
-    color: #c4d4e8;
-    margin-top: 1rem;
-    font-size: 16px;
-    font-weight: 600;
-}}
-.narrative-paragraph {{
-    color: #d4d4e0;
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
-}}
 </style>"""
 
 
 # ── Component helpers ─────────────────────────────────────────────────────────
-
 
 def _tier_badge(tier: str) -> str:
     style = _TIER_BADGE_STYLES.get(tier, _TIER_BADGE_STYLES["n/a"])
@@ -496,11 +451,7 @@ def _directions_compact_html(directions: list[dict]) -> str:
     for d in directions:
         title = d.get("title", "")
         body = d.get("body", "")
-        mark = (
-            '<span class="t-drill-mark">·drill</span>'
-            if d.get("is_drill", False)
-            else ""
-        )
+        mark = '<span class="t-drill-mark">·drill</span>' if d.get("is_drill", False) else ""
         items.append(f'<li><span class="t-title">{title}{mark}</span>{body}</li>')
     return f'<ul class="table-directions">{"".join(items)}</ul>'
 
@@ -555,9 +506,7 @@ def _tier_table_html(rows: list[dict], benchmark_name: str) -> str:
         bm_str = f"{bm_p50:.1f}" if bm_p50 is not None else "—"
 
         if tier == "n/a" or not directions:
-            direction_cell = (
-                f'<span style="color:{_MUTED}">{row.get("drill", "—")}</span>'
-            )
+            direction_cell = f'<span style="color:{_MUTED}">{row.get("drill", "—")}</span>'
         else:
             direction_cell = _directions_compact_html(directions)
 
@@ -570,13 +519,15 @@ def _tier_table_html(rows: list[dict], benchmark_name: str) -> str:
             f'<td class="col-gap mono">{gap_str}</td>'
             f'<td class="col-bm mono">{bm_str}</td>'
             f'<td class="col-direction">{direction_cell}</td>'
-            f"</tr>"
+            f'</tr>'
         )
         row_idx += 1
 
         if caveat and metric in _RT_METRICS:
             body_rows.append(
-                f'<tr class="caveat-row">' f'<td colspan="6">{caveat}</td>' f"</tr>"
+                f'<tr class="caveat-row">'
+                f'<td colspan="6">{caveat}</td>'
+                f'</tr>'
             )
 
     footer = "</tbody></table>"
@@ -593,7 +544,7 @@ def _raw_data_html(db_path: str, player_steamid: int) -> str:
             cursor = conn.execute(
                 "SELECT * FROM engagements WHERE player_steamid = ?"
                 " ORDER BY match_id, t0_manual_tick",
-                (player_steamid,),
+                (player_steamid,)
             )
             col_names = [d[0] for d in cursor.description]
             db_rows = cursor.fetchall()
@@ -627,9 +578,7 @@ def _raw_data_html(db_path: str, player_steamid: int) -> str:
             cells.append(f'<td class="{mono_class.strip()}">{val_str}</td>')
         body_rows.append(f'<tr class="{parity}">{"".join(cells)}</tr>')
 
-    table = (
-        f'<table class="raw-table">{header}<tbody>{"".join(body_rows)}</tbody></table>'
-    )
+    table = f'<table class="raw-table">{header}<tbody>{"".join(body_rows)}</tbody></table>'
     return caption + table
 
 
@@ -641,55 +590,18 @@ def _section(header: str, content: str) -> str:
 </div>"""
 
 
-def _markdown_to_html_minimal(md: str) -> str:
-    """Convert v2 narrative markdown → HTML.
-
-    Handles only the shapes emitted by the v2 prompt: ``## Header`` lines and
-    plain paragraphs separated by blank lines. Single newlines within a block
-    are converted to ``<br>``. Output is wrapped in ``<div class="narrative">``.
-
-    Intentionally minimal — keeps the dep surface flat. Swap to the
-    ``markdown`` library only if v2.1 prompt grows tables / lists / code.
-    """
-    out: list[str] = []
-    for block in re.split(r"\n{2,}", md.strip()):
-        block = block.strip()
-        if not block:
-            continue
-        if block.startswith("## "):
-            out.append(f'<h3 class="narrative-header">{block[3:].strip()}</h3>')
-        else:
-            paragraph = block.replace("\n", "<br>")
-            out.append(f'<p class="narrative-paragraph">{paragraph}</p>')
-    return '<div class="narrative">\n' + "\n".join(out) + "\n</div>"
-
-
 # ── Main entry point ──────────────────────────────────────────────────────────
-
 
 def generate_html_report(
     player_steamid: int,
     benchmark_steamid: int,
     benchmark_name: str,
     db_path: str = DB_PATH,
-    no_narrative: bool = False,
 ) -> bytes:
     """Generate a self-contained HTML report for a player vs benchmark.
 
     Returns UTF-8 encoded bytes of a complete HTML document.
     No external URLs are included — all CSS is inline, no CDN, no Google Fonts.
-
-    When ``no_narrative=False`` (default) the v2 coach narrative block is
-    rendered above the existing Interpretation tier table. On any
-    ``NarrativeBuildError`` (LLM error, validator reject, missing data,
-    missing API key) the narrative section silently degrades to empty and the
-    tier table still ships — REQ-10 fail-soft. Unexpected exceptions log at
-    ERROR level and are swallowed unless the ``DEV_FAIL_FAST=1`` env var is
-    set, in which case they re-raise (R-9 mitigation: dev bugs surface in
-    debug mode).
-
-    ``no_narrative=True`` short-circuits the entire narrative path — used for
-    SC-6 v1-baseline side-by-side rendering.
     """
     player_steamid = int(player_steamid)
     benchmark_steamid = int(benchmark_steamid)
@@ -700,9 +612,7 @@ def generate_html_report(
     interp_parts: list[str] = []
     interp_rows_by_type: dict[str, list[dict]] = {}
     for engagement_type in ["peek", "hold"]:
-        sub_label = (
-            "Peek engagements" if engagement_type == "peek" else "Hold engagements"
-        )
+        sub_label = "Peek engagements" if engagement_type == "peek" else "Hold engagements"
         rows = compute_interpretation(
             db_path=db_path,
             player_steamid=player_steamid,
@@ -714,88 +624,13 @@ def generate_html_report(
         card_html = _worst_metric_card_html(worst, benchmark_name)
         table_html = _tier_table_html(rows, benchmark_name)
         interp_parts.append(
-            f'<h3 class="sub-section-header">{sub_label}</h3>' + card_html + table_html
+            f'<h3 class="sub-section-header">{sub_label}</h3>'
+            + card_html
+            + table_html
         )
 
     interp_content = "\n".join(interp_parts)
     interpretation_section = _section("Interpretation", interp_content)
-
-    # ── Narrative section (v2 — fail-soft, REQ-6 + REQ-10) ────────────────────
-    narrative_section = ""
-    if not no_narrative:
-        try:
-            # Deferred imports — narrative module may import heavy deps
-            # (anthropic SDK) that we want to skip when no_narrative=True.
-            import interpretation_narrative
-            from interpretation_narrative import NarrativeBuildError
-
-            metrics_attribute = [
-                "crosshair_angle_at_t0_deg",
-                "rt_visible_to_aim_ms",
-                "rt_aim_to_hit_ms",
-                "rt_visible_to_hit_ms",
-            ]
-            top_moments: dict[str, list[dict]] = {}
-            for et in ["peek", "hold"]:
-                for metric in metrics_attribute:
-                    bench_row = next(
-                        (
-                            r
-                            for r in interp_rows_by_type[et]
-                            if r.get("metric") == metric
-                        ),
-                        None,
-                    )
-                    if bench_row is None or bench_row.get("benchmark_p50") is None:
-                        continue
-                    moments = interpretation_narrative.fetch_top_moments(
-                        db_path,
-                        player_steamid,
-                        metric,
-                        et,
-                        benchmark_p50=float(bench_row["benchmark_p50"]),
-                    )
-                    if moments:
-                        top_moments[f"{metric}::{et}"] = moments
-
-            rows_combined: list[dict] = []
-            for et in ["peek", "hold"]:
-                for r in interp_rows_by_type[et]:
-                    rows_combined.append({**r, "engagement_type": et})
-
-            player_context = {
-                "player_steamid": player_steamid,
-                "player_name": PLAYER_NAMES.get(
-                    player_steamid, f"player_{str(player_steamid)[-4:]}"
-                ),
-                "engagement_type": "combined",
-                "n_total_engagements": sum(
-                    len(rs) for rs in interp_rows_by_type.values()
-                ),
-            }
-
-            narrative_md = interpretation_narrative.build_narrative_report(
-                rows_combined,
-                top_moments,
-                player_context,
-                db_path=db_path,
-            )
-            narrative_html = _markdown_to_html_minimal(narrative_md)
-            narrative_section = _section("Coach Narrative", narrative_html)
-        except NarrativeBuildError as e:
-            # Expected fail-soft path — log and continue with tier table only.
-            from config import get_logger
-
-            logger = get_logger(f"report.{player_steamid}")
-            logger.warning(f"Narrative build failed (fail-soft): {e}")
-        except Exception as e:
-            # R-9: do NOT silently swallow unexpected exceptions in dev.
-            if os.environ.get("DEV_FAIL_FAST") == "1":
-                raise
-            from config import get_logger
-
-            logger = get_logger(f"report.{player_steamid}")
-            logger.error(f"Unexpected narrative error (fail-soft): {e!r}")
 
     # ── Distributions section ──────────────────────────────────────────────────
     charts_html = _generate_charts_html(
@@ -805,10 +640,7 @@ def generate_html_report(
         db_path=db_path,
         interpretation_rows_by_type=interp_rows_by_type,
     )
-    distributions_section = _section(
-        "Distributions",
-        charts_html or "<p style='color:#7a7a90'>No distribution data available.</p>",
-    )
+    distributions_section = _section("Distributions", charts_html or "<p style='color:#7a7a90'>No distribution data available.</p>")
 
     # ── Raw data section ───────────────────────────────────────────────────────
     raw_html = _raw_data_html(db_path, player_steamid)
@@ -826,7 +658,6 @@ def generate_html_report(
 <body>
 <h1>Djok Reaction Report</h1>
 <div class="sub-header">{player_steamid} vs {benchmark_name} · Generated {today}</div>
-{narrative_section}
 {interpretation_section}
 {distributions_section}
 {raw_section}

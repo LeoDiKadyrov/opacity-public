@@ -590,13 +590,17 @@ class DDMAnalyzer:
 
     def _compute_round_phase(
         self, t0_tick: int, round_start_ticks: Optional[List[int]], tag: str,
+        round_freeze_end_ticks: Optional[List[int]] = None,
     ) -> Tuple[Optional[float], Optional[str], Optional[int]]:
         """Return (round_time_s, round_phase, round_number) for the given T0 tick.
 
-        Phase v2-interpretation-narrative D-01: round_number is 1-indexed via
-        ``bisect_right(round_start_ticks, t0) - 1 + 1``, downstream surfaces it
-        through ``analyze_engagement_episode`` result dict so the narrative
-        coaching layer can attribute moments by round.
+        round_number uses ``round_start_ticks`` (freeze BEGIN — round
+        boundary). round_time_s anchors on ``round_freeze_end_ticks`` when
+        provided so it measures **gameplay time** (excludes the 20s buy
+        phase). Without freeze_end fallback, the value mistakenly includes
+        freeze duration — bug surfaced 2026-05-14 via donk groundtruth check
+        (engagement at "round_time_s=48.77" actually occurred at in-game
+        timer 1:26, not 1:07).
 
         Branches (preserve existing semantics; do NOT collapse warmup to None
         round_phase — phase chart relies on the literal "unknown" tag):
@@ -610,7 +614,23 @@ class DDMAnalyzer:
         idx = bisect.bisect_right(round_start_ticks, t0_tick) - 1
         if idx >= 0:
             ms_per_tick = 1000 / self.tickrate
-            round_time_s = round((t0_tick - round_start_ticks[idx]) * ms_per_tick / 1000, 2)
+            # Prefer round_freeze_end as gameplay-start anchor. Match by bisect
+            # so non-aligned counts (e.g., demos with mismatched event totals)
+            # still pair correctly to the round in question.
+            anchor_tick = round_start_ticks[idx]
+            if round_freeze_end_ticks:
+                fe_idx = bisect.bisect_right(round_freeze_end_ticks, t0_tick) - 1
+                if (
+                    fe_idx >= 0
+                    and round_freeze_end_ticks[fe_idx] >= round_start_ticks[idx]
+                ):
+                    anchor_tick = round_freeze_end_ticks[fe_idx]
+            round_time_s = round((t0_tick - anchor_tick) * ms_per_tick / 1000, 2)
+            # Guard: if t0 falls inside the freeze window (between round_start
+            # and round_freeze_end), round_time_s would be negative. Clamp to
+            # 0 so downstream phase classification stays sane.
+            if round_time_s < 0:
+                round_time_s = 0.0
             if round_time_s < _ROUND_EARLY_MAX_S:
                 round_phase = "early"
             elif round_time_s < _ROUND_MID_MAX_S:
@@ -636,6 +656,8 @@ class DDMAnalyzer:
         round_start_ticks: Optional[List[int]] = None,
         smoke_events: Optional[pd.DataFrame] = None,
         ticks_by_sid: Optional[Dict[int, pd.DataFrame]] = None,
+        round_freeze_end_ticks: Optional[List[int]] = None,
+        player_death_ticks: Optional[List[int]] = None,
     ) -> Optional[Dict]:
         tag = f"[{moment_info.timestamp}]"
         self.logger.info(f"{tag} Starting — {moment_info.description}")
@@ -647,6 +669,30 @@ class DDMAnalyzer:
         if result is None:
             return None
         t0_tick, t0_source = result
+
+        # Bug C gate (2026-05-14): reject engagements where the player was
+        # already dead at T0. T0Detector iterates BVH visibility for the
+        # player_steamid even after their death tick (corpse / spectator
+        # frames persist in tick data), fabricating phantom engagements.
+        # Compare t0_tick against the most recent player_death within the
+        # round: if a death precedes t0 inside the round window, skip.
+        if player_death_ticks and round_start_ticks:
+            r_idx = bisect.bisect_right(round_start_ticks, t0_tick) - 1
+            if r_idx >= 0:
+                round_lo = round_start_ticks[r_idx]
+                round_hi = (
+                    round_start_ticks[r_idx + 1]
+                    if r_idx + 1 < len(round_start_ticks)
+                    else 10**12
+                )
+                for d_tick in player_death_ticks:
+                    if round_lo <= d_tick < round_hi and d_tick < t0_tick:
+                        self.logger.warning(
+                            f"{tag} REJECTED — player died at tick {d_tick} "
+                            f"before T0 {t0_tick} in same round "
+                            f"(phantom-after-death gate)"
+                        )
+                        return None
 
         # Cap window at T0_TO_T2_MAX_TICKS (1.5s) to prevent cluster bleed:
         # auto_build_moments groups events 5s apart; without this cap, T2 can
@@ -694,8 +740,13 @@ class DDMAnalyzer:
         player_vel = self._compute_velocity(self.player_steamid, t0_tick, all_ticks_df)
         self.logger.info(f"{tag} velocity@T0={player_vel:.1f} u/s → {self._classify_engagement(player_vel)}")
         engagement_type = self._classify_engagement(player_vel)
+        # TODO Bug B (2026-05-14): peek/hold rule keys on player_velocity only.
+        # Strafe-hold (player moving fast but holding angle, e.g. side-to-side
+        # micro-movement) gets mis-classified as peek. Needs position-stability
+        # detector or enemy-velocity cross-check. Defer to next pass.
         round_time_s, round_phase, round_number = self._compute_round_phase(
-            t0_tick, round_start_ticks, tag
+            t0_tick, round_start_ticks, tag,
+            round_freeze_end_ticks=round_freeze_end_ticks,
         )
         self.logger.info(
             f"{tag} round_time_s={round_time_s}, round_phase={round_phase}, "
@@ -718,6 +769,19 @@ class DDMAnalyzer:
             if t2_tick >= t0_tick
             else np.nan
         )
+
+        # Bug A gate (2026-05-14): T0→T2 ≤ 2 ticks (≤31ms) is below human
+        # reaction floor (~150ms minimum). These are prefire artifacts where
+        # T0 fired the moment a smoke cleared on an enemy who was already
+        # being shot at — bullets in flight produce T2 the next tick.
+        # BVH+AABB does NOT include smoke geometry (CLAUDE.md known limit),
+        # so we filter at engagement-extraction time.
+        if t2_tick - t0_tick <= 2:
+            self.logger.warning(
+                f"{tag} REJECTED — T0→T2={t2_tick - t0_tick} ticks "
+                f"(≤2 = prefire artifact, below human reaction floor)"
+            )
+            return None
 
         self.logger.info(
             f"{tag} ACCEPTED — T0→T1={rt_t0_t1:.1f}ms  "
@@ -810,7 +874,7 @@ class DDMAnalyzer:
         # so per-player filtering stays in Python post-parse.
         # Phase 9.1 SC3: events parsed BEFORE parse_ticks so player_hurt anchors can drive
         # selective tick windowing via _parse_ticks_maybe_selective.
-        events_to_parse: List[str] = ["player_hurt", "player_death", "weapon_fire", "round_start"]
+        events_to_parse: List[str] = ["player_hurt", "player_death", "weapon_fire", "round_start", "round_freeze_end"]
         try:
             raw_events = self.parser.parse_events(events_to_parse)
             by_name: Dict[str, pd.DataFrame] = {
@@ -926,6 +990,35 @@ class DDMAnalyzer:
             round_start_ticks = []
         self.logger.info(f"Parsed {len(round_start_ticks)} round_start ticks.")
 
+        # round_freeze_end ticks — true gameplay-start anchor for round_time_s.
+        # Discovered 2026-05-14 via donk groundtruth: round_start fires at freeze
+        # BEGIN (includes 20s buy phase); using it for time-anchor overcounts
+        # round_time_s by ~20s and mis-classifies round_phase. round_freeze_end
+        # is the action-start tick; match it to round_start[idx] by bisect.
+        rfe_df = by_name.get("round_freeze_end", pd.DataFrame(columns=["tick"]))
+        try:
+            round_freeze_end_ticks: List[int] = sorted(
+                pd.to_numeric(rfe_df["tick"], errors="coerce").dropna().astype(int).tolist()
+            ) if not rfe_df.empty and "tick" in rfe_df.columns else []
+        except Exception:
+            round_freeze_end_ticks = []
+        self.logger.info(f"Parsed {len(round_freeze_end_ticks)} round_freeze_end ticks.")
+
+        # Player death ticks — Bug C gate (2026-05-14): T0Detector currently
+        # fabricates visibility events for dead players (corpse/spectator
+        # frames), producing phantom engagements after death. Reject any
+        # engagement whose t0_tick > player's death_tick within the same round.
+        if not all_death_df.empty and "user_steamid" in all_death_df.columns:
+            player_death_ticks: List[int] = sorted(
+                all_death_df.loc[
+                    all_death_df["user_steamid"].astype(str) == str(self.player_steamid),
+                    "tick",
+                ].dropna().astype(int).tolist()
+            )
+        else:
+            player_death_ticks = []
+        self.logger.info(f"Player has {len(player_death_ticks)} deaths in demo.")
+
         if bulk_mode:
             n = self.auto_build_moments(all_hurt_df)
             self.logger.info(f"Bulk mode: {n} engagement moments generated.")
@@ -938,6 +1031,8 @@ class DDMAnalyzer:
                 moment, all_ticks_df, player_fire_df, all_hurt_df,
                 round_start_ticks, smoke_events=smoke_events,
                 ticks_by_sid=ticks_by_sid,
+                round_freeze_end_ticks=round_freeze_end_ticks,
+                player_death_ticks=player_death_ticks,
             )
             if result:
                 first_hit = result.get("t2_first_hit_tick")

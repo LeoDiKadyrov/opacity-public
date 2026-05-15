@@ -205,17 +205,23 @@ def _get_percentiles(
 ) -> Optional[dict[str, tuple[float, float, float]]]:
     """Return per-metric (p25, p50, p75) from benchmark player. Returns None if demo_count < 20."""
     demo_df = pd.read_sql(
-        "SELECT COUNT(DISTINCT demo_name) as n FROM engagements WHERE player_steamid = ? AND engagement_type = ?",
-        conn, params=(int(benchmark_steamid), engagement_type)
+        "SELECT COUNT(DISTINCT demo_name) as n FROM engagements "
+        "WHERE player_steamid = ? AND engagement_type = ? "
+        "AND (rt_visible_to_hit_ms IS NULL OR rt_visible_to_hit_ms <= ?)",
+        conn, params=(int(benchmark_steamid), engagement_type, _T0_T2_MAX_MS)
     )
     if demo_df["n"].iloc[0] < 20:
         return None  # triggers fallback
 
     # RT + crosshair percentiles from engagements
+    # Cluster-bleed gate must mirror compute_interpretation player-side filter
+    # (CR-01 audit 2026-05-14): unfiltered benchmark p50 is right-skewed by
+    # T2-from-different-firefight rows, biasing tiers toward Elite.
     eng_df = pd.read_sql(
         "SELECT crosshair_angle_at_t0_deg, rt_visible_to_aim_ms, rt_aim_to_hit_ms, rt_visible_to_hit_ms "
-        "FROM engagements WHERE player_steamid = ? AND engagement_type = ?",
-        conn, params=(int(benchmark_steamid), engagement_type)
+        "FROM engagements WHERE player_steamid = ? AND engagement_type = ? "
+        "AND (rt_visible_to_hit_ms IS NULL OR rt_visible_to_hit_ms <= ?)",
+        conn, params=(int(benchmark_steamid), engagement_type, _T0_T2_MAX_MS)
     )
     result: dict[str, tuple[float, float, float]] = {}
     for col in ["crosshair_angle_at_t0_deg", "rt_visible_to_aim_ms", "rt_aim_to_hit_ms", "rt_visible_to_hit_ms"]:
