@@ -151,7 +151,7 @@ def test_worst_metric_card_omitted_when_no_data(empty_db):
 
 
 def test_accent_color_in_css(empty_db):
-    """Accent color #e8b84b must appear in the HTML (used in CSS)."""
+    """CS 1.6 accent color #c4b550 must appear in the HTML (used in CSS)."""
     import report_generator
     html = report_generator.generate_html_report(
         player_steamid=1,
@@ -159,11 +159,11 @@ def test_accent_color_in_css(empty_db):
         benchmark_name="test",
         db_path=empty_db,
     ).decode()
-    assert "#e8b84b" in html
+    assert "#c4b550" in html
 
 
 def test_bg_color_in_css(empty_db):
-    """Primary background color #0e0e12 must appear in the HTML CSS."""
+    """CS 1.6 background color #4a5942 (olive) must appear in the HTML CSS."""
     import report_generator
     html = report_generator.generate_html_report(
         player_steamid=1,
@@ -171,7 +171,42 @@ def test_bg_color_in_css(empty_db):
         benchmark_name="test",
         db_path=empty_db,
     ).decode()
-    assert "#0e0e12" in html
+    assert "#4a5942" in html
+
+
+def test_ru_lang_emits_russian_strings(empty_db):
+    """Russian lang produces translated UI strings, not English defaults."""
+    import report_generator
+    html = report_generator.generate_html_report(
+        player_steamid=1,
+        benchmark_steamid=1,
+        benchmark_name="donk",
+        db_path=empty_db,
+        lang="ru",
+    ).decode()
+    assert "Интерпретация" in html
+    assert "Дуэли на пике" in html
+    assert "Распределения" in html
+    assert "<html lang=\"ru\">" in html
+    # Sanity: EN strings absent in RU mode
+    assert "Interpretation" not in html
+
+
+def test_no_external_urls_with_inline_font(empty_db):
+    """CS 1.6 ArialPixel font is inline via data:base64 — no http(s) URLs allowed."""
+    import re
+    import report_generator
+    html = report_generator.generate_html_report(
+        player_steamid=1,
+        benchmark_steamid=1,
+        benchmark_name="test",
+        db_path=empty_db,
+    ).decode()
+    external = re.findall(r"""(?:href|src)=["'](https?://[^"']+)""", html)
+    assert external == [], f"External URLs found: {external}"
+    # Also check url(http...) form in CSS (not caught by href/src regex)
+    css_external = re.findall(r"url\(\s*['\"]?(https?://[^'\")]+)", html)
+    assert css_external == [], f"External CSS URLs found: {css_external}"
 
 
 def test_benchmark_name_in_subheader(empty_db):

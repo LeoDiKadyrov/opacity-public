@@ -52,6 +52,10 @@ Forcing function: Max $200/mo subscription. Discipline test — does usage justi
 | 2026-05-13 | 19:00 | C | 4.0 | autorss_feed | v1.4 shipped + Brainstorm-4 (routing/telemetry/compare) + Sales intel + Draft automation (974 tests) | indirect: BLUE foundation (late-cash infrastructure) |
 | 2026-05-14 | 17:30 | C | 2.5 | autorss_feed | v1.5 Source Expansion: Phases 23–26 (TG folders + Reddit + YT importer + IG), 19 REQs mapped, risk-graded roadmap | indirect: foundation for 4-phase collector expansion (TG→Reddit→YT→IG) |
 | 2026-05-14 | 17:45 | C | 1.0 | autorss_feed | Phase 23 context: Telegram folder discovery (13 decisions locked, integration points mapped) | indirect: enables TG folder→category mapping for source expansion |
+| 2026-05-15 | 07:00 | C | 1.0 | autorss_feed | Personal dashboard Phase 1 shipped (7 widgets + Obsidian sync) | indirect: self-tracking foundation |
+| 2026-05-15 | 08:00 | A | 0.5 | Digital_ruble | Письмо банкам о МС и ТР ЕСИА | direct: координация перехода |
+| 2026-05-15 | 20:00 | C | 1.0 | autorss_feed | Personal Dashboard Phase 1 + Sources Management планирование | indirect: foundation for curator automation |
+| 2026-05-15 | 15:00 | C | 1.0 | cs2-ddm | 5 commits: v2 discard + 4 data-layer fixes + self-vs-self bypass + multi_player duel_attempts | indirect: Djok v1 user acquisition foundation |
 
 ---
 

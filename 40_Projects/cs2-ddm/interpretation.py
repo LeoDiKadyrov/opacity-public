@@ -202,15 +202,19 @@ def _get_percentiles(
     conn: sqlite3.Connection,
     benchmark_steamid: int,
     engagement_type: str,
+    min_demos: int = 20,
 ) -> Optional[dict[str, tuple[float, float, float]]]:
-    """Return per-metric (p25, p50, p75) from benchmark player. Returns None if demo_count < 20."""
+    """Return per-metric (p25, p50, p75) from benchmark player. Returns None if
+    demo count < ``min_demos``. Self-vs-self callers pass min_demos=1 to skip
+    the fallback so player's own median always feeds back as benchmark p50.
+    """
     demo_df = pd.read_sql(
         "SELECT COUNT(DISTINCT demo_name) as n FROM engagements "
         "WHERE player_steamid = ? AND engagement_type = ? "
         "AND (rt_visible_to_hit_ms IS NULL OR rt_visible_to_hit_ms <= ?)",
         conn, params=(int(benchmark_steamid), engagement_type, _T0_T2_MAX_MS)
     )
-    if demo_df["n"].iloc[0] < 20:
+    if demo_df["n"].iloc[0] < min_demos:
         return None  # triggers fallback
 
     # RT + crosshair percentiles from engagements
@@ -275,8 +279,15 @@ def compute_interpretation(
     benchmark_steamid = int(benchmark_steamid)
 
     with closing(sqlite3.connect(db_path)) as conn:
-        # Get benchmark percentiles (None = fallback)
-        percentiles = _get_percentiles(conn, benchmark_steamid, engagement_type)
+        # Get benchmark percentiles (None = fallback). For self-vs-self
+        # comparisons (player == benchmark) skip the demo_count<20 threshold
+        # in fallback selection — we want player's own median, not a global
+        # constant. Otherwise self-vs-self produces nonzero gap when the
+        # player's hold/peek sample is below the benchmark threshold.
+        percentiles = _get_percentiles(
+            conn, benchmark_steamid, engagement_type,
+            min_demos=1 if player_steamid == benchmark_steamid else 20,
+        )
         small_sample = percentiles is None
         if small_sample:
             thresholds = _FALLBACK_THRESHOLDS.get(engagement_type, _FALLBACK_THRESHOLDS["peek"])

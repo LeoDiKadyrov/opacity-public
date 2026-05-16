@@ -97,12 +97,15 @@ def test_fallback_thresholds_triggered(tmp_path):  # 08-01-06
     )""")
     conn.execute("CREATE TABLE duel_attempts (player_steamid INTEGER, engagement_type TEXT, demo_name TEXT, was_killed INTEGER, bullets_fired INTEGER, bullets_hit INTEGER)")
     sid = 76561197989430253
+    benchmark_sid = 76561198000000001  # different player → fallback triggers when benchmark <20 demos
     for i in range(5):
         conn.execute("INSERT INTO engagements VALUES (?,?,?,?,?,?,?)",
             (sid, "peek", f"demo_{i}.dem", 5.0, 200.0, 400.0, 600.0))
+        conn.execute("INSERT INTO engagements VALUES (?,?,?,?,?,?,?)",
+            (benchmark_sid, "peek", f"demo_{i}.dem", 5.0, 200.0, 400.0, 600.0))
     conn.commit()
     conn.close()
-    rows = compute_interpretation(db_path, player_steamid=sid, benchmark_steamid=sid, engagement_type="peek")
+    rows = compute_interpretation(db_path, player_steamid=sid, benchmark_steamid=benchmark_sid, engagement_type="peek")
     assert all(r.get("small_sample") is True for r in rows if r["tier"] not in ("n/a",))
 
 def test_benchmark_small_sample_label(tmp_path):  # 08-01-07
