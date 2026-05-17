@@ -1008,7 +1008,7 @@ class TestAnalyzeEpisodeRoundNumberEmission:
              patch.object(analyzer, "is_1v1_duel", return_value=(True, "")), \
              patch.object(analyzer, "_teammate_hurt_target", return_value=False), \
              patch.object(analyzer, "_compute_velocity", return_value=0.0), \
-             patch.object(analyzer, "_detect_t1", return_value=2520), \
+             patch.object(analyzer, "_detect_t1", return_value=(2520, "sustained_aim")), \
              patch.object(analyzer, "_classify_engagement", return_value="hold"):
             ticks_df = pd.DataFrame({"tick": [2500, 2520, 2550]})
             fire_df = pd.DataFrame()

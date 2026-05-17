@@ -1,0 +1,11 @@
+min_ms       = 0.0
+max_ms       = 1015.625
+n_total      = 5
+n_at_125ms   = 0
+n_pre_aimed  = 2
+n_with_flag  = 2
+
+SC-4 acceptance:
+  [PASS] min_ms < 125.0 — actual: 0.0
+  [PASS] n_at_125ms / n_total < 0.10 — actual ratio: 0.0%
+  [PASS] n_pre_aimed == n_with_flag — match: YES

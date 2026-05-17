@@ -512,10 +512,69 @@ class DDMAnalyzer:
     def _detect_t1(
         self, t0_tick: int, t2_tick: int, target_enemy_id: str,
         all_ticks_df: pd.DataFrame, tag: str,
-    ) -> int:
-        """Search for sustained aim toward target. Returns t1_tick or -1."""
+    ) -> Tuple[int, str]:
+        """Detect T1 (reactive aim start). Returns (t1_tick, t1_source).
+
+        t1_source ∈ {"sustained_aim", "pre_aimed", "none"}.
+
+        Pre-aim branch (B-4 fix, 2026-05-16, REVIEW-2026-05-16.md B-4):
+        if player crosshair is within T1_NOT_AIMED_THRESHOLD of enemy at T0
+        AND remains within it for T1_SUSTAINED_AIM_TICKS ticks → return
+        (t0_tick, "pre_aimed"). Perception+motion-planning was complete
+        before visibility; rt_visible_to_aim_ms = 0.
+
+        Else fall through to sustained-aim loop (unchanged math). On hit,
+        return (potential_t1, "sustained_aim"). On no-detection or empty
+        window, return (-1, "none").
+        """
         grace_ticks = int(T1_GRACE_MS / (1000 / self.tickrate))
         aim_search_start = t0_tick + grace_ticks
+
+        # B-4 fix (2026-05-16, REVIEW-2026-05-16.md B-4): pre-aimed branch.
+        # If player crosshair is already on target at T0 (within
+        # T1_NOT_AIMED_THRESHOLD) AND stays there for T1_SUSTAINED_AIM_TICKS
+        # ticks, perception+motion-planning was complete before visibility.
+        # Set T1=T0, rt_visible_to_aim_ms=0. Else fall through to sustained
+        # -aim loop. Without this branch, pre-aimed engagements get NaN'd
+        # out (inverse survivorship — see feedback_pre_aim_censorship_
+        # inverse_survivorship.md). Source flag persisted via t1_source.
+        pre_aim_window = all_ticks_df[
+            (all_ticks_df["steamid"] == self.player_steamid)
+            & (all_ticks_df["tick"] >= t0_tick)
+            & (all_ticks_df["tick"] <= t0_tick + T1_SUSTAINED_AIM_TICKS)
+        ].sort_values("tick")
+        # Gate requires player row at EVERY tick of [T0, T0+T1_SUSTAINED_AIM_TICKS]
+        # — that is T1_SUSTAINED_AIM_TICKS+1 rows (3 with default constant). With
+        # only T1_SUSTAINED_AIM_TICKS rows the "sustained for N ticks" predicate
+        # cannot be evaluated; fall through to sustained-aim loop. Rule 1 fix on
+        # top of plan spec (2026-05-16): plan's `>= T1_SUSTAINED_AIM_TICKS` lets
+        # 2-row velocity-seed fixtures spuriously trigger pre_aimed — see
+        # feedback_test_fixture_scope_window_mismatch.md.
+        if len(pre_aim_window) >= T1_SUSTAINED_AIM_TICKS + 1:
+            on_target_all = True
+            for _, r in pre_aim_window.head(T1_SUSTAINED_AIM_TICKS + 1).iterrows():
+                e_row = all_ticks_df[
+                    (all_ticks_df["tick"] == int(r["tick"]))
+                    & (all_ticks_df["steamid"] == int(target_enemy_id))
+                ]
+                if e_row.empty:
+                    on_target_all = False
+                    break
+                e = e_row.iloc[0]
+                des_p, des_y = self.get_desired_angles(
+                    r["X"], r["Y"], r["Z"],
+                    e["X"], e["Y"], e["Z"],
+                )
+                dist = math.hypot(
+                    self.angular_diff(r["yaw"], des_y),
+                    self.angular_diff(r["pitch"], des_p),
+                )
+                if dist > T1_NOT_AIMED_THRESHOLD:
+                    on_target_all = False
+                    break
+            if on_target_all:
+                self.logger.info(f"{tag} T1={t0_tick} (pre_aimed)")
+                return t0_tick, "pre_aimed"
 
         player_aim_ticks = all_ticks_df[
             (all_ticks_df["steamid"] == self.player_steamid)
@@ -525,7 +584,7 @@ class DDMAnalyzer:
 
         if len(player_aim_ticks) < 2:
             self.logger.warning(f"{tag} T1 not found — no sustained aiming detected.")
-            return -1
+            return -1, "none"
 
         consecutive = 0
         potential_t1 = -1
@@ -577,10 +636,10 @@ class DDMAnalyzer:
 
             if consecutive >= T1_SUSTAINED_AIM_TICKS:
                 self.logger.info(f"{tag} T1={potential_t1} (after {consecutive} aim ticks)")
-                return potential_t1
+                return potential_t1, "sustained_aim"
 
         self.logger.warning(f"{tag} T1 not found — no sustained aiming detected.")
-        return -1
+        return -1, "none"
 
     def _classify_engagement(self, velocity_ups: float) -> str:
         """Return 'peek' or 'hold' based on player velocity at T0."""
@@ -736,7 +795,7 @@ class DDMAnalyzer:
             )
             return None
 
-        t1_tick = self._detect_t1(t0_tick, t2_tick, target_enemy_id, all_ticks_df, tag)
+        t1_tick, t1_source = self._detect_t1(t0_tick, t2_tick, target_enemy_id, all_ticks_df, tag)
         player_vel = self._compute_velocity(self.player_steamid, t0_tick, all_ticks_df)
         self.logger.info(f"{tag} velocity@T0={player_vel:.1f} u/s → {self._classify_engagement(player_vel)}")
         engagement_type = self._classify_engagement(player_vel)
@@ -810,6 +869,10 @@ class DDMAnalyzer:
             "round_phase": round_phase,
             # D-01: 1-indexed round_number for narrative attribution (Phase v2).
             "round_number": round_number,
+            # Phase 10 (B-4 fix, 2026-05-16): T1 detection branch label.
+            # ∈ {"sustained_aim", "pre_aimed", "none"}. NULL on legacy
+            # (pre-Phase-10) rows when re-read from DB without re-batch.
+            "t1_source": t1_source,
         }
 
     # ── Selective parse_ticks helpers (Phase 9.1 SC3) ─────────────────────────

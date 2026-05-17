@@ -1,0 +1,314 @@
+
+=== multi_player_analyze :: astralis-vs-spirit-m1-dust2-p1.dem ===
+
+Using 5 player SIDs from --players flag
+
+--- Player 76561198386265483 ---
+  [match_id=9880] running for player 76561198386265483...
+[DDM.9880] T0Detector ready for map 'de_dust2'
+[DDM.9880] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9880) ===
+[DDM.9880] Parsed 159 player_hurt events.
+[DDM.9880] Parsed 38,430 tick rows.
+[DDM.9880] Parsed 39 player_death events.
+[DDM.9880] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9880] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9880] DIAG player has 11 hits total, tick range: 2668–40943
+[DDM.9880] DIAG all hit ticks: [2668, 2677, 13109, 13258, 15839, 22100, 22119, 22132, 22329, 24382, 40943]
+[DDM.9880] Parsed 43 smoke intervals.
+[DDM.9880] Parsed 7 round_start ticks.
+[DDM.9880] Parsed 6 round_freeze_end ticks.
+[DDM.9880] Player has 6 deaths in demo.
+[DDM.9880] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9880] auto_build_moments: 11 total hits → 6 coarse clusters → 7 sub-clusters (gap>320/64 ticks)
+[DDM.9880] Bulk mode: 7 engagement moments generated.
+[DDM.9880] [0:41] Starting — bulk_auto first_hit=2668
+[DDM.9880] [0:41] DIAG BVH window [2368–2880]: player_ticks=501, enemy_ticks=501 (enemy=76561198005107817)
+[DDM.9880] [0:41] Auto T0=2642, source=BVH+AABB
+[DDM.9880] [0:41] T2=2668, target=76561198005107817, weapon=glock
+[DDM.9880] [0:41] enemy velocity@T0=240.0 u/s
+[DDM.9880] [0:41] REJECTED — enemy also moving at T0: 240.0 u/s (threshold=120.0 u/s)
+[DDM.9880] [3:24] Starting — bulk_auto first_hit=13109
+[DDM.9880] [3:24] DIAG BVH window [12809–13321]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9880] [3:24] Auto T0=13023, source=BVH+AABB
+[DDM.9880] [3:24] T2=13109, target=76561198408199043, weapon=deagle
+[DDM.9880] [3:24] enemy velocity@T0=242.5 u/s
+[DDM.9880] [3:24] REJECTED — enemy also moving at T0: 242.5 u/s (threshold=120.0 u/s)
+[DDM.9880] [4:07] Starting — bulk_auto first_hit=15839
+[DDM.9880] [4:07] DIAG BVH window [15539–16051]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9880] [4:07] Auto T0=15789, source=BVH+AABB
+[DDM.9880] [4:07] T2=15839, target=76561198168401372, weapon=deagle
+[DDM.9880] [4:07] enemy velocity@T0=4.1 u/s
+[DDM.9880] [4:07] T1=15789 (pre_aimed)
+[DDM.9880] [4:07] velocity@T0=174.4 u/s → peek
+[DDM.9880] [4:07] round_time_s=48.92, round_phase=mid, round_number=3
+[DDM.9880] [4:07] ACCEPTED — T0→T1=0.0ms  T1→T2=781.2ms  T0→T2=781.2ms
+[DDM.9880] [5:45] Starting — bulk_auto first_hit=22100
+[DDM.9880] [5:45] DIAG BVH window [21800–22312]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9880] [5:45] Auto T0=22069, source=BVH+AABB
+[DDM.9880] [5:45] T2=22100, target=76561198408199043, weapon=ak47
+[DDM.9880] [5:45] enemy velocity@T0=0.0 u/s
+[DDM.9880] [5:45] T1=22069 (pre_aimed)
+[DDM.9880] [5:45] velocity@T0=188.1 u/s → peek
+[DDM.9880] [5:45] round_time_s=24.95, round_phase=early, round_number=4
+[DDM.9880] [5:45] ACCEPTED — T0→T1=0.0ms  T1→T2=484.4ms  T0→T2=484.4ms
+[DDM.9880] [5:48] Starting — bulk_auto first_hit=22329
+[DDM.9880] [5:48] DIAG BVH window [22029–22541]: player_ticks=492, enemy_ticks=492 (enemy=76561198005107817)
+[DDM.9880] [5:48] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9880] [6:20] Starting — bulk_auto first_hit=24382
+[DDM.9880] [6:20] DIAG BVH window [24082–24594]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9880] [6:20] Auto T0=24229, source=BVH+AABB
+[DDM.9880] [6:20] REJECTED — no hit by player in window [24229–24325].
+[DDM.9880] [10:39] Starting — bulk_auto first_hit=40943
+[DDM.9880] [10:39] DIAG BVH window [40643–41155]: player_ticks=492, enemy_ticks=492 (enemy=76561197998926770)
+[DDM.9880] [10:39] Auto T0=40910, source=BVH+AABB
+[DDM.9880] [10:39] T2=40943, target=76561197998926770, weapon=galilar
+[DDM.9880] [10:39] enemy velocity@T0=217.4 u/s
+[DDM.9880] [10:39] REJECTED — enemy also moving at T0: 217.4 u/s (threshold=120.0 u/s)
+[DDM.9880] Done: 2/7 moments accepted.
+
+Accepted 2/7 moments.
+[DDM.9880] [attempts] match=9880 map=de_dust2 fires=79 clusters=21 all_ticks_rows=38430
+[DDM.9880] [attempts] 1/21 clusters (1 accepted) elapsed=0.0s rate=57.5/s eta=0s last_cluster=17ms window=[2641,2729] fires_in_cluster=5
+[DDM.9880] [attempts] 2/21 clusters (1 accepted) elapsed=0.0s rate=69.4/s eta=0s last_cluster=11ms window=[3427,3475] fires_in_cluster=1
+[DDM.9880] [attempts] 3/21 clusters (1 accepted) elapsed=0.0s rate=76.3/s eta=0s last_cluster=10ms window=[3951,3999] fires_in_cluster=1
+[DDM.9880] [attempts] 4/21 clusters (1 accepted) elapsed=0.1s rate=56.4/s eta=0s last_cluster=32ms window=[6715,6892] fires_in_cluster=4
+[DDM.9880] [attempts] 5/21 clusters (1 accepted) elapsed=0.1s rate=62.4/s eta=0s last_cluster=9ms window=[9418,9466] fires_in_cluster=1
+[DDM.9880] [attempts] 6/21 clusters (1 accepted) elapsed=0.1s rate=66.1/s eta=0s last_cluster=11ms window=[10254,10302] fires_in_cluster=1
+[DDM.9880] [attempts] 7/21 clusters (2 accepted) elapsed=0.1s rate=64.7/s eta=0s last_cluster=17ms window=[13093,13141] fires_in_cluster=1
+[DDM.9880] [attempts] 8/21 clusters (3 accepted) elapsed=0.2s rate=40.1/s eta=0s last_cluster=91ms window=[13242,13364] fires_in_cluster=2
+[DDM.9880] [attempts] 9/21 clusters (3 accepted) elapsed=0.2s rate=39.1/s eta=0s last_cluster=30ms window=[13520,13696] fires_in_cluster=6
+[DDM.9880] [attempts] 10/21 clusters (4 accepted) elapsed=0.4s rate=27.8/s eta=0s last_cluster=130ms window=[15823,15871] fires_in_cluster=1
+[DDM.9880] [attempts] 11/21 clusters (4 accepted) elapsed=0.4s rate=29.7/s eta=0s last_cluster=9ms window=[16477,16525] fires_in_cluster=1
+[DDM.9880] [attempts] 12/21 clusters (4 accepted) elapsed=0.4s rate=30.0/s eta=0s last_cluster=30ms window=[20531,20687] fires_in_cluster=3
+[DDM.9880] [attempts] 13/21 clusters (4 accepted) elapsed=1.0s rate=13.2/s eta=1s last_cluster=585ms window=[21939,21987] fires_in_cluster=1
+[DDM.9880] [attempts] 14/21 clusters (5 accepted) elapsed=1.0s rate=13.9/s eta=1s last_cluster=23ms window=[22071,22250] fires_in_cluster=12
+[DDM.9880] [attempts] 15/21 clusters (5 accepted) elapsed=1.0s rate=14.6/s eta=0s last_cluster=19ms window=[23353,23459] fires_in_cluster=10
+[DDM.9880] [attempts] 16/21 clusters (5 accepted) elapsed=1.0s rate=15.4/s eta=0s last_cluster=9ms window=[23705,23753] fires_in_cluster=1
+[DDM.9880] [attempts] 17/21 clusters (6 accepted) elapsed=1.1s rate=16.2/s eta=0s last_cluster=15ms window=[24309,24526] fires_in_cluster=19
+[DDM.9880] [attempts] 18/21 clusters (6 accepted) elapsed=1.1s rate=16.8/s eta=0s last_cluster=22ms window=[28864,28989] fires_in_cluster=4
+[DDM.9880] [attempts] 19/21 clusters (6 accepted) elapsed=1.1s rate=17.6/s eta=0s last_cluster=9ms window=[32590,32638] fires_in_cluster=1
+[DDM.9880] [attempts] 20/21 clusters (6 accepted) elapsed=1.1s rate=18.2/s eta=0s last_cluster=14ms window=[37667,37741] fires_in_cluster=2
+[DDM.9880] [attempts] 21/21 clusters (7 accepted) elapsed=1.1s rate=18.4/s eta=0s last_cluster=43ms window=[40927,40980] fires_in_cluster=2
+[DDM.9880] [attempts] DONE 7/21 accepted in 1.1s
+[DDM.9880] find_all_duel_attempts: 7 attempts (1 kills; death_events_parsed=39)
+  → Saved 2 rows for match_id=9880 (CSV total: 6943 rows).
+
+--- Player 76561198081484775 ---
+  [match_id=9881] running for player 76561198081484775...
+[DDM.9881] T0Detector ready for map 'de_dust2'
+[DDM.9881] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9881) ===
+[DDM.9881] Parsed 159 player_hurt events.
+[DDM.9881] Parsed 40,660 tick rows.
+[DDM.9881] Parsed 39 player_death events.
+[DDM.9881] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9881] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9881] DIAG player has 9 hits total, tick range: 2670–43018
+[DDM.9881] DIAG all hit ticks: [2670, 2684, 4904, 10485, 16594, 16614, 17860, 33255, 43018]
+[DDM.9881] Parsed 43 smoke intervals.
+[DDM.9881] Parsed 7 round_start ticks.
+[DDM.9881] Parsed 6 round_freeze_end ticks.
+[DDM.9881] Player has 6 deaths in demo.
+[DDM.9881] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9881] auto_build_moments: 7 total hits → 5 coarse clusters → 5 sub-clusters (gap>320/64 ticks)
+[DDM.9881] Bulk mode: 5 engagement moments generated.
+[DDM.9881] [0:41] Starting — bulk_auto first_hit=2670
+[DDM.9881] [0:41] DIAG BVH window [2370–2882]: player_ticks=506, enemy_ticks=506 (enemy=76561198005107817)
+[DDM.9881] [0:41] Auto T0=2615, source=BVH+AABB
+[DDM.9881] [0:41] T2=2670, target=76561198005107817, weapon=p250
+[DDM.9881] [0:41] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9881] [1:16] Starting — bulk_auto first_hit=4904
+[DDM.9881] [1:16] DIAG BVH window [4604–5116]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9881] [1:16] Auto T0=4925, source=BVH+AABB
+[DDM.9881] [1:16] REJECTED — player died at tick 4905 before T0 4925 in same round (phantom-after-death gate)
+[DDM.9881] [2:43] Starting — bulk_auto first_hit=10485
+[DDM.9881] [2:43] DIAG BVH window [10185–10697]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9881] [2:43] Auto T0=10285, source=BVH+AABB
+[DDM.9881] [2:43] REJECTED — no hit by player in window [10285–10381].
+[DDM.9881] [4:19] Starting — bulk_auto first_hit=16594
+[DDM.9881] [4:19] DIAG BVH window [16294–16806]: player_ticks=512, enemy_ticks=512 (enemy=76561198168401372)
+[DDM.9881] [4:19] Auto T0=16535, source=BVH+AABB
+[DDM.9881] [4:19] T2=16594, target=76561198168401372, weapon=glock
+[DDM.9881] [4:19] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9881] [4:39] Starting — bulk_auto first_hit=17860
+[DDM.9881] [4:39] DIAG BVH window [17560–18072]: player_ticks=492, enemy_ticks=492 (enemy=76561198408199043)
+[DDM.9881] [4:39] Auto T0=17672, source=BVH+AABB
+[DDM.9881] [4:39] REJECTED — no hit by player in window [17672–17768].
+[DDM.9881] Done: 0/5 moments accepted.
+
+Accepted 0/5 moments.
+[DDM.9881] [attempts] match=9881 map=de_dust2 fires=45 clusters=17 all_ticks_rows=40660
+[DDM.9881] [attempts] 1/17 clusters (1 accepted) elapsed=0.0s rate=60.2/s eta=0s last_cluster=17ms window=[2654,2716] fires_in_cluster=2
+[DDM.9881] [attempts] 2/17 clusters (1 accepted) elapsed=0.0s rate=62.7/s eta=0s last_cluster=15ms window=[3734,3822] fires_in_cluster=4
+[DDM.9881] [attempts] 3/17 clusters (2 accepted) elapsed=1.1s rate=2.8/s eta=5s last_cluster=1050ms window=[4822,4936] fires_in_cluster=3
+[DDM.9881] [attempts] 4/17 clusters (3 accepted) elapsed=1.1s rate=3.6/s eta=4s last_cluster=15ms window=[10408,10559] fires_in_cluster=13
+[DDM.9881] [attempts] 5/17 clusters (3 accepted) elapsed=1.1s rate=4.5/s eta=3s last_cluster=9ms window=[16089,16137] fires_in_cluster=1
+[DDM.9881] [attempts] 6/17 clusters (4 accepted) elapsed=1.1s rate=5.4/s eta=2s last_cluster=9ms window=[16536,16646] fires_in_cluster=4
+[DDM.9881] [attempts] 7/17 clusters (4 accepted) elapsed=1.1s rate=6.2/s eta=2s last_cluster=13ms window=[17344,17412] fires_in_cluster=2
+[DDM.9881] [attempts] 8/17 clusters (5 accepted) elapsed=4.0s rate=2.0/s eta=4s last_cluster=2848ms window=[17686,17892] fires_in_cluster=5
+[DDM.9881] [attempts] 9/17 clusters (5 accepted) elapsed=4.0s rate=2.3/s eta=4s last_cluster=10ms window=[20575,20623] fires_in_cluster=1
+[DDM.9881] [attempts] 10/17 clusters (5 accepted) elapsed=4.0s rate=2.5/s eta=3s last_cluster=9ms window=[22198,22246] fires_in_cluster=1
+[DDM.9881] [attempts] 11/17 clusters (5 accepted) elapsed=4.0s rate=2.7/s eta=2s last_cluster=8ms window=[23960,24008] fires_in_cluster=1
+[DDM.9881] [attempts] 12/17 clusters (5 accepted) elapsed=4.0s rate=3.0/s eta=2s last_cluster=9ms window=[32674,32722] fires_in_cluster=1
+[DDM.9881] [attempts] 13/17 clusters (5 accepted) elapsed=4.0s rate=3.2/s eta=1s last_cluster=9ms window=[33638,33686] fires_in_cluster=1
+[DDM.9881] [attempts] 14/17 clusters (5 accepted) elapsed=4.0s rate=3.5/s eta=1s last_cluster=9ms window=[33826,33874] fires_in_cluster=1
+[DDM.9881] [attempts] 15/17 clusters (5 accepted) elapsed=4.1s rate=3.7/s eta=1s last_cluster=33ms window=[37238,37409] fires_in_cluster=2
+[DDM.9881] [attempts] 16/17 clusters (5 accepted) elapsed=4.1s rate=3.9/s eta=0s last_cluster=11ms window=[37446,37494] fires_in_cluster=1
+[DDM.9881] [attempts] 17/17 clusters (5 accepted) elapsed=4.1s rate=4.1/s eta=0s last_cluster=22ms window=[41365,41479] fires_in_cluster=2
+[DDM.9881] [attempts] DONE 5/17 accepted in 4.1s
+[DDM.9881] find_all_duel_attempts: 5 attempts (1 kills; death_events_parsed=39)
+    no engagements found for 76561198081484775
+
+--- Player 76561198210626739 ---
+  [match_id=9881] running for player 76561198210626739...
+[DDM.9881] T0Detector ready for map 'de_dust2'
+[DDM.9881] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9881) ===
+[DDM.9881] Parsed 159 player_hurt events.
+[DDM.9881] Parsed 491,580 tick rows.
+[DDM.9881] Parsed 39 player_death events.
+[DDM.9881] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9881] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9881] DIAG player steamid=76561198210626739 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9881] Parsed 43 smoke intervals.
+[DDM.9881] Parsed 7 round_start ticks.
+[DDM.9881] Parsed 6 round_freeze_end ticks.
+[DDM.9881] Player has 0 deaths in demo.
+[DDM.9881] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9881] auto_build_moments: no hits by player found in demo.
+[DDM.9881] Bulk mode: 0 engagement moments generated.
+    no engagements found for 76561198210626739
+
+--- Player 76561197987713664 ---
+  [match_id=9881] running for player 76561197987713664...
+[DDM.9881] T0Detector ready for map 'de_dust2'
+[DDM.9881] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9881) ===
+[DDM.9881] Parsed 159 player_hurt events.
+[DDM.9881] Parsed 491,580 tick rows.
+[DDM.9881] Parsed 39 player_death events.
+[DDM.9881] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9881] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9881] DIAG player steamid=76561197987713664 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9881] Parsed 43 smoke intervals.
+[DDM.9881] Parsed 7 round_start ticks.
+[DDM.9881] Parsed 6 round_freeze_end ticks.
+[DDM.9881] Player has 0 deaths in demo.
+[DDM.9881] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9881] auto_build_moments: no hits by player found in demo.
+[DDM.9881] Bulk mode: 0 engagement moments generated.
+    no engagements found for 76561197987713664
+
+--- Player 76561197998926770 ---
+  [match_id=9881] running for player 76561197998926770...
+[DDM.9881] T0Detector ready for map 'de_dust2'
+[DDM.9881] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9881) ===
+[DDM.9881] Parsed 159 player_hurt events.
+[DDM.9881] Parsed 39,430 tick rows.
+[DDM.9881] Parsed 39 player_death events.
+[DDM.9881] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9881] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9881] DIAG player has 22 hits total, tick range: 3949–40952
+[DDM.9881] DIAG all hit ticks: [3949, 4043, 4109, 11054, 11058, 17886, 24591, 24617, 24630, 24649, 24655, 24662, 24681, 24687, 34721, 34734, 34740, 40744, 40926, 40933, 40933, 40952]
+[DDM.9881] Parsed 43 smoke intervals.
+[DDM.9881] Parsed 7 round_start ticks.
+[DDM.9881] Parsed 6 round_freeze_end ticks.
+[DDM.9881] Player has 1 deaths in demo.
+[DDM.9881] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9881] auto_build_moments: 22 total hits → 6 coarse clusters → 7 sub-clusters (gap>320/64 ticks)
+[DDM.9881] Bulk mode: 7 engagement moments generated.
+[DDM.9881] [1:01] Starting — bulk_auto first_hit=3949
+[DDM.9881] [1:01] DIAG BVH window [3649–4161]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9881] [1:01] Auto T0=3911, source=BVH+AABB
+[DDM.9881] [1:01] T2=3949, target=76561198995880877, weapon=hkp2000
+[DDM.9881] [1:01] enemy velocity@T0=201.5 u/s
+[DDM.9881] [1:01] REJECTED — enemy also moving at T0: 201.5 u/s (threshold=120.0 u/s)
+[DDM.9881] [2:52] Starting — bulk_auto first_hit=11054
+[DDM.9881] [2:52] DIAG BVH window [10754–11266]: player_ticks=496, enemy_ticks=496 (enemy=76561199063238565)
+[DDM.9881] [2:52] Auto T0=11102, source=BVH+AABB
+[DDM.9881] [2:52] REJECTED — no hit by player in window [11102–11198].
+[DDM.9881] [4:39] Starting — bulk_auto first_hit=17886
+[DDM.9881] [4:39] DIAG BVH window [17586–18098]: player_ticks=492, enemy_ticks=492 (enemy=76561198081484775)
+[DDM.9881] [4:39] Auto T0=17867, source=BVH+AABB
+[DDM.9881] [4:39] T2=17886, target=76561198081484775, weapon=famas
+[DDM.9881] [4:39] enemy velocity@T0=78.2 u/s
+[DDM.9881] [4:39] T1=17868 (after 2 aim ticks)
+[DDM.9881] [4:39] velocity@T0=220.0 u/s → peek
+[DDM.9881] [4:39] round_time_s=81.39, round_phase=late, round_number=3
+[DDM.9881] [4:39] ACCEPTED — T0→T1=15.6ms  T1→T2=281.2ms  T0→T2=296.9ms
+[DDM.9881] [6:24] Starting — bulk_auto first_hit=24591
+[DDM.9881] [6:24] DIAG BVH window [24291–24803]: player_ticks=513, enemy_ticks=513 (enemy=76561199063238565)
+[DDM.9881] [6:24] Auto T0=24522, source=BVH+AABB
+[DDM.9881] [6:24] T2=24591, target=76561199063238565, weapon=m4a1
+[DDM.9881] [6:24] enemy velocity@T0=98.3 u/s
+[DDM.9881] [6:24] T1=24587 (after 2 aim ticks)
+[DDM.9881] [6:24] velocity@T0=117.0 u/s → peek
+[DDM.9881] [6:24] round_time_s=63.28, round_phase=mid, round_number=4
+[DDM.9881] [6:24] ACCEPTED — T0→T1=1015.6ms  T1→T2=62.5ms  T0→T2=1078.1ms
+[DDM.9881] [9:02] Starting — bulk_auto first_hit=34721
+[DDM.9881] [9:02] DIAG BVH window [34421–34933]: player_ticks=511, enemy_ticks=511 (enemy=76561198995880877)
+[DDM.9881] [9:02] Auto T0=34623, source=BVH+AABB
+[DDM.9881] [9:02] REJECTED — no hit by player in window [34623–34719].
+[DDM.9881] [10:36] Starting — bulk_auto first_hit=40744
+[DDM.9881] [10:36] DIAG BVH window [40444–40956]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9881] [10:36] Auto T0=40915, source=BVH+AABB
+[DDM.9881] [10:36] T2=40926, target=76561198872013168, weapon=m4a1
+[DDM.9881] [10:36] enemy velocity@T0=54.2 u/s
+[DDM.9881] [10:36] T1=40919 (after 2 aim ticks)
+[DDM.9881] [10:36] velocity@T0=223.6 u/s → peek
+[DDM.9881] [10:36] round_time_s=61.44, round_phase=mid, round_number=6
+[DDM.9881] [10:36] ACCEPTED — T0→T1=62.5ms  T1→T2=109.4ms  T0→T2=171.9ms
+[DDM.9881] [10:39] Starting — bulk_auto first_hit=40926
+[DDM.9881] [10:39] DIAG BVH window [40626–41138]: player_ticks=513, enemy_ticks=513 (enemy=76561198872013168)
+[DDM.9881] [10:39] Auto T0=40915, source=BVH+AABB
+[DDM.9881] [10:39] T2=40926, target=76561198872013168, weapon=m4a1
+[DDM.9881] [10:39] enemy velocity@T0=54.2 u/s
+[DDM.9881] [10:39] T1=40919 (after 2 aim ticks)
+[DDM.9881] [10:39] velocity@T0=223.6 u/s → peek
+[DDM.9881] [10:39] round_time_s=61.44, round_phase=mid, round_number=6
+[DDM.9881] [10:39] ACCEPTED — T0→T1=62.5ms  T1→T2=109.4ms  T0→T2=171.9ms
+[DDM.9881] Overlapping window rejected: first_hit=40926 < last_accepted_t2=40926 + 300
+[DDM.9881] Done: 3/7 moments accepted.
+
+Accepted 3/7 moments.
+[DDM.9881] [attempts] match=9881 map=de_dust2 fires=89 clusters=30 all_ticks_rows=39430
+[DDM.9881] [attempts] 1/30 clusters (0 accepted) elapsed=0.0s rate=97.8/s eta=0s last_cluster=10ms window=[3391,3439] fires_in_cluster=1
+[DDM.9881] [attempts] 2/30 clusters (0 accepted) elapsed=1.1s rate=1.9/s eta=15s last_cluster=1067ms window=[3535,3583] fires_in_cluster=1
+[DDM.9881] [attempts] 3/30 clusters (1 accepted) elapsed=1.1s rate=2.7/s eta=10s last_cluster=41ms window=[3809,4003] fires_in_cluster=7
+[DDM.9881] [attempts] 4/30 clusters (2 accepted) elapsed=1.1s rate=3.5/s eta=7s last_cluster=20ms window=[4027,4141] fires_in_cluster=4
+[DDM.9881] [attempts] 5/30 clusters (2 accepted) elapsed=1.2s rate=4.2/s eta=6s last_cluster=48ms window=[4659,4892] fires_in_cluster=8
+[DDM.9881] [attempts] 6/30 clusters (2 accepted) elapsed=1.2s rate=5.0/s eta=5s last_cluster=15ms window=[4865,4940] fires_in_cluster=2
+[DDM.9881] [attempts] 7/30 clusters (2 accepted) elapsed=1.2s rate=5.8/s eta=4s last_cluster=9ms window=[6885,6933] fires_in_cluster=1
+[DDM.9881] [attempts] 8/30 clusters (2 accepted) elapsed=1.2s rate=6.4/s eta=3s last_cluster=36ms window=[8242,8409] fires_in_cluster=2
+[DDM.9881] [attempts] 9/30 clusters (2 accepted) elapsed=1.3s rate=6.8/s eta=3s last_cluster=69ms window=[11038,11104] fires_in_cluster=5
+[DDM.9881] [attempts] 10/30 clusters (2 accepted) elapsed=1.3s rate=7.5/s eta=3s last_cluster=11ms window=[13051,13099] fires_in_cluster=1
+[DDM.9881] [attempts] 11/30 clusters (2 accepted) elapsed=1.3s rate=8.2/s eta=2s last_cluster=13ms window=[13392,13440] fires_in_cluster=1
+[DDM.9881] [attempts] 12/30 clusters (2 accepted) elapsed=1.4s rate=8.9/s eta=2s last_cluster=9ms window=[14601,14649] fires_in_cluster=1
+[DDM.9881] [attempts] 13/30 clusters (2 accepted) elapsed=1.4s rate=9.6/s eta=2s last_cluster=10ms window=[14865,14913] fires_in_cluster=1
+[DDM.9881] [attempts] 14/30 clusters (3 accepted) elapsed=1.4s rate=10.2/s eta=2s last_cluster=9ms window=[17870,17941] fires_in_cluster=5
+[DDM.9881] [attempts] 15/30 clusters (3 accepted) elapsed=1.4s rate=10.9/s eta=1s last_cluster=10ms window=[18870,18918] fires_in_cluster=1
+[DDM.9881] [attempts] 16/30 clusters (3 accepted) elapsed=1.4s rate=11.5/s eta=1s last_cluster=9ms window=[20988,21036] fires_in_cluster=1
+[DDM.9881] [attempts] 17/30 clusters (3 accepted) elapsed=1.4s rate=12.2/s eta=1s last_cluster=10ms window=[22094,22142] fires_in_cluster=1
+[DDM.9881] [attempts] 18/30 clusters (4 accepted) elapsed=1.4s rate=12.5/s eta=1s last_cluster=39ms window=[24563,24732] fires_in_cluster=20
+[DDM.9881] [attempts] 19/30 clusters (4 accepted) elapsed=1.5s rate=13.1/s eta=1s last_cluster=13ms window=[25082,25130] fires_in_cluster=1
+[DDM.9881] [attempts] 20/30 clusters (4 accepted) elapsed=1.5s rate=13.7/s eta=1s last_cluster=9ms window=[29019,29067] fires_in_cluster=1
+[DDM.9881] [attempts] 21/30 clusters (4 accepted) elapsed=1.5s rate=14.3/s eta=1s last_cluster=12ms window=[29159,29207] fires_in_cluster=1
+[DDM.9881] [attempts] 22/30 clusters (4 accepted) elapsed=1.5s rate=14.8/s eta=1s last_cluster=9ms window=[30281,30329] fires_in_cluster=1
+[DDM.9881] [attempts] 23/30 clusters (5 accepted) elapsed=1.5s rate=15.4/s eta=0s last_cluster=14ms window=[34679,34891] fires_in_cluster=9
+[DDM.9881] [attempts] 24/30 clusters (5 accepted) elapsed=1.5s rate=15.9/s eta=0s last_cluster=10ms window=[34976,35024] fires_in_cluster=1
+[DDM.9881] [attempts] 25/30 clusters (5 accepted) elapsed=1.5s rate=16.5/s eta=0s last_cluster=12ms window=[37386,37434] fires_in_cluster=1
+[DDM.9881] [attempts] 26/30 clusters (5 accepted) elapsed=1.5s rate=17.0/s eta=0s last_cluster=11ms window=[37546,37594] fires_in_cluster=1
+[DDM.9881] [attempts] 27/30 clusters (5 accepted) elapsed=1.5s rate=17.5/s eta=0s last_cluster=10ms window=[37968,38016] fires_in_cluster=1
+[DDM.9881] [attempts] 28/30 clusters (5 accepted) elapsed=1.5s rate=18.1/s eta=0s last_cluster=10ms window=[40141,40189] fires_in_cluster=1
+[DDM.9881] [attempts] 29/30 clusters (5 accepted) elapsed=6.2s rate=4.7/s eta=0s last_cluster=4680ms window=[40512,40665] fires_in_cluster=2
+[DDM.9881] [attempts] 30/30 clusters (6 accepted) elapsed=6.4s rate=4.7/s eta=0s last_cluster=161ms window=[40910,40990] fires_in_cluster=6
+[DDM.9881] [attempts] DONE 6/30 accepted in 6.4s
+[DDM.9881] find_all_duel_attempts: 6 attempts (2 kills; death_events_parsed=39)
+  → Saved 3 rows for match_id=9881 (CSV total: 6946 rows).
+
+=== astralis-vs-spirit-m1-dust2-p1.dem done ===
+Total engagement rows written: 5
+
+  SteamID64                rows  status
+  76561198386265483           2  ok
+  76561198081484775           0  empty
+  76561198210626739           0  empty
+  76561197987713664           0  empty
+  76561197998926770           3  ok

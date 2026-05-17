@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: Djok MVP
-status: executing
-stopped_at: Phase v2-interpretation-narrative context gathered
-last_updated: "2026-05-12T12:40:39.703Z"
-last_activity: 2026-05-12 -- Phase v2-interpretation-narrative planning complete
+status: idle
+stopped_at: Phase 10 SHIPPED — awaiting next milestone declaration
+last_updated: "2026-05-16T21:30:00.000Z"
+last_activity: 2026-05-16 -- Phase 10 (B-1 + B-4 T1 detection fix batch) SHIPPED; all 5 SCs PASS
 progress:
   total_phases: 6
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 95
+  completed_phases: 1
+  total_plans: 3
+  completed_plans: 3
+  percent: 96
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-30)
 
 **Core value:** Not just metrics — specific insight: what exactly to change in training to be closer to donk
-**Current focus:** Milestone v1.0 SHIPPED 2026-05-07 + ARCHIVED. Awaiting /gsd-new-milestone for v1.1 (likely Phase 10: public deploy + FACEIT URL).
+**Current focus:** Phase 10 SHIPPED 2026-05-16 (B-1 floor fix + B-4 pre-aim censorship fix). Milestone v1.0 ARCHIVED (milestones/v1.0-ROADMAP.md). v2-interpretation-narrative DISCARDED 2026-05-14 (project pivot). Next: Phase A items (full corpus re-batch, threshold re-derivation, distribution-shape regression suite) — not yet planned as formal GSD phases. Awaiting `/gsd-new-milestone v1.1` to scope them.
 
 ## Current Position
 
-Phase: v1.0 ARCHIVED (milestones/v1.0-ROADMAP.md). v1.1 not yet planned.
-Plan: 22/22 v1.0 plans done (Phase 6: 4/4, Phase 7: 5/5, Phase 8: 3/3, Phase 9: 4/4, Phase 9.1: 6/6)
-Status: Ready to execute
-Last activity: 2026-05-12 -- Phase v2-interpretation-narrative planning complete
+Phase: 10 COMPLETE (`.planning/phases/10-t1-detection-fix-batch-b-1-b-4/`). v1.0 ARCHIVED.
+Plan: 3/3 Phase 10 plans done (Wave 0 TDD + Wave 1 code fix + Wave 2 manual gates). 12 commits 99cb296..6fa9ffd on main.
+Status: Ready for next milestone declaration
+Last activity: 2026-05-16 -- Phase 10 SHIPPED; ROADMAP.md flipped; multi_player_analyze.py init_db bug fixed (commit 32ce270)
 
-Progress: [████████████████████] 95% (v0.x engine + Phases 6–8 + 09-01, 09-02, 09-03 complete)
+Progress: [████████████████████] 96% (v0.x engine + v1.0 + Phase 10 complete; pending Phase A items not yet planned)
 
 ## Performance Metrics
 
@@ -52,10 +52,19 @@ Progress: [████████████████████] 95% (v0
 
 ### Roadmap Evolution
 
+- Phase 10 inserted URGENT 2026-05-16 — T1 detection fix batch (B-1 grace floor + B-4 pre-aim censorship); 3 plans Waves 0/1/2; SHIPPED 2026-05-16 same day
+- Phase v2-interpretation-narrative DISCARDED 2026-05-14 — pipeline lacks data scope (util/position/opponent intent) for class-level narrative coaching; survived: round_number column + CR-01 cluster-bleed fix
 - Phase 9.1 inserted after Phase 9 (URGENT) — 2026-05-07 — perf optimizations (4 SC: AABB ordering, parse_events batching, selective parse_ticks, per-steamid cache); subsumes backlog 999.1
 
 ### Decisions
 
+- [10-00] Wave 0 TDD-first: 5 RED tests staged BEFORE production code edit; frozen `grace_experiment_pre_fix.txt` baseline captured pre-edit for SC-5 parity diff
+- [10-01] `T1_GRACE_MS = 0` keeps constant (not removed) — future re-experimentation = one-line config flip, not algorithm edit (defensive plumbing pattern)
+- [10-01] `_detect_t1` returns `Tuple[int, str]` not `int`; `t1_source ∈ {"sustained_aim", "pre_aimed", "none"}` distinguishes branch labels for downstream consumers
+- [10-01] Pre-aim gate `len(window) >= T1_SUSTAINED_AIM_TICKS + 1` (3 rows) — plan-as-written had off-by-one (used 2); inclusive range `[T0, T0+N]` covers N+1 ticks
+- [10-01] DB column `t1_source TEXT DEFAULT NULL` added via idempotent `db_utils._eng_migrations`; legacy NULL = "sustained_aim under old grace=120" interpretively
+- [10-02] SC-4 ran 5-pro subset of dust2 demo (RESEARCH Open Q6 permits); SC-5 ran full 13 pros for statistical robustness
+- [10-02] Multi-pipeline init_db gap surfaced — `multi_player_analyze.py` did NOT call init_db; fixed in commit 32ce270 (+W-6 bound roster parse to 6400 ticks)
 - [09-03] No st.cache_data on generate_html_report() call — deferred; MVP is fast enough, caching requires function-scope refactor out of phase scope
 - [09-03] except Exception (broad catch) in download button block — operator-only local app; st.error() surfaces problem without traceback in UI
 - [09-02] matplotlib.use("Agg") at module level — no GUI display, safe for Streamlit threads
@@ -79,11 +88,21 @@ Progress: [████████████████████] 95% (v0
 
 ### Pending Todos
 
-None yet.
+- Phase A item 6: full corpus re-batch (~20h via batch_runner.py) — BLOCKED on demo availability (only 1/83 demos on disk; rest were deleted post-analysis). Requires re-download from HLTV or FACEIT API ingest.
+- Phase A item 7: re-derive `_FALLBACK_THRESHOLDS` + `_ABSOLUTE_ELITE_CEILING` in interpretation.py after clean re-batched data lands
+- Phase A item 5: build `tests/test_distribution_shape.py` regression suite (gated via @requires_db)
+- Phase A item 3: B-2 fix — DuelAttemptFinder missing is_alive gate
+- Phase A item 4: B-3 fix — find_first_visible_enemy_in_window missing flash gate
+- W-7 in `multi_player_analyze.py`: numeric coercion before int64 cast (small bundle)
+- Landing banner: black-out warning on `djok-landing` while data refresh in progress (separate repo)
+- B-2 (peek/hold strafe-hold mis-classification): deferred from 2026-05-14 data-layer fix batch
+- `round_time_s` off-by-20s: round_freeze_end-based fix landed 2026-05-14 (commit 47cb085); spot-check after Phase A re-batch
 
 ### Blockers/Concerns
 
-- [Phase 7] FACEIT Downloads API has ~30-day approval response time — research this before starting Phase 7; prepare manual bulk-download fallback
+- **Phase A item 6 BLOCKED**: 82/83 corpus demos NOT on disk (deleted post-analysis). Engagement DB rows reference demo files that no longer exist locally. Cannot re-batch without re-downloading. Marketing claim refresh (donk 172ms, m0NESY 203ms) blocked downstream.
+- **STATE.md gap-bridge**: Phase 10 inserted urgent outside milestone structure (v1.0 ARCHIVED, v1.1 not declared). `/gsd-new-milestone v1.1` needed to formalize Phase A items as planned phases.
+- [Phase 7] FACEIT Downloads API has ~30-day approval response time — access granted 2026-05-15, grant email pending. Could unlock DEMO_READY webhook → automated demo ingest → solve Phase A demo-availability blocker
 - [Phase 7] awpy installed with `--ignore-requires-python` (Python 3.14 not official) — monitor on any awpy or numpy update
 - [Phase 8] Interpretation thresholds for crosshair angle tiers (< 10° / 10–25° / > 25°) are estimates — validate against actual donk distribution before publishing
 
@@ -100,6 +119,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-12T11:11:56.502Z
-Stopped at: Phase v2-interpretation-narrative context gathered
-Resume file: .planning/phases/v2-interpretation-narrative/v2-interpretation-CONTEXT.md
+Last session: 2026-05-16T21:30:00.000Z
+Stopped at: Phase 10 SHIPPED — staged re-batch on top-5 demos BLOCKED on missing demo files (only astralis-vs-spirit-m1-dust2-p1.dem present locally)
+Resume file: .planning/phases/10-t1-detection-fix-batch-b-1-b-4/10-02-SUMMARY.md

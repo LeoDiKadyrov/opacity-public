@@ -119,9 +119,17 @@ _SELECTIVE_WINDOW_AFTER_TICKS: int = 192   # ~3s after — covers analysis windo
 # T1 detection parameters
 # ─────────────────────────────────────────────────────────────────────────────
 
-# Grace period after T0 before searching for T1 (reactive aim start).
-# Avoids picking up pre-aim micro-corrections as T1.
-T1_GRACE_MS: int = 120
+# T1 reactive aim search starts at T0 (grace removed 2026-05-16 — see
+# .planning/REVIEW-2026-05-16.md B-1). Three semantic filters prevent
+# pre-aim micro-corrections from registering as T1:
+#   1. T1_MIN_ANGLE_CHANGE (0.08°) — filters jitter
+#   2. moving_towards predicate — filters non-reactive corrections
+#   3. T1_SUSTAINED_AIM_TICKS=2 — filters single-tick noise spikes
+# Adding a structural grace on top creates a hard 8-tick (125ms) floor on
+# the metric. 1145 engagements pinned at exactly that value pre-fix.
+# Phase 10 also adds a pre-aimed branch (see ddm_analyzer._detect_t1) that
+# returns T1=T0 when the player is already on target at T0 (B-4).
+T1_GRACE_MS: int = 0
 
 # Minimum number of consecutive ticks showing aim movement toward the enemy
 # before the start of that sequence is accepted as T1.

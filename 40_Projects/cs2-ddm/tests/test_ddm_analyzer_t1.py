@@ -3,7 +3,11 @@ TDD tests for T1 detection algorithm in DDMAnalyzer.analyze_engagement_episode()
 
 T1 = first tick of sustained reactive aim movement toward the target enemy.
 
-Algorithm: after a grace period (120ms), scan consecutive tick-pairs for:
+Algorithm (post Phase 10): pre-aim check first; if player on target at T0
+sustained for T1_SUSTAINED_AIM_TICKS -> T1=T0 (source='pre_aimed'). Else
+scan from T0 for sustained reactive aim movement (source='sustained_aim').
+
+Three semantic filters in the sustained-aim branch:
   - significant angular movement (d_yaw or d_pitch > T1_MIN_ANGLE_CHANGE)
   - movement TOWARD enemy (nxt_dist < curr_dist - 0.01)
   - player not already aimed (curr_dist > T1_NOT_AIMED_THRESHOLD)
@@ -19,14 +23,11 @@ import pytest
 from unittest.mock import patch
 
 from ddm_analyzer import DDMAnalyzer
-from config import AnalysisMoment, T1_GRACE_MS, T1_SUSTAINED_AIM_TICKS, T1_MIN_ANGLE_CHANGE
+from config import AnalysisMoment, T1_SUSTAINED_AIM_TICKS, T1_MIN_ANGLE_CHANGE
 
 PLAYER_ID = 76561198386265483
 ENEMY_ID  = 76561198315710555
 TICKRATE  = 64
-
-# At tickrate=64: 1 tick = 15.625ms. Grace period = int(120/15.625) = 7 ticks.
-GRACE_TICKS = int(T1_GRACE_MS / (1000 / TICKRATE))
 
 T0 = 1000
 T2 = 1080  # 80 ticks after T0 = 1250ms (within T0_TO_T2_MAX_TICKS=96 cluster-bleed gate)
@@ -205,6 +206,17 @@ class TestT1Detection:
         assert result is not None
         assert not math.isnan(result["t1_aim_start_tick"])
 
+    def test_t1_source_field_present_for_sustained_aim(self, analyzer):
+        """Phase 10 schema: T1 found via sustained-aim loop emits
+        t1_source='sustained_aim' in result dict."""
+        ticks = _make_ticks(player_aim_rows=_aim_rows_t1_found())
+        result = analyzer.analyze_engagement_episode(
+            _manual_moment(), ticks, pd.DataFrame(), _hurt()
+        )
+        assert result is not None
+        assert int(result["t1_aim_start_tick"]) == T0 + 11
+        assert result["t1_source"] == "sustained_aim"
+
     # ── T1 not found ─────────────────────────────────────────────────────────
 
     def test_t1_not_found_single_tick_in_window(self, analyzer):
@@ -238,14 +250,29 @@ class TestT1Detection:
         assert result is not None
         assert math.isnan(result["t1_aim_start_tick"])
 
-    def test_t1_not_found_already_aimed_at_enemy(self, analyzer):
-        """Player is already aimed at enemy (curr_dist ≤ threshold) → T1=NaN."""
-        ticks = _make_ticks(player_aim_rows=_aim_rows_already_aimed())
+    def test_t1_pre_aimed_returns_t0_with_source_flag(self, analyzer):
+        """B-4 fix (REVIEW-2026-05-16): player already aimed at enemy at T0 →
+        T1=T0, rt_visible_to_aim_ms=0, t1_source='pre_aimed'.
+
+        Custom rows at T0, T0+1, T0+2 (within pre-aim window
+        [T0, T0 + T1_SUSTAINED_AIM_TICKS]); cannot reuse `_aim_rows_already_aimed()`
+        because that helper starts at T0+10, outside the pre-aim branch's scan window.
+        """
+        # Pre-aim rows: dist(yaw,pitch) < T1_NOT_AIMED_THRESHOLD=1.0° at every tick
+        # of [T0, T0 + T1_SUSTAINED_AIM_TICKS=2]. hypot(0.5,0.3)≈0.58, hypot(0.3,0.2)≈0.36, hypot(0.1,0.1)≈0.14.
+        pre_aim_rows = [
+            (T0,     0.5, 0.3),
+            (T0 + 1, 0.3, 0.2),
+            (T0 + 2, 0.1, 0.1),
+        ]
+        ticks = _make_ticks(player_aim_rows=pre_aim_rows)
         result = analyzer.analyze_engagement_episode(
             _manual_moment(), ticks, pd.DataFrame(), _hurt()
         )
         assert result is not None
-        assert math.isnan(result["t1_aim_start_tick"])
+        assert int(result["t1_aim_start_tick"]) == T0
+        assert result["t1_source"] == "pre_aimed"
+        assert result["rt_visible_to_aim_ms"] == 0.0
 
     def test_t1_not_found_angle_change_below_minimum(self, analyzer):
         """Angular change per tick < T1_MIN_ANGLE_CHANGE=0.08° → sig_change=False → T1=NaN."""
@@ -286,23 +313,49 @@ class TestT1Detection:
         assert result is not None
         assert math.isnan(result["t1_aim_start_tick"])
 
-    # ── Grace period ──────────────────────────────────────────────────────────
+    # ── B-1 fix: T1_GRACE_MS=0 → no grace floor ──────────────────────────────
 
-    def test_t1_grace_period_excludes_early_ticks(self, analyzer):
-        """Aim ticks before T0+grace_ticks are excluded from T1 search → T1=NaN."""
-        # Provide qualifying aim data ONLY at ticks T0+1 through T0+6 (< aim_search_start=T0+7)
-        before_grace = T0 + GRACE_TICKS - 2  # still before grace
+    def test_t1_no_grace_early_aim_passes_through(self, analyzer):
+        """B-1 fix (REVIEW-2026-05-16): T1_GRACE_MS=0 → qualifying aim ticks
+        immediately after T0 feed the sustained-aim loop (no 125ms floor)."""
+        # 3 ticks immediately after T0 with same dist-decrease shape as _aim_rows_t1_found
         aim_rows = [
-            (before_grace,   30.0, 5.0),
-            (before_grace+1, 20.0, 3.0),
-            (before_grace+2, 12.0, 1.5),
+            (T0 + 1, 30.0, 5.0),
+            (T0 + 2, 20.0, 3.0),
+            (T0 + 3, 12.0, 1.5),
         ]
         ticks = _make_ticks(player_aim_rows=aim_rows)
         result = analyzer.analyze_engagement_episode(
             _manual_moment(), ticks, pd.DataFrame(), _hurt()
         )
         assert result is not None
-        assert math.isnan(result["t1_aim_start_tick"])
+        assert not math.isnan(result["t1_aim_start_tick"])
+        assert int(result["t1_aim_start_tick"]) == T0 + 2  # nxt tick of first qualifying pair
+        assert result["t1_source"] == "sustained_aim"
+
+    def test_t1_pre_aim_falls_through_when_enemy_missing_at_t0(self, analyzer):
+        """B-4 fallback: pre-aim check can't evaluate when enemy row missing
+        at T0 → falls through to sustained-aim loop (RESEARCH Open Q2)."""
+        player_rows = _aim_rows_t1_found()  # qualifying sustained-aim sequence at T0+10..T0+12
+        # Build ticks manually: omit enemy row at T0 (player still present)
+        rows = []
+        # Player velocity rows (t0 and t0+1) — needed for velocity gate
+        rows.append({"steamid": PLAYER_ID, "tick": T0,   "X": 0.0, "Y": 0.0, "Z": 0.0, "yaw": 0.0, "pitch": 0.0})
+        rows.append({"steamid": PLAYER_ID, "tick": T0+1, "X": 1.0, "Y": 0.0, "Z": 0.0, "yaw": 0.0, "pitch": 0.0})
+        # Enemy at T0+1 only — NOT at T0 (pre-aim block can't evaluate)
+        rows.append({"steamid": ENEMY_ID,  "tick": T0+1, "X": ENEMY_X, "Y": 0.0, "Z": 0.0, "yaw": 0.0, "pitch": 0.0})
+        # Sustained-aim sequence: both players present at every aim tick
+        for tick, yaw, pitch in player_rows:
+            rows.append({"steamid": PLAYER_ID, "tick": tick, "X": 0.0,     "Y": 0.0, "Z": 0.0, "yaw": yaw, "pitch": pitch})
+            rows.append({"steamid": ENEMY_ID,  "tick": tick, "X": ENEMY_X, "Y": 0.0, "Z": 0.0, "yaw": 0.0, "pitch": 0.0})
+        ticks = pd.DataFrame(rows)
+
+        result = analyzer.analyze_engagement_episode(
+            _manual_moment(), ticks, pd.DataFrame(), _hurt()
+        )
+        assert result is not None
+        assert int(result["t1_aim_start_tick"]) == T0 + 11  # sustained-aim loop hit
+        assert result["t1_source"] == "sustained_aim"
 
     # ── Result integrity ─────────────────────────────────────────────────────
 
@@ -333,3 +386,20 @@ class TestT1Detection:
         assert result is not None
         expected_ms = (T2 - T0) * (1000.0 / TICKRATE)
         assert abs(result["rt_visible_to_hit_ms"] - expected_ms) < 0.1
+
+    def test_t1_source_none_when_t1_not_found(self, analyzer):
+        """Phase 10 schema (B-4 fix): when T1 detection fails entirely
+        (sustained-aim loop exits empty, no pre-aim hit) the result dict still
+        emits t1_source='none' — NOT missing the key, NOT NaN, but explicit
+        sentinel string for downstream readers."""
+        # Single-tick player aim window → < 2 rows → sustained-aim loop bails
+        # at len(player_aim_ticks) < 2 → returns (-1, "none")
+        base = T0 + 10
+        ticks = _make_ticks(player_aim_rows=[(base, 30.0, 5.0)])
+        result = analyzer.analyze_engagement_episode(
+            _manual_moment(), ticks, pd.DataFrame(), _hurt()
+        )
+        assert result is not None
+        assert math.isnan(result["t1_aim_start_tick"])
+        assert "t1_source" in result, "Phase 10 schema: t1_source MUST be present on every return"
+        assert result["t1_source"] == "none"

@@ -93,6 +93,14 @@ def _migrate_schema(conn: sqlite3.Connection) -> None:
         # Backfilled for existing rows via scripts/backfill_round_number.py
         # (operator-run gate, NOT CI). 1-indexed; NULL for warmup engagements.
         ("round_number", "INTEGER DEFAULT NULL"),
+        # Phase 10 (2026-05-16, REVIEW-2026-05-16.md B-4): T1 detection branch.
+        # Values ∈ {"sustained_aim", "pre_aimed", "none"} for new rows.
+        # NULL on legacy (pre-Phase-10) rows — interpret as "sustained_aim
+        # under old grace=120 algorithm". Distinguishes pre-aim engagements
+        # (rt_t0_t1=0) from sustained-aim engagements so downstream charts
+        # can split or pool. NO retroactive UPDATE — re-batch (Phase A item 6)
+        # regenerates labels from raw demos.
+        ("t1_source", "TEXT DEFAULT NULL"),
     ]
     for col, col_def in _eng_migrations:
         if col not in cols:

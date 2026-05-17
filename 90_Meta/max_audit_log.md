@@ -56,6 +56,9 @@ Forcing function: Max $200/mo subscription. Discipline test — does usage justi
 | 2026-05-15 | 08:00 | A | 0.5 | Digital_ruble | Письмо банкам о МС и ТР ЕСИА | direct: координация перехода |
 | 2026-05-15 | 20:00 | C | 1.0 | autorss_feed | Personal Dashboard Phase 1 + Sources Management планирование | indirect: foundation for curator automation |
 | 2026-05-15 | 15:00 | C | 1.0 | cs2-ddm | 5 commits: v2 discard + 4 data-layer fixes + self-vs-self bypass + multi_player duel_attempts | indirect: Djok v1 user acquisition foundation |
+| 2026-05-16 | 09:36 | C | 0.1 | cs2-ddm | Reddit shimszy post draft review (acknowledgment pattern, T1_GRACE_MS bug explanation) | indirect: Djok v1 marketing content development |
+| 2026-05-16 | 11:08 | C | 0.05 | cs2-ddm | Phase 10 T1 detection fix planning (B-1+B-4 bundle, plan-checker iter2 PASSED) | indirect: Djok v1 data-layer foundation for user acquisition funnel |
+| 2026-05-16 | 15:20 | C | 1.0 | autorss_feed | Phase 27 Neuroband Tier B executed (cognition-tagged reactions, 46 tests, 137 reactions backfilled, canonical schema locked) | indirect: foundational reward signal infrastructure for v1.7 RL monetization pathway |
 
 ---
 

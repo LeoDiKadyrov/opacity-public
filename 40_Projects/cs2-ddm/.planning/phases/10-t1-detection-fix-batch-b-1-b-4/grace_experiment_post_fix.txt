@@ -1,0 +1,1902 @@
+Demo: D:\Obsidian\opacity\40_Projects\cs2-ddm\temp_demos\astralis-vs-spirit-m1-dust2-p1.dem
+Pros: 13
+
+=== Running variant grace=120ms ===
+[DDM.9483] T0Detector ready for map 'de_dust2'
+[DDM.9483] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9483) ===
+[DDM.9483] Parsed 159 player_hurt events.
+[DDM.9483] Parsed 38,430 tick rows.
+[DDM.9483] Parsed 39 player_death events.
+[DDM.9483] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9483] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9483] DIAG player has 11 hits total, tick range: 2668–40943
+[DDM.9483] DIAG all hit ticks: [2668, 2677, 13109, 13258, 15839, 22100, 22119, 22132, 22329, 24382, 40943]
+[DDM.9483] Parsed 43 smoke intervals.
+[DDM.9483] Parsed 7 round_start ticks.
+[DDM.9483] Parsed 6 round_freeze_end ticks.
+[DDM.9483] Player has 6 deaths in demo.
+[DDM.9483] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9483] auto_build_moments: 11 total hits → 6 coarse clusters → 7 sub-clusters (gap>320/64 ticks)
+[DDM.9483] Bulk mode: 7 engagement moments generated.
+[DDM.9483] [0:41] Starting — bulk_auto first_hit=2668
+[DDM.9483] [0:41] DIAG BVH window [2368–2880]: player_ticks=501, enemy_ticks=501 (enemy=76561198005107817)
+[DDM.9483] [0:41] Auto T0=2642, source=BVH+AABB
+[DDM.9483] [0:41] T2=2668, target=76561198005107817, weapon=glock
+[DDM.9483] [0:41] enemy velocity@T0=240.0 u/s
+[DDM.9483] [0:41] REJECTED — enemy also moving at T0: 240.0 u/s (threshold=120.0 u/s)
+[DDM.9483] [3:24] Starting — bulk_auto first_hit=13109
+[DDM.9483] [3:24] DIAG BVH window [12809–13321]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9483] [3:24] Auto T0=13023, source=BVH+AABB
+[DDM.9483] [3:24] T2=13109, target=76561198408199043, weapon=deagle
+[DDM.9483] [3:24] enemy velocity@T0=242.5 u/s
+[DDM.9483] [3:24] REJECTED — enemy also moving at T0: 242.5 u/s (threshold=120.0 u/s)
+[DDM.9483] [4:07] Starting — bulk_auto first_hit=15839
+[DDM.9483] [4:07] DIAG BVH window [15539–16051]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9483] [4:07] Auto T0=15789, source=BVH+AABB
+[DDM.9483] [4:07] T2=15839, target=76561198168401372, weapon=deagle
+[DDM.9483] [4:07] enemy velocity@T0=4.1 u/s
+[DDM.9483] [4:07] T1=15789 (pre_aimed)
+[DDM.9483] [4:07] velocity@T0=174.4 u/s → peek
+[DDM.9483] [4:07] round_time_s=48.92, round_phase=mid, round_number=3
+[DDM.9483] [4:07] ACCEPTED — T0→T1=0.0ms  T1→T2=781.2ms  T0→T2=781.2ms
+[DDM.9483] [5:45] Starting — bulk_auto first_hit=22100
+[DDM.9483] [5:45] DIAG BVH window [21800–22312]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9483] [5:45] Auto T0=22069, source=BVH+AABB
+[DDM.9483] [5:45] T2=22100, target=76561198408199043, weapon=ak47
+[DDM.9483] [5:45] enemy velocity@T0=0.0 u/s
+[DDM.9483] [5:45] T1=22069 (pre_aimed)
+[DDM.9483] [5:45] velocity@T0=188.1 u/s → peek
+[DDM.9483] [5:45] round_time_s=24.95, round_phase=early, round_number=4
+[DDM.9483] [5:45] ACCEPTED — T0→T1=0.0ms  T1→T2=484.4ms  T0→T2=484.4ms
+[DDM.9483] [5:48] Starting — bulk_auto first_hit=22329
+[DDM.9483] [5:48] DIAG BVH window [22029–22541]: player_ticks=492, enemy_ticks=492 (enemy=76561198005107817)
+[DDM.9483] [5:48] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9483] [6:20] Starting — bulk_auto first_hit=24382
+[DDM.9483] [6:20] DIAG BVH window [24082–24594]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9483] [6:20] Auto T0=24229, source=BVH+AABB
+[DDM.9483] [6:20] REJECTED — no hit by player in window [24229–24325].
+[DDM.9483] [10:39] Starting — bulk_auto first_hit=40943
+[DDM.9483] [10:39] DIAG BVH window [40643–41155]: player_ticks=492, enemy_ticks=492 (enemy=76561197998926770)
+[DDM.9483] [10:39] Auto T0=40910, source=BVH+AABB
+[DDM.9483] [10:39] T2=40943, target=76561197998926770, weapon=galilar
+[DDM.9483] [10:39] enemy velocity@T0=217.4 u/s
+[DDM.9483] [10:39] REJECTED — enemy also moving at T0: 217.4 u/s (threshold=120.0 u/s)
+[DDM.9483] Done: 2/7 moments accepted.
+
+Accepted 2/7 moments.
+[DDM.9168] T0Detector ready for map 'de_dust2'
+[DDM.9168] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9168) ===
+[DDM.9168] Parsed 159 player_hurt events.
+[DDM.9168] Parsed 33,550 tick rows.
+[DDM.9168] Parsed 39 player_death events.
+[DDM.9168] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9168] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9168] DIAG player has 13 hits total, tick range: 3976–40961
+[DDM.9168] DIAG all hit ticks: [3976, 3995, 4062, 4072, 4091, 4101, 10079, 16262, 16553, 24195, 24241, 24254, 40961]
+[DDM.9168] Parsed 43 smoke intervals.
+[DDM.9168] Parsed 7 round_start ticks.
+[DDM.9168] Parsed 6 round_freeze_end ticks.
+[DDM.9168] Player has 6 deaths in demo.
+[DDM.9168] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9168] auto_build_moments: 13 total hits → 5 coarse clusters → 6 sub-clusters (gap>320/64 ticks)
+[DDM.9168] Bulk mode: 6 engagement moments generated.
+[DDM.9168] [1:02] Starting — bulk_auto first_hit=3976
+[DDM.9168] [1:02] DIAG BVH window [3676–4188]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9168] [1:02] Auto T0=3934, source=BVH+AABB
+[DDM.9168] [1:02] T2=3976, target=76561198408199043, weapon=glock
+[DDM.9168] [1:02] enemy velocity@T0=20.9 u/s
+[DDM.9168] [1:02] T1=3946 (after 2 aim ticks)
+[DDM.9168] [1:02] velocity@T0=253.7 u/s → peek
+[DDM.9168] [1:02] round_time_s=41.55, round_phase=mid, round_number=1
+[DDM.9168] [1:02] ACCEPTED — T0→T1=187.5ms  T1→T2=468.8ms  T0→T2=656.2ms
+[DDM.9168] [2:37] Starting — bulk_auto first_hit=10079
+[DDM.9168] [2:37] DIAG BVH window [9779–10291]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9168] [2:37] Auto T0=10008, source=BVH+AABB
+[DDM.9168] [2:37] T2=10079, target=76561198120557348, weapon=tec9
+[DDM.9168] [2:37] enemy velocity@T0=111.3 u/s
+[DDM.9168] [2:37] T1=10027 (after 2 aim ticks)
+[DDM.9168] [2:37] velocity@T0=229.8 u/s → peek
+[DDM.9168] [2:37] round_time_s=54.73, round_phase=mid, round_number=2
+[DDM.9168] [2:37] ACCEPTED — T0→T1=296.9ms  T1→T2=812.5ms  T0→T2=1109.4ms
+[DDM.9168] [4:14] Starting — bulk_auto first_hit=16262
+[DDM.9168] [4:14] DIAG BVH window [15962–16474]: player_ticks=513, enemy_ticks=513 (enemy=76561198120557348)
+[DDM.9168] [4:14] Auto T0=16234, source=BVH+AABB
+[DDM.9168] [4:14] T2=16262, target=76561198120557348, weapon=tec9
+[DDM.9168] [4:14] enemy velocity@T0=34.8 u/s
+[DDM.9168] [4:14] T1=16242 (after 2 aim ticks)
+[DDM.9168] [4:14] velocity@T0=231.2 u/s → peek
+[DDM.9168] [4:14] round_time_s=55.88, round_phase=mid, round_number=3
+[DDM.9168] [4:14] ACCEPTED — T0→T1=125.0ms  T1→T2=312.5ms  T0→T2=437.5ms
+[DDM.9168] [4:18] Starting — bulk_auto first_hit=16553
+[DDM.9168] [4:18] DIAG BVH window [16253–16765]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9168] [4:18] Auto T0=16262, source=BVH+AABB
+[DDM.9168] [4:18] REJECTED — T0 at search_start boundary (offset=9 ticks < 20)
+[DDM.9168] [6:18] Starting — bulk_auto first_hit=24195
+[DDM.9168] [6:18] DIAG BVH window [23895–24407]: player_ticks=513, enemy_ticks=513 (enemy=76561198168401372)
+[DDM.9168] [6:18] Auto T0=24095, source=BVH+AABB
+[DDM.9168] [6:18] REJECTED — no hit by player in window [24095–24191].
+[DDM.9168] [10:40] Starting — bulk_auto first_hit=40961
+[DDM.9168] [10:40] DIAG BVH window [40661–41173]: player_ticks=492, enemy_ticks=492 (enemy=76561197998926770)
+[DDM.9168] [10:40] Auto T0=40911, source=BVH+AABB
+[DDM.9168] [10:40] T2=40961, target=76561197998926770, weapon=ak47
+[DDM.9168] [10:40] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9168] Done: 3/6 moments accepted.
+
+Accepted 3/6 moments.
+[DDM.9775] T0Detector ready for map 'de_dust2'
+[DDM.9775] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9775) ===
+[DDM.9775] Parsed 159 player_hurt events.
+[DDM.9775] Parsed 40,660 tick rows.
+[DDM.9775] Parsed 39 player_death events.
+[DDM.9775] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9775] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9775] DIAG player has 9 hits total, tick range: 2670–43018
+[DDM.9775] DIAG all hit ticks: [2670, 2684, 4904, 10485, 16594, 16614, 17860, 33255, 43018]
+[DDM.9775] Parsed 43 smoke intervals.
+[DDM.9775] Parsed 7 round_start ticks.
+[DDM.9775] Parsed 6 round_freeze_end ticks.
+[DDM.9775] Player has 6 deaths in demo.
+[DDM.9775] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9775] auto_build_moments: 7 total hits → 5 coarse clusters → 5 sub-clusters (gap>320/64 ticks)
+[DDM.9775] Bulk mode: 5 engagement moments generated.
+[DDM.9775] [0:41] Starting — bulk_auto first_hit=2670
+[DDM.9775] [0:41] DIAG BVH window [2370–2882]: player_ticks=506, enemy_ticks=506 (enemy=76561198005107817)
+[DDM.9775] [0:41] Auto T0=2615, source=BVH+AABB
+[DDM.9775] [0:41] T2=2670, target=76561198005107817, weapon=p250
+[DDM.9775] [0:41] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9775] [1:16] Starting — bulk_auto first_hit=4904
+[DDM.9775] [1:16] DIAG BVH window [4604–5116]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9775] [1:16] Auto T0=4925, source=BVH+AABB
+[DDM.9775] [1:16] REJECTED — player died at tick 4905 before T0 4925 in same round (phantom-after-death gate)
+[DDM.9775] [2:43] Starting — bulk_auto first_hit=10485
+[DDM.9775] [2:43] DIAG BVH window [10185–10697]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9775] [2:43] Auto T0=10285, source=BVH+AABB
+[DDM.9775] [2:43] REJECTED — no hit by player in window [10285–10381].
+[DDM.9775] [4:19] Starting — bulk_auto first_hit=16594
+[DDM.9775] [4:19] DIAG BVH window [16294–16806]: player_ticks=512, enemy_ticks=512 (enemy=76561198168401372)
+[DDM.9775] [4:19] Auto T0=16535, source=BVH+AABB
+[DDM.9775] [4:19] T2=16594, target=76561198168401372, weapon=glock
+[DDM.9775] [4:19] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9775] [4:39] Starting — bulk_auto first_hit=17860
+[DDM.9775] [4:39] DIAG BVH window [17560–18072]: player_ticks=492, enemy_ticks=492 (enemy=76561198408199043)
+[DDM.9775] [4:39] Auto T0=17672, source=BVH+AABB
+[DDM.9775] [4:39] REJECTED — no hit by player in window [17672–17768].
+[DDM.9775] Done: 0/5 moments accepted.
+
+Accepted 0/5 moments.
+[DDM.9739] T0Detector ready for map 'de_dust2'
+[DDM.9739] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9739) ===
+[DDM.9739] Parsed 159 player_hurt events.
+[DDM.9739] Parsed 491,580 tick rows.
+[DDM.9739] Parsed 39 player_death events.
+[DDM.9739] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9739] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9739] DIAG player steamid=76561198210626739 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9739] Parsed 43 smoke intervals.
+[DDM.9739] Parsed 7 round_start ticks.
+[DDM.9739] Parsed 6 round_freeze_end ticks.
+[DDM.9739] Player has 0 deaths in demo.
+[DDM.9739] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9739] auto_build_moments: no hits by player found in demo.
+[DDM.9739] Bulk mode: 0 engagement moments generated.
+[DDM.9877] T0Detector ready for map 'de_dust2'
+[DDM.9877] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9877) ===
+[DDM.9877] Parsed 159 player_hurt events.
+[DDM.9877] Parsed 45,570 tick rows.
+[DDM.9877] Parsed 39 player_death events.
+[DDM.9877] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9877] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9877] DIAG player has 21 hits total, tick range: 10131–41493
+[DDM.9877] DIAG all hit ticks: [10131, 10218, 10230, 10243, 10256, 10269, 10751, 16265, 24199, 24231, 33273, 33659, 33665, 33672, 33678, 34746, 34752, 41455, 41468, 41481, 41493]
+[DDM.9877] Parsed 43 smoke intervals.
+[DDM.9877] Parsed 7 round_start ticks.
+[DDM.9877] Parsed 6 round_freeze_end ticks.
+[DDM.9877] Player has 6 deaths in demo.
+[DDM.9877] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9877] auto_build_moments: 21 total hits → 8 coarse clusters → 8 sub-clusters (gap>320/64 ticks)
+[DDM.9877] Bulk mode: 8 engagement moments generated.
+[DDM.9877] [2:38] Starting — bulk_auto first_hit=10131
+[DDM.9877] [2:38] DIAG BVH window [9831–10343]: player_ticks=513, enemy_ticks=513 (enemy=76561198168401372)
+[DDM.9877] [2:38] REJECTED — BVH: not_found(p=513,e=513,no_match=0,flash_skip=0,smoke_blocked=513,vis_failed=0)
+[DDM.9877] [2:47] Starting — bulk_auto first_hit=10751
+[DDM.9877] [2:47] DIAG BVH window [10451–10963]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9877] [2:47] Auto T0=10696, source=BVH+AABB
+[DDM.9877] [2:47] T2=10751, target=76561198168401372, weapon=tec9
+[DDM.9877] [2:47] enemy velocity@T0=218.8 u/s
+[DDM.9877] [2:47] REJECTED — enemy also moving at T0: 218.8 u/s (threshold=120.0 u/s)
+[DDM.9877] [4:14] Starting — bulk_auto first_hit=16265
+[DDM.9877] [4:14] DIAG BVH window [15965–16477]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9877] [4:14] Auto T0=16187, source=BVH+AABB
+[DDM.9877] [4:14] T2=16265, target=76561198120557348, weapon=deagle
+[DDM.9877] [4:14] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9877] [6:18] Starting — bulk_auto first_hit=24199
+[DDM.9877] [6:18] DIAG BVH window [23899–24411]: player_ticks=513, enemy_ticks=513 (enemy=76561198120557348)
+[DDM.9877] [6:18] Auto T0=23943, source=BVH+AABB
+[DDM.9877] [6:18] REJECTED — no hit by player in window [23943–24039].
+[DDM.9877] [8:39] Starting — bulk_auto first_hit=33273
+[DDM.9877] [8:39] DIAG BVH window [32973–33485]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9877] [8:39] Auto T0=33209, source=BVH+AABB
+[DDM.9877] [8:39] T2=33273, target=76561198408199043, weapon=ak47
+[DDM.9877] [8:39] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9877] [8:45] Starting — bulk_auto first_hit=33659
+[DDM.9877] [8:45] DIAG BVH window [33359–33871]: player_ticks=511, enemy_ticks=511 (enemy=76561198005107817)
+[DDM.9877] [8:45] Auto T0=33639, source=BVH+AABB
+[DDM.9877] [8:45] T2=33659, target=76561198005107817, weapon=ak47
+[DDM.9877] [8:45] enemy velocity@T0=30.0 u/s
+[DDM.9877] [8:45] T1=33655 (after 2 aim ticks)
+[DDM.9877] [8:45] velocity@T0=106.1 u/s → peek
+[DDM.9877] [8:45] round_time_s=77.83, round_phase=late, round_number=5
+[DDM.9877] [8:45] ACCEPTED — T0→T1=250.0ms  T1→T2=62.5ms  T0→T2=312.5ms
+[DDM.9877] [9:02] Starting — bulk_auto first_hit=34746
+[DDM.9877] [9:02] DIAG BVH window [34446–34958]: player_ticks=498, enemy_ticks=498 (enemy=76561198120557348)
+[DDM.9877] [9:02] Auto T0=34727, source=BVH+AABB
+[DDM.9877] [9:02] T2=34746, target=76561198120557348, weapon=ak47
+[DDM.9877] [9:02] REJECTED — not a clean 1v1: Third-party damage from ['76561197998926770']
+[DDM.9877] [10:47] Starting — bulk_auto first_hit=41455
+[DDM.9877] [10:47] DIAG BVH window [41155–41667]: player_ticks=513, enemy_ticks=513 (enemy=76561198005107817)
+[DDM.9877] [10:47] Auto T0=41274, source=BVH+AABB
+[DDM.9877] [10:47] REJECTED — no hit by player in window [41274–41370].
+[DDM.9877] Done: 1/8 moments accepted.
+
+Accepted 1/8 moments.
+[DDM.9565] T0Detector ready for map 'de_dust2'
+[DDM.9565] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9565) ===
+[DDM.9565] Parsed 159 player_hurt events.
+[DDM.9565] Parsed 23,040 tick rows.
+[DDM.9565] Parsed 39 player_death events.
+[DDM.9565] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9565] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9565] DIAG player has 4 hits total, tick range: 16643–41083
+[DDM.9565] DIAG all hit ticks: [16643, 18029, 33097, 41083]
+[DDM.9565] Parsed 43 smoke intervals.
+[DDM.9565] Parsed 7 round_start ticks.
+[DDM.9565] Parsed 6 round_freeze_end ticks.
+[DDM.9565] Player has 6 deaths in demo.
+[DDM.9565] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9565] auto_build_moments: 4 total hits → 4 coarse clusters → 4 sub-clusters (gap>320/64 ticks)
+[DDM.9565] Bulk mode: 4 engagement moments generated.
+[DDM.9565] [4:20] Starting — bulk_auto first_hit=16643
+[DDM.9565] [4:20] DIAG BVH window [16343–16855]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9565] [4:20] Auto T0=16605, source=BVH+AABB
+[DDM.9565] [4:20] T2=16643, target=76561198168401372, weapon=deagle
+[DDM.9565] [4:20] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9565] [4:41] Starting — bulk_auto first_hit=18029
+[DDM.9565] [4:41] DIAG BVH window [17729–18241]: player_ticks=492, enemy_ticks=492 (enemy=76561198005107817)
+[DDM.9565] [4:41] Auto T0=18005, source=BVH+AABB
+[DDM.9565] [4:41] T2=18029, target=76561198005107817, weapon=m4a1
+[DDM.9565] [4:41] enemy velocity@T0=164.8 u/s
+[DDM.9565] [4:41] REJECTED — enemy also moving at T0: 164.8 u/s (threshold=120.0 u/s)
+[DDM.9565] [8:37] Starting — bulk_auto first_hit=33097
+[DDM.9565] [8:37] DIAG BVH window [32797–33309]: player_ticks=492, enemy_ticks=492 (enemy=76561198408199043)
+[DDM.9565] [8:37] Auto T0=32797, source=BVH+AABB
+[DDM.9565] [8:37] REJECTED — T0 at search_start boundary (offset=0 ticks < 20)
+[DDM.9565] [10:41] Starting — bulk_auto first_hit=41083
+[DDM.9565] [10:41] DIAG BVH window [40783–41295]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9565] [10:41] Auto T0=41015, source=BVH+AABB
+[DDM.9565] [10:41] T2=41083, target=76561198120557348, weapon=galilar
+[DDM.9565] [10:41] enemy velocity@T0=50.5 u/s
+[DDM.9565] [10:41] T1=41042 (after 2 aim ticks)
+[DDM.9565] [10:41] velocity@T0=73.1 u/s → peek
+[DDM.9565] [10:41] round_time_s=63.0, round_phase=mid, round_number=6
+[DDM.9565] [10:41] ACCEPTED — T0→T1=421.9ms  T1→T2=640.6ms  T0→T2=1062.5ms
+[DDM.9565] Done: 1/4 moments accepted.
+
+Accepted 1/4 moments.
+[DDM.9864] T0Detector ready for map 'de_dust2'
+[DDM.9864] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9864) ===
+[DDM.9864] Parsed 159 player_hurt events.
+[DDM.9864] Parsed 491,580 tick rows.
+[DDM.9864] Parsed 39 player_death events.
+[DDM.9864] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9864] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9864] DIAG player steamid=76561198045898864 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9864] Parsed 43 smoke intervals.
+[DDM.9864] Parsed 7 round_start ticks.
+[DDM.9864] Parsed 6 round_freeze_end ticks.
+[DDM.9864] Player has 0 deaths in demo.
+[DDM.9864] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9864] auto_build_moments: no hits by player found in demo.
+[DDM.9864] Bulk mode: 0 engagement moments generated.
+[DDM.9817] T0Detector ready for map 'de_dust2'
+[DDM.9817] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9817) ===
+[DDM.9817] Parsed 159 player_hurt events.
+[DDM.9817] Parsed 74,170 tick rows.
+[DDM.9817] Parsed 39 player_death events.
+[DDM.9817] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9817] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9817] DIAG player has 23 hits total, tick range: 2656–41669
+[DDM.9817] DIAG all hit ticks: [2656, 9076, 10186, 10522, 10534, 16995, 17001, 18031, 22300, 24485, 24491, 24498, 24745, 30106, 32851, 32851, 32851, 40513, 41202, 41296, 41637, 41644, 41669]
+[DDM.9817] Parsed 43 smoke intervals.
+[DDM.9817] Parsed 7 round_start ticks.
+[DDM.9817] Parsed 6 round_freeze_end ticks.
+[DDM.9817] Player has 2 deaths in demo.
+[DDM.9817] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9817] auto_build_moments: 23 total hits → 13 coarse clusters → 14 sub-clusters (gap>320/64 ticks)
+[DDM.9817] Bulk mode: 14 engagement moments generated.
+[DDM.9817] [0:41] Starting — bulk_auto first_hit=2656
+[DDM.9817] [0:41] DIAG BVH window [2356–2868]: player_ticks=492, enemy_ticks=492 (enemy=76561198872013168)
+[DDM.9817] [0:41] Auto T0=2645, source=BVH+AABB
+[DDM.9817] [0:41] T2=2656, target=76561198872013168, weapon=hkp2000
+[DDM.9817] [0:41] enemy velocity@T0=103.4 u/s
+[DDM.9817] [0:41] T1=2653 (after 2 aim ticks)
+[DDM.9817] [0:41] velocity@T0=240.0 u/s → peek
+[DDM.9817] [0:41] round_time_s=21.41, round_phase=early, round_number=1
+[DDM.9817] [0:41] ACCEPTED — T0→T1=125.0ms  T1→T2=46.9ms  T0→T2=171.9ms
+[DDM.9817] [2:21] Starting — bulk_auto first_hit=9076
+[DDM.9817] [2:21] DIAG BVH window [8776–9288]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [2:21] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=40,vis_failed=452)
+[DDM.9817] [2:39] Starting — bulk_auto first_hit=10186
+[DDM.9817] [2:39] DIAG BVH window [9886–10398]: player_ticks=513, enemy_ticks=513 (enemy=76561198081484775)
+[DDM.9817] [2:39] Auto T0=10142, source=BVH+AABB
+[DDM.9817] [2:39] T2=10186, target=76561198081484775, weapon=famas
+[DDM.9817] [2:39] enemy velocity@T0=108.2 u/s
+[DDM.9817] [2:39] T1=10150 (after 2 aim ticks)
+[DDM.9817] [2:39] velocity@T0=74.8 u/s → peek
+[DDM.9817] [2:39] round_time_s=56.83, round_phase=mid, round_number=2
+[DDM.9817] [2:39] ACCEPTED — T0→T1=125.0ms  T1→T2=562.5ms  T0→T2=687.5ms
+[DDM.9817] [2:44] Starting — bulk_auto first_hit=10522
+[DDM.9817] [2:44] DIAG BVH window [10222–10734]: player_ticks=504, enemy_ticks=504 (enemy=76561198081484775)
+[DDM.9817] [2:44] REJECTED — BVH: not_found(p=504,e=504,no_match=0,flash_skip=0,smoke_blocked=357,vis_failed=147)
+[DDM.9817] [4:25] Starting — bulk_auto first_hit=16995
+[DDM.9817] [4:25] DIAG BVH window [16695–17207]: player_ticks=498, enemy_ticks=498 (enemy=76561198872013168)
+[DDM.9817] [4:25] Auto T0=16973, source=BVH+AABB
+[DDM.9817] [4:25] T2=16995, target=76561198872013168, weapon=m4a1
+[DDM.9817] [4:25] enemy velocity@T0=4.5 u/s
+[DDM.9817] [4:25] T1=16981 (after 2 aim ticks)
+[DDM.9817] [4:25] velocity@T0=57.5 u/s → peek
+[DDM.9817] [4:25] round_time_s=67.42, round_phase=mid, round_number=3
+[DDM.9817] [4:25] ACCEPTED — T0→T1=125.0ms  T1→T2=218.8ms  T0→T2=343.8ms
+[DDM.9817] [4:41] Starting — bulk_auto first_hit=18031
+[DDM.9817] [4:41] DIAG BVH window [17731–18243]: player_ticks=492, enemy_ticks=492 (enemy=76561199063238565)
+[DDM.9817] [4:41] Auto T0=18009, source=BVH+AABB
+[DDM.9817] [4:41] T2=18031, target=76561199063238565, weapon=m4a1
+[DDM.9817] [4:41] enemy velocity@T0=117.0 u/s
+[DDM.9817] [4:41] T1=18022 (after 2 aim ticks)
+[DDM.9817] [4:41] velocity@T0=185.4 u/s → peek
+[DDM.9817] [4:41] round_time_s=83.61, round_phase=late, round_number=3
+[DDM.9817] [4:41] ACCEPTED — T0→T1=203.1ms  T1→T2=140.6ms  T0→T2=343.8ms
+[DDM.9817] [5:48] Starting — bulk_auto first_hit=22300
+[DDM.9817] [5:48] DIAG BVH window [22000–22512]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [5:48] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [6:22] Starting — bulk_auto first_hit=24485
+[DDM.9817] [6:22] DIAG BVH window [24185–24697]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9817] [6:22] Auto T0=24185, source=BVH+AABB
+[DDM.9817] [6:22] REJECTED — T0 at search_start boundary (offset=0 ticks < 20)
+[DDM.9817] [6:26] Starting — bulk_auto first_hit=24745
+[DDM.9817] [6:26] DIAG BVH window [24445–24957]: player_ticks=492, enemy_ticks=492 (enemy=76561199063238565)
+[DDM.9817] [6:26] Auto T0=24726, source=BVH+AABB
+[DDM.9817] [6:26] T2=24745, target=76561199063238565, weapon=m4a1
+[DDM.9817] [6:26] enemy velocity@T0=37.9 u/s
+[DDM.9817] [6:26] T1=24739 (after 2 aim ticks)
+[DDM.9817] [6:26] velocity@T0=195.9 u/s → peek
+[DDM.9817] [6:26] round_time_s=66.47, round_phase=mid, round_number=4
+[DDM.9817] [6:26] ACCEPTED — T0→T1=203.1ms  T1→T2=93.8ms  T0→T2=296.9ms
+[DDM.9817] [7:50] Starting — bulk_auto first_hit=30106
+[DDM.9817] [7:50] DIAG BVH window [29806–30318]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [7:50] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [8:33] Starting — bulk_auto first_hit=32851
+[DDM.9817] [8:33] DIAG BVH window [32551–33063]: player_ticks=492, enemy_ticks=492 (enemy=76561198995880877)
+[DDM.9817] [8:33] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [10:33] Starting — bulk_auto first_hit=40513
+[DDM.9817] [10:33] DIAG BVH window [40213–40725]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [10:33] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [10:43] Starting — bulk_auto first_hit=41202
+[DDM.9817] [10:43] DIAG BVH window [40902–41414]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9817] [10:43] Auto T0=41269, source=BVH+AABB
+[DDM.9817] [10:43] T2=41296, target=76561198995880877, weapon=m4a1
+[DDM.9817] [10:43] enemy velocity@T0=247.5 u/s
+[DDM.9817] [10:43] REJECTED — enemy also moving at T0: 247.5 u/s (threshold=120.0 u/s)
+[DDM.9817] [10:50] Starting — bulk_auto first_hit=41637
+[DDM.9817] [10:50] DIAG BVH window [41337–41849]: player_ticks=513, enemy_ticks=513 (enemy=76561198081484775)
+[DDM.9817] [10:50] Auto T0=41600, source=BVH+AABB
+[DDM.9817] [10:50] T2=41637, target=76561198081484775, weapon=m4a1
+[DDM.9817] [10:50] enemy velocity@T0=99.8 u/s
+[DDM.9817] [10:50] T1=41609 (after 2 aim ticks)
+[DDM.9817] [10:50] velocity@T0=211.2 u/s → peek
+[DDM.9817] [10:50] round_time_s=72.14, round_phase=late, round_number=6
+[DDM.9817] [10:50] ACCEPTED — T0→T1=140.6ms  T1→T2=437.5ms  T0→T2=578.1ms
+[DDM.9817] Done: 6/14 moments accepted.
+
+Accepted 6/14 moments.
+[DDM.9770] T0Detector ready for map 'de_dust2'
+[DDM.9770] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9770) ===
+[DDM.9770] Parsed 159 player_hurt events.
+[DDM.9770] Parsed 39,430 tick rows.
+[DDM.9770] Parsed 39 player_death events.
+[DDM.9770] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9770] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9770] DIAG player has 22 hits total, tick range: 3949–40952
+[DDM.9770] DIAG all hit ticks: [3949, 4043, 4109, 11054, 11058, 17886, 24591, 24617, 24630, 24649, 24655, 24662, 24681, 24687, 34721, 34734, 34740, 40744, 40926, 40933, 40933, 40952]
+[DDM.9770] Parsed 43 smoke intervals.
+[DDM.9770] Parsed 7 round_start ticks.
+[DDM.9770] Parsed 6 round_freeze_end ticks.
+[DDM.9770] Player has 1 deaths in demo.
+[DDM.9770] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9770] auto_build_moments: 22 total hits → 6 coarse clusters → 7 sub-clusters (gap>320/64 ticks)
+[DDM.9770] Bulk mode: 7 engagement moments generated.
+[DDM.9770] [1:01] Starting — bulk_auto first_hit=3949
+[DDM.9770] [1:01] DIAG BVH window [3649–4161]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9770] [1:01] Auto T0=3911, source=BVH+AABB
+[DDM.9770] [1:01] T2=3949, target=76561198995880877, weapon=hkp2000
+[DDM.9770] [1:01] enemy velocity@T0=201.5 u/s
+[DDM.9770] [1:01] REJECTED — enemy also moving at T0: 201.5 u/s (threshold=120.0 u/s)
+[DDM.9770] [2:52] Starting — bulk_auto first_hit=11054
+[DDM.9770] [2:52] DIAG BVH window [10754–11266]: player_ticks=496, enemy_ticks=496 (enemy=76561199063238565)
+[DDM.9770] [2:52] Auto T0=11102, source=BVH+AABB
+[DDM.9770] [2:52] REJECTED — no hit by player in window [11102–11198].
+[DDM.9770] [4:39] Starting — bulk_auto first_hit=17886
+[DDM.9770] [4:39] DIAG BVH window [17586–18098]: player_ticks=492, enemy_ticks=492 (enemy=76561198081484775)
+[DDM.9770] [4:39] Auto T0=17867, source=BVH+AABB
+[DDM.9770] [4:39] T2=17886, target=76561198081484775, weapon=famas
+[DDM.9770] [4:39] enemy velocity@T0=78.2 u/s
+[DDM.9770] [4:39] T1=17875 (after 2 aim ticks)
+[DDM.9770] [4:39] velocity@T0=220.0 u/s → peek
+[DDM.9770] [4:39] round_time_s=81.39, round_phase=late, round_number=3
+[DDM.9770] [4:39] ACCEPTED — T0→T1=125.0ms  T1→T2=171.9ms  T0→T2=296.9ms
+[DDM.9770] [6:24] Starting — bulk_auto first_hit=24591
+[DDM.9770] [6:24] DIAG BVH window [24291–24803]: player_ticks=513, enemy_ticks=513 (enemy=76561199063238565)
+[DDM.9770] [6:24] Auto T0=24522, source=BVH+AABB
+[DDM.9770] [6:24] T2=24591, target=76561199063238565, weapon=m4a1
+[DDM.9770] [6:24] enemy velocity@T0=98.3 u/s
+[DDM.9770] [6:24] T1=24587 (after 2 aim ticks)
+[DDM.9770] [6:24] velocity@T0=117.0 u/s → peek
+[DDM.9770] [6:24] round_time_s=63.28, round_phase=mid, round_number=4
+[DDM.9770] [6:24] ACCEPTED — T0→T1=1015.6ms  T1→T2=62.5ms  T0→T2=1078.1ms
+[DDM.9770] [9:02] Starting — bulk_auto first_hit=34721
+[DDM.9770] [9:02] DIAG BVH window [34421–34933]: player_ticks=511, enemy_ticks=511 (enemy=76561198995880877)
+[DDM.9770] [9:02] Auto T0=34623, source=BVH+AABB
+[DDM.9770] [9:02] REJECTED — no hit by player in window [34623–34719].
+[DDM.9770] [10:36] Starting — bulk_auto first_hit=40744
+[DDM.9770] [10:36] DIAG BVH window [40444–40956]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9770] [10:36] Auto T0=40915, source=BVH+AABB
+[DDM.9770] [10:36] T2=40926, target=76561198872013168, weapon=m4a1
+[DDM.9770] [10:36] enemy velocity@T0=54.2 u/s
+[DDM.9770] [10:36] T1=40923 (after 2 aim ticks)
+[DDM.9770] [10:36] velocity@T0=223.6 u/s → peek
+[DDM.9770] [10:36] round_time_s=61.44, round_phase=mid, round_number=6
+[DDM.9770] [10:36] ACCEPTED — T0→T1=125.0ms  T1→T2=46.9ms  T0→T2=171.9ms
+[DDM.9770] [10:39] Starting — bulk_auto first_hit=40926
+[DDM.9770] [10:39] DIAG BVH window [40626–41138]: player_ticks=513, enemy_ticks=513 (enemy=76561198872013168)
+[DDM.9770] [10:39] Auto T0=40915, source=BVH+AABB
+[DDM.9770] [10:39] T2=40926, target=76561198872013168, weapon=m4a1
+[DDM.9770] [10:39] enemy velocity@T0=54.2 u/s
+[DDM.9770] [10:39] T1=40923 (after 2 aim ticks)
+[DDM.9770] [10:39] velocity@T0=223.6 u/s → peek
+[DDM.9770] [10:39] round_time_s=61.44, round_phase=mid, round_number=6
+[DDM.9770] [10:39] ACCEPTED — T0→T1=125.0ms  T1→T2=46.9ms  T0→T2=171.9ms
+[DDM.9770] Overlapping window rejected: first_hit=40926 < last_accepted_t2=40926 + 300
+[DDM.9770] Done: 3/7 moments accepted.
+
+Accepted 3/7 moments.
+[DDM.9348] T0Detector ready for map 'de_dust2'
+[DDM.9348] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9348) ===
+[DDM.9348] Parsed 159 player_hurt events.
+[DDM.9348] Parsed 56,840 tick rows.
+[DDM.9348] Parsed 39 player_death events.
+[DDM.9348] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9348] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9348] DIAG player has 24 hits total, tick range: 4905–41641
+[DDM.9348] DIAG all hit ticks: [4905, 10090, 10108, 10261, 10267, 10272, 10278, 10284, 10494, 10512, 13327, 16248, 24211, 24218, 24224, 24237, 25073, 25080, 25086, 25093, 34709, 34756, 41080, 41641]
+[DDM.9348] Parsed 43 smoke intervals.
+[DDM.9348] Parsed 7 round_start ticks.
+[DDM.9348] Parsed 6 round_freeze_end ticks.
+[DDM.9348] Player has 2 deaths in demo.
+[DDM.9348] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9348] auto_build_moments: 24 total hits → 9 coarse clusters → 11 sub-clusters (gap>320/64 ticks)
+[DDM.9348] Bulk mode: 11 engagement moments generated.
+[DDM.9348] [1:16] Starting — bulk_auto first_hit=4905
+[DDM.9348] [1:16] DIAG BVH window [4605–5117]: player_ticks=492, enemy_ticks=492 (enemy=76561198081484775)
+[DDM.9348] [1:16] Auto T0=4925, source=BVH+AABB
+[DDM.9348] [1:16] REJECTED — no hit by player in window [4925–5021].
+[DDM.9348] [2:37] Starting — bulk_auto first_hit=10090
+[DDM.9348] [2:37] DIAG BVH window [9790–10302]: player_ticks=513, enemy_ticks=513 (enemy=76561198872013168)
+[DDM.9348] [2:37] Auto T0=10053, source=BVH+AABB
+[DDM.9348] [2:37] T2=10090, target=76561198872013168, weapon=famas
+[DDM.9348] [2:37] enemy velocity@T0=235.4 u/s
+[DDM.9348] [2:37] REJECTED — enemy also moving at T0: 235.4 u/s (threshold=120.0 u/s)
+[DDM.9348] [2:40] Starting — bulk_auto first_hit=10261
+[DDM.9348] [2:40] DIAG BVH window [9961–10473]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9348] [2:40] Auto T0=10245, source=BVH+AABB
+[DDM.9348] [2:40] T2=10261, target=76561198386265483, weapon=famas
+[DDM.9348] [2:40] enemy velocity@T0=223.9 u/s
+[DDM.9348] [2:40] REJECTED — enemy also moving at T0: 223.9 u/s (threshold=120.0 u/s)
+[DDM.9348] [2:43] Starting — bulk_auto first_hit=10494
+[DDM.9348] [2:43] DIAG BVH window [10194–10706]: player_ticks=510, enemy_ticks=510 (enemy=76561198081484775)
+[DDM.9348] [2:43] Auto T0=10285, source=BVH+AABB
+[DDM.9348] [2:43] REJECTED — no hit by player in window [10285–10381].
+[DDM.9348] [3:28] Starting — bulk_auto first_hit=13327
+[DDM.9348] [3:28] DIAG BVH window [13027–13539]: player_ticks=492, enemy_ticks=492 (enemy=76561198872013168)
+[DDM.9348] [3:28] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9348] [4:13] Starting — bulk_auto first_hit=16248
+[DDM.9348] [4:13] DIAG BVH window [15948–16460]: player_ticks=492, enemy_ticks=492 (enemy=76561198995880877)
+[DDM.9348] [4:13] Auto T0=16218, source=BVH+AABB
+[DDM.9348] [4:13] T2=16248, target=76561198995880877, weapon=famas
+[DDM.9348] [4:13] enemy velocity@T0=219.9 u/s
+[DDM.9348] [4:13] REJECTED — enemy also moving at T0: 219.9 u/s (threshold=120.0 u/s)
+[DDM.9348] [6:18] Starting — bulk_auto first_hit=24211
+[DDM.9348] [6:18] DIAG BVH window [23911–24423]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9348] [6:18] Auto T0=23938, source=BVH+AABB
+[DDM.9348] [6:18] REJECTED — no hit by player in window [23938–24034].
+[DDM.9348] [6:31] Starting — bulk_auto first_hit=25073
+[DDM.9348] [6:31] DIAG BVH window [24773–25285]: player_ticks=512, enemy_ticks=512 (enemy=76561198081484775)
+[DDM.9348] [6:31] Auto T0=24892, source=BVH+AABB
+[DDM.9348] [6:31] REJECTED — no hit by player in window [24892–24988].
+[DDM.9348] [9:02] Starting — bulk_auto first_hit=34709
+[DDM.9348] [9:02] DIAG BVH window [34409–34921]: player_ticks=513, enemy_ticks=513 (enemy=76561198081484775)
+[DDM.9348] [9:02] Auto T0=34600, source=BVH+AABB
+[DDM.9348] [9:02] REJECTED — no hit by player in window [34600–34696].
+[DDM.9348] [10:41] Starting — bulk_auto first_hit=41080
+[DDM.9348] [10:41] DIAG BVH window [40780–41292]: player_ticks=513, enemy_ticks=513 (enemy=76561199063238565)
+[DDM.9348] [10:41] Auto T0=41002, source=BVH+AABB
+[DDM.9348] [10:41] T2=41080, target=76561199063238565, weapon=ak47
+[DDM.9348] [10:41] enemy velocity@T0=73.1 u/s
+[DDM.9348] [10:41] T1=41058 (after 2 aim ticks)
+[DDM.9348] [10:41] velocity@T0=40.6 u/s → hold
+[DDM.9348] [10:41] round_time_s=62.8, round_phase=mid, round_number=6
+[DDM.9348] [10:41] ACCEPTED — T0→T1=875.0ms  T1→T2=343.8ms  T0→T2=1218.8ms
+[DDM.9348] [10:50] Starting — bulk_auto first_hit=41641
+[DDM.9348] [10:50] DIAG BVH window [41341–41853]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9348] [10:50] Auto T0=41449, source=BVH+AABB
+[DDM.9348] [10:50] REJECTED — no hit by player in window [41449–41545].
+[DDM.9348] Done: 1/11 moments accepted.
+
+Accepted 1/11 moments.
+[DDM.9664] T0Detector ready for map 'de_dust2'
+[DDM.9664] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9664) ===
+[DDM.9664] Parsed 159 player_hurt events.
+[DDM.9664] Parsed 491,580 tick rows.
+[DDM.9664] Parsed 39 player_death events.
+[DDM.9664] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9664] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9664] DIAG player steamid=76561197987713664 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9664] Parsed 43 smoke intervals.
+[DDM.9664] Parsed 7 round_start ticks.
+[DDM.9664] Parsed 6 round_freeze_end ticks.
+[DDM.9664] Player has 0 deaths in demo.
+[DDM.9664] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9664] auto_build_moments: no hits by player found in demo.
+[DDM.9664] Bulk mode: 0 engagement moments generated.
+[DDM.9372] T0Detector ready for map 'de_dust2'
+[DDM.9372] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9372) ===
+[DDM.9372] Parsed 159 player_hurt events.
+[DDM.9372] Parsed 32,970 tick rows.
+[DDM.9372] Parsed 39 player_death events.
+[DDM.9372] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9372] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9372] DIAG player has 15 hits total, tick range: 10177–34711
+[DDM.9372] DIAG all hit ticks: [10177, 10196, 10820, 16419, 16498, 16560, 16615, 24179, 24185, 24191, 24197, 24202, 24375, 24381, 34711]
+[DDM.9372] Parsed 43 smoke intervals.
+[DDM.9372] Parsed 7 round_start ticks.
+[DDM.9372] Parsed 6 round_freeze_end ticks.
+[DDM.9372] Player has 2 deaths in demo.
+[DDM.9372] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9372] auto_build_moments: 15 total hits → 5 coarse clusters → 7 sub-clusters (gap>320/64 ticks)
+[DDM.9372] Bulk mode: 7 engagement moments generated.
+[DDM.9372] [2:39] Starting — bulk_auto first_hit=10177
+[DDM.9372] [2:39] DIAG BVH window [9877–10389]: player_ticks=511, enemy_ticks=511 (enemy=76561198995880877)
+[DDM.9372] [2:39] REJECTED — BVH: not_found(p=511,e=511,no_match=0,flash_skip=0,smoke_blocked=511,vis_failed=0)
+[DDM.9372] [2:49] Starting — bulk_auto first_hit=10820
+[DDM.9372] [2:49] DIAG BVH window [10520–11032]: player_ticks=492, enemy_ticks=492 (enemy=76561198995880877)
+[DDM.9372] [2:49] Auto T0=10684, source=BVH+AABB
+[DDM.9372] [2:49] REJECTED — no hit by player in window [10684–10780].
+[DDM.9372] [4:16] Starting — bulk_auto first_hit=16419
+[DDM.9372] [4:16] DIAG BVH window [16119–16631]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9372] [4:16] Auto T0=16393, source=BVH+AABB
+[DDM.9372] [4:16] T2=16419, target=76561198995880877, weapon=m4a1
+[DDM.9372] [4:16] enemy velocity@T0=230.0 u/s
+[DDM.9372] [4:16] REJECTED — enemy also moving at T0: 230.0 u/s (threshold=120.0 u/s)
+[DDM.9372] [4:17] Starting — bulk_auto first_hit=16498
+[DDM.9372] [4:17] DIAG BVH window [16198–16710]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9372] [4:17] Auto T0=16415, source=BVH+AABB
+[DDM.9372] [4:17] T2=16419, target=76561198995880877, weapon=m4a1
+[DDM.9372] [4:17] enemy velocity@T0=211.7 u/s
+[DDM.9372] [4:17] REJECTED — enemy also moving at T0: 211.7 u/s (threshold=120.0 u/s)
+[DDM.9372] [6:17] Starting — bulk_auto first_hit=24179
+[DDM.9372] [6:17] DIAG BVH window [23879–24391]: player_ticks=513, enemy_ticks=513 (enemy=76561198872013168)
+[DDM.9372] [6:17] Auto T0=24089, source=BVH+AABB
+[DDM.9372] [6:17] T2=24179, target=76561198872013168, weapon=m4a1
+[DDM.9372] [6:17] enemy velocity@T0=212.2 u/s
+[DDM.9372] [6:17] REJECTED — enemy also moving at T0: 212.2 u/s (threshold=120.0 u/s)
+[DDM.9372] [6:20] Starting — bulk_auto first_hit=24375
+[DDM.9372] [6:20] DIAG BVH window [24075–24587]: player_ticks=498, enemy_ticks=498 (enemy=76561198386265483)
+[DDM.9372] [6:20] Auto T0=24223, source=BVH+AABB
+[DDM.9372] [6:20] REJECTED — no hit by player in window [24223–24319].
+[DDM.9372] [9:02] Starting — bulk_auto first_hit=34711
+[DDM.9372] [9:02] DIAG BVH window [34411–34923]: player_ticks=492, enemy_ticks=492 (enemy=76561198081484775)
+[DDM.9372] [9:02] Auto T0=34626, source=BVH+AABB
+[DDM.9372] [9:02] T2=34711, target=76561198081484775, weapon=m4a1
+[DDM.9372] [9:02] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9372] Done: 0/7 moments accepted.
+
+Accepted 0/7 moments.
+[DDM.9516] T0Detector ready for map 'de_dust2'
+[DDM.9516] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9516) ===
+[DDM.9516] Parsed 159 player_hurt events.
+[DDM.9516] Parsed 491,580 tick rows.
+[DDM.9516] Parsed 39 player_death events.
+[DDM.9516] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9516] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9516] DIAG player steamid=76561198004115516 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9516] Parsed 43 smoke intervals.
+[DDM.9516] Parsed 7 round_start ticks.
+[DDM.9516] Parsed 6 round_freeze_end ticks.
+[DDM.9516] Player has 0 deaths in demo.
+[DDM.9516] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9516] auto_build_moments: no hits by player found in demo.
+[DDM.9516] Bulk mode: 0 engagement moments generated.
+  N=16 median=132.8125 %@125ms=37.5% %<180ms=56.2%
+
+=== Running variant grace=30ms ===
+[DDM.9483] T0Detector ready for map 'de_dust2'
+[DDM.9483] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9483) ===
+[DDM.9483] Parsed 159 player_hurt events.
+[DDM.9483] Parsed 38,430 tick rows.
+[DDM.9483] Parsed 39 player_death events.
+[DDM.9483] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9483] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9483] DIAG player has 11 hits total, tick range: 2668–40943
+[DDM.9483] DIAG all hit ticks: [2668, 2677, 13109, 13258, 15839, 22100, 22119, 22132, 22329, 24382, 40943]
+[DDM.9483] Parsed 43 smoke intervals.
+[DDM.9483] Parsed 7 round_start ticks.
+[DDM.9483] Parsed 6 round_freeze_end ticks.
+[DDM.9483] Player has 6 deaths in demo.
+[DDM.9483] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9483] auto_build_moments: 11 total hits → 6 coarse clusters → 7 sub-clusters (gap>320/64 ticks)
+[DDM.9483] Bulk mode: 7 engagement moments generated.
+[DDM.9483] [0:41] Starting — bulk_auto first_hit=2668
+[DDM.9483] [0:41] DIAG BVH window [2368–2880]: player_ticks=501, enemy_ticks=501 (enemy=76561198005107817)
+[DDM.9483] [0:41] Auto T0=2642, source=BVH+AABB
+[DDM.9483] [0:41] T2=2668, target=76561198005107817, weapon=glock
+[DDM.9483] [0:41] enemy velocity@T0=240.0 u/s
+[DDM.9483] [0:41] REJECTED — enemy also moving at T0: 240.0 u/s (threshold=120.0 u/s)
+[DDM.9483] [3:24] Starting — bulk_auto first_hit=13109
+[DDM.9483] [3:24] DIAG BVH window [12809–13321]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9483] [3:24] Auto T0=13023, source=BVH+AABB
+[DDM.9483] [3:24] T2=13109, target=76561198408199043, weapon=deagle
+[DDM.9483] [3:24] enemy velocity@T0=242.5 u/s
+[DDM.9483] [3:24] REJECTED — enemy also moving at T0: 242.5 u/s (threshold=120.0 u/s)
+[DDM.9483] [4:07] Starting — bulk_auto first_hit=15839
+[DDM.9483] [4:07] DIAG BVH window [15539–16051]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9483] [4:07] Auto T0=15789, source=BVH+AABB
+[DDM.9483] [4:07] T2=15839, target=76561198168401372, weapon=deagle
+[DDM.9483] [4:07] enemy velocity@T0=4.1 u/s
+[DDM.9483] [4:07] T1=15789 (pre_aimed)
+[DDM.9483] [4:07] velocity@T0=174.4 u/s → peek
+[DDM.9483] [4:07] round_time_s=48.92, round_phase=mid, round_number=3
+[DDM.9483] [4:07] ACCEPTED — T0→T1=0.0ms  T1→T2=781.2ms  T0→T2=781.2ms
+[DDM.9483] [5:45] Starting — bulk_auto first_hit=22100
+[DDM.9483] [5:45] DIAG BVH window [21800–22312]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9483] [5:45] Auto T0=22069, source=BVH+AABB
+[DDM.9483] [5:45] T2=22100, target=76561198408199043, weapon=ak47
+[DDM.9483] [5:45] enemy velocity@T0=0.0 u/s
+[DDM.9483] [5:45] T1=22069 (pre_aimed)
+[DDM.9483] [5:45] velocity@T0=188.1 u/s → peek
+[DDM.9483] [5:45] round_time_s=24.95, round_phase=early, round_number=4
+[DDM.9483] [5:45] ACCEPTED — T0→T1=0.0ms  T1→T2=484.4ms  T0→T2=484.4ms
+[DDM.9483] [5:48] Starting — bulk_auto first_hit=22329
+[DDM.9483] [5:48] DIAG BVH window [22029–22541]: player_ticks=492, enemy_ticks=492 (enemy=76561198005107817)
+[DDM.9483] [5:48] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9483] [6:20] Starting — bulk_auto first_hit=24382
+[DDM.9483] [6:20] DIAG BVH window [24082–24594]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9483] [6:20] Auto T0=24229, source=BVH+AABB
+[DDM.9483] [6:20] REJECTED — no hit by player in window [24229–24325].
+[DDM.9483] [10:39] Starting — bulk_auto first_hit=40943
+[DDM.9483] [10:39] DIAG BVH window [40643–41155]: player_ticks=492, enemy_ticks=492 (enemy=76561197998926770)
+[DDM.9483] [10:39] Auto T0=40910, source=BVH+AABB
+[DDM.9483] [10:39] T2=40943, target=76561197998926770, weapon=galilar
+[DDM.9483] [10:39] enemy velocity@T0=217.4 u/s
+[DDM.9483] [10:39] REJECTED — enemy also moving at T0: 217.4 u/s (threshold=120.0 u/s)
+[DDM.9483] Done: 2/7 moments accepted.
+
+Accepted 2/7 moments.
+[DDM.9168] T0Detector ready for map 'de_dust2'
+[DDM.9168] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9168) ===
+[DDM.9168] Parsed 159 player_hurt events.
+[DDM.9168] Parsed 33,550 tick rows.
+[DDM.9168] Parsed 39 player_death events.
+[DDM.9168] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9168] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9168] DIAG player has 13 hits total, tick range: 3976–40961
+[DDM.9168] DIAG all hit ticks: [3976, 3995, 4062, 4072, 4091, 4101, 10079, 16262, 16553, 24195, 24241, 24254, 40961]
+[DDM.9168] Parsed 43 smoke intervals.
+[DDM.9168] Parsed 7 round_start ticks.
+[DDM.9168] Parsed 6 round_freeze_end ticks.
+[DDM.9168] Player has 6 deaths in demo.
+[DDM.9168] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9168] auto_build_moments: 13 total hits → 5 coarse clusters → 6 sub-clusters (gap>320/64 ticks)
+[DDM.9168] Bulk mode: 6 engagement moments generated.
+[DDM.9168] [1:02] Starting — bulk_auto first_hit=3976
+[DDM.9168] [1:02] DIAG BVH window [3676–4188]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9168] [1:02] Auto T0=3934, source=BVH+AABB
+[DDM.9168] [1:02] T2=3976, target=76561198408199043, weapon=glock
+[DDM.9168] [1:02] enemy velocity@T0=20.9 u/s
+[DDM.9168] [1:02] T1=3936 (after 2 aim ticks)
+[DDM.9168] [1:02] velocity@T0=253.7 u/s → peek
+[DDM.9168] [1:02] round_time_s=41.55, round_phase=mid, round_number=1
+[DDM.9168] [1:02] ACCEPTED — T0→T1=31.2ms  T1→T2=625.0ms  T0→T2=656.2ms
+[DDM.9168] [2:37] Starting — bulk_auto first_hit=10079
+[DDM.9168] [2:37] DIAG BVH window [9779–10291]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9168] [2:37] Auto T0=10008, source=BVH+AABB
+[DDM.9168] [2:37] T2=10079, target=76561198120557348, weapon=tec9
+[DDM.9168] [2:37] enemy velocity@T0=111.3 u/s
+[DDM.9168] [2:37] T1=10010 (after 2 aim ticks)
+[DDM.9168] [2:37] velocity@T0=229.8 u/s → peek
+[DDM.9168] [2:37] round_time_s=54.73, round_phase=mid, round_number=2
+[DDM.9168] [2:37] ACCEPTED — T0→T1=31.2ms  T1→T2=1078.1ms  T0→T2=1109.4ms
+[DDM.9168] [4:14] Starting — bulk_auto first_hit=16262
+[DDM.9168] [4:14] DIAG BVH window [15962–16474]: player_ticks=513, enemy_ticks=513 (enemy=76561198120557348)
+[DDM.9168] [4:14] Auto T0=16234, source=BVH+AABB
+[DDM.9168] [4:14] T2=16262, target=76561198120557348, weapon=tec9
+[DDM.9168] [4:14] enemy velocity@T0=34.8 u/s
+[DDM.9168] [4:14] T1=16240 (after 2 aim ticks)
+[DDM.9168] [4:14] velocity@T0=231.2 u/s → peek
+[DDM.9168] [4:14] round_time_s=55.88, round_phase=mid, round_number=3
+[DDM.9168] [4:14] ACCEPTED — T0→T1=93.8ms  T1→T2=343.8ms  T0→T2=437.5ms
+[DDM.9168] [4:18] Starting — bulk_auto first_hit=16553
+[DDM.9168] [4:18] DIAG BVH window [16253–16765]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9168] [4:18] Auto T0=16262, source=BVH+AABB
+[DDM.9168] [4:18] REJECTED — T0 at search_start boundary (offset=9 ticks < 20)
+[DDM.9168] [6:18] Starting — bulk_auto first_hit=24195
+[DDM.9168] [6:18] DIAG BVH window [23895–24407]: player_ticks=513, enemy_ticks=513 (enemy=76561198168401372)
+[DDM.9168] [6:18] Auto T0=24095, source=BVH+AABB
+[DDM.9168] [6:18] REJECTED — no hit by player in window [24095–24191].
+[DDM.9168] [10:40] Starting — bulk_auto first_hit=40961
+[DDM.9168] [10:40] DIAG BVH window [40661–41173]: player_ticks=492, enemy_ticks=492 (enemy=76561197998926770)
+[DDM.9168] [10:40] Auto T0=40911, source=BVH+AABB
+[DDM.9168] [10:40] T2=40961, target=76561197998926770, weapon=ak47
+[DDM.9168] [10:40] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9168] Done: 3/6 moments accepted.
+
+Accepted 3/6 moments.
+[DDM.9775] T0Detector ready for map 'de_dust2'
+[DDM.9775] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9775) ===
+[DDM.9775] Parsed 159 player_hurt events.
+[DDM.9775] Parsed 40,660 tick rows.
+[DDM.9775] Parsed 39 player_death events.
+[DDM.9775] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9775] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9775] DIAG player has 9 hits total, tick range: 2670–43018
+[DDM.9775] DIAG all hit ticks: [2670, 2684, 4904, 10485, 16594, 16614, 17860, 33255, 43018]
+[DDM.9775] Parsed 43 smoke intervals.
+[DDM.9775] Parsed 7 round_start ticks.
+[DDM.9775] Parsed 6 round_freeze_end ticks.
+[DDM.9775] Player has 6 deaths in demo.
+[DDM.9775] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9775] auto_build_moments: 7 total hits → 5 coarse clusters → 5 sub-clusters (gap>320/64 ticks)
+[DDM.9775] Bulk mode: 5 engagement moments generated.
+[DDM.9775] [0:41] Starting — bulk_auto first_hit=2670
+[DDM.9775] [0:41] DIAG BVH window [2370–2882]: player_ticks=506, enemy_ticks=506 (enemy=76561198005107817)
+[DDM.9775] [0:41] Auto T0=2615, source=BVH+AABB
+[DDM.9775] [0:41] T2=2670, target=76561198005107817, weapon=p250
+[DDM.9775] [0:41] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9775] [1:16] Starting — bulk_auto first_hit=4904
+[DDM.9775] [1:16] DIAG BVH window [4604–5116]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9775] [1:16] Auto T0=4925, source=BVH+AABB
+[DDM.9775] [1:16] REJECTED — player died at tick 4905 before T0 4925 in same round (phantom-after-death gate)
+[DDM.9775] [2:43] Starting — bulk_auto first_hit=10485
+[DDM.9775] [2:43] DIAG BVH window [10185–10697]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9775] [2:43] Auto T0=10285, source=BVH+AABB
+[DDM.9775] [2:43] REJECTED — no hit by player in window [10285–10381].
+[DDM.9775] [4:19] Starting — bulk_auto first_hit=16594
+[DDM.9775] [4:19] DIAG BVH window [16294–16806]: player_ticks=512, enemy_ticks=512 (enemy=76561198168401372)
+[DDM.9775] [4:19] Auto T0=16535, source=BVH+AABB
+[DDM.9775] [4:19] T2=16594, target=76561198168401372, weapon=glock
+[DDM.9775] [4:19] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9775] [4:39] Starting — bulk_auto first_hit=17860
+[DDM.9775] [4:39] DIAG BVH window [17560–18072]: player_ticks=492, enemy_ticks=492 (enemy=76561198408199043)
+[DDM.9775] [4:39] Auto T0=17672, source=BVH+AABB
+[DDM.9775] [4:39] REJECTED — no hit by player in window [17672–17768].
+[DDM.9775] Done: 0/5 moments accepted.
+
+Accepted 0/5 moments.
+[DDM.9739] T0Detector ready for map 'de_dust2'
+[DDM.9739] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9739) ===
+[DDM.9739] Parsed 159 player_hurt events.
+[DDM.9739] Parsed 491,580 tick rows.
+[DDM.9739] Parsed 39 player_death events.
+[DDM.9739] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9739] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9739] DIAG player steamid=76561198210626739 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9739] Parsed 43 smoke intervals.
+[DDM.9739] Parsed 7 round_start ticks.
+[DDM.9739] Parsed 6 round_freeze_end ticks.
+[DDM.9739] Player has 0 deaths in demo.
+[DDM.9739] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9739] auto_build_moments: no hits by player found in demo.
+[DDM.9739] Bulk mode: 0 engagement moments generated.
+[DDM.9877] T0Detector ready for map 'de_dust2'
+[DDM.9877] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9877) ===
+[DDM.9877] Parsed 159 player_hurt events.
+[DDM.9877] Parsed 45,570 tick rows.
+[DDM.9877] Parsed 39 player_death events.
+[DDM.9877] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9877] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9877] DIAG player has 21 hits total, tick range: 10131–41493
+[DDM.9877] DIAG all hit ticks: [10131, 10218, 10230, 10243, 10256, 10269, 10751, 16265, 24199, 24231, 33273, 33659, 33665, 33672, 33678, 34746, 34752, 41455, 41468, 41481, 41493]
+[DDM.9877] Parsed 43 smoke intervals.
+[DDM.9877] Parsed 7 round_start ticks.
+[DDM.9877] Parsed 6 round_freeze_end ticks.
+[DDM.9877] Player has 6 deaths in demo.
+[DDM.9877] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9877] auto_build_moments: 21 total hits → 8 coarse clusters → 8 sub-clusters (gap>320/64 ticks)
+[DDM.9877] Bulk mode: 8 engagement moments generated.
+[DDM.9877] [2:38] Starting — bulk_auto first_hit=10131
+[DDM.9877] [2:38] DIAG BVH window [9831–10343]: player_ticks=513, enemy_ticks=513 (enemy=76561198168401372)
+[DDM.9877] [2:38] REJECTED — BVH: not_found(p=513,e=513,no_match=0,flash_skip=0,smoke_blocked=513,vis_failed=0)
+[DDM.9877] [2:47] Starting — bulk_auto first_hit=10751
+[DDM.9877] [2:47] DIAG BVH window [10451–10963]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9877] [2:47] Auto T0=10696, source=BVH+AABB
+[DDM.9877] [2:47] T2=10751, target=76561198168401372, weapon=tec9
+[DDM.9877] [2:47] enemy velocity@T0=218.8 u/s
+[DDM.9877] [2:47] REJECTED — enemy also moving at T0: 218.8 u/s (threshold=120.0 u/s)
+[DDM.9877] [4:14] Starting — bulk_auto first_hit=16265
+[DDM.9877] [4:14] DIAG BVH window [15965–16477]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9877] [4:14] Auto T0=16187, source=BVH+AABB
+[DDM.9877] [4:14] T2=16265, target=76561198120557348, weapon=deagle
+[DDM.9877] [4:14] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9877] [6:18] Starting — bulk_auto first_hit=24199
+[DDM.9877] [6:18] DIAG BVH window [23899–24411]: player_ticks=513, enemy_ticks=513 (enemy=76561198120557348)
+[DDM.9877] [6:18] Auto T0=23943, source=BVH+AABB
+[DDM.9877] [6:18] REJECTED — no hit by player in window [23943–24039].
+[DDM.9877] [8:39] Starting — bulk_auto first_hit=33273
+[DDM.9877] [8:39] DIAG BVH window [32973–33485]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9877] [8:39] Auto T0=33209, source=BVH+AABB
+[DDM.9877] [8:39] T2=33273, target=76561198408199043, weapon=ak47
+[DDM.9877] [8:39] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9877] [8:45] Starting — bulk_auto first_hit=33659
+[DDM.9877] [8:45] DIAG BVH window [33359–33871]: player_ticks=511, enemy_ticks=511 (enemy=76561198005107817)
+[DDM.9877] [8:45] Auto T0=33639, source=BVH+AABB
+[DDM.9877] [8:45] T2=33659, target=76561198005107817, weapon=ak47
+[DDM.9877] [8:45] enemy velocity@T0=30.0 u/s
+[DDM.9877] [8:45] T1=33655 (after 2 aim ticks)
+[DDM.9877] [8:45] velocity@T0=106.1 u/s → peek
+[DDM.9877] [8:45] round_time_s=77.83, round_phase=late, round_number=5
+[DDM.9877] [8:45] ACCEPTED — T0→T1=250.0ms  T1→T2=62.5ms  T0→T2=312.5ms
+[DDM.9877] [9:02] Starting — bulk_auto first_hit=34746
+[DDM.9877] [9:02] DIAG BVH window [34446–34958]: player_ticks=498, enemy_ticks=498 (enemy=76561198120557348)
+[DDM.9877] [9:02] Auto T0=34727, source=BVH+AABB
+[DDM.9877] [9:02] T2=34746, target=76561198120557348, weapon=ak47
+[DDM.9877] [9:02] REJECTED — not a clean 1v1: Third-party damage from ['76561197998926770']
+[DDM.9877] [10:47] Starting — bulk_auto first_hit=41455
+[DDM.9877] [10:47] DIAG BVH window [41155–41667]: player_ticks=513, enemy_ticks=513 (enemy=76561198005107817)
+[DDM.9877] [10:47] Auto T0=41274, source=BVH+AABB
+[DDM.9877] [10:47] REJECTED — no hit by player in window [41274–41370].
+[DDM.9877] Done: 1/8 moments accepted.
+
+Accepted 1/8 moments.
+[DDM.9565] T0Detector ready for map 'de_dust2'
+[DDM.9565] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9565) ===
+[DDM.9565] Parsed 159 player_hurt events.
+[DDM.9565] Parsed 23,040 tick rows.
+[DDM.9565] Parsed 39 player_death events.
+[DDM.9565] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9565] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9565] DIAG player has 4 hits total, tick range: 16643–41083
+[DDM.9565] DIAG all hit ticks: [16643, 18029, 33097, 41083]
+[DDM.9565] Parsed 43 smoke intervals.
+[DDM.9565] Parsed 7 round_start ticks.
+[DDM.9565] Parsed 6 round_freeze_end ticks.
+[DDM.9565] Player has 6 deaths in demo.
+[DDM.9565] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9565] auto_build_moments: 4 total hits → 4 coarse clusters → 4 sub-clusters (gap>320/64 ticks)
+[DDM.9565] Bulk mode: 4 engagement moments generated.
+[DDM.9565] [4:20] Starting — bulk_auto first_hit=16643
+[DDM.9565] [4:20] DIAG BVH window [16343–16855]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9565] [4:20] Auto T0=16605, source=BVH+AABB
+[DDM.9565] [4:20] T2=16643, target=76561198168401372, weapon=deagle
+[DDM.9565] [4:20] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9565] [4:41] Starting — bulk_auto first_hit=18029
+[DDM.9565] [4:41] DIAG BVH window [17729–18241]: player_ticks=492, enemy_ticks=492 (enemy=76561198005107817)
+[DDM.9565] [4:41] Auto T0=18005, source=BVH+AABB
+[DDM.9565] [4:41] T2=18029, target=76561198005107817, weapon=m4a1
+[DDM.9565] [4:41] enemy velocity@T0=164.8 u/s
+[DDM.9565] [4:41] REJECTED — enemy also moving at T0: 164.8 u/s (threshold=120.0 u/s)
+[DDM.9565] [8:37] Starting — bulk_auto first_hit=33097
+[DDM.9565] [8:37] DIAG BVH window [32797–33309]: player_ticks=492, enemy_ticks=492 (enemy=76561198408199043)
+[DDM.9565] [8:37] Auto T0=32797, source=BVH+AABB
+[DDM.9565] [8:37] REJECTED — T0 at search_start boundary (offset=0 ticks < 20)
+[DDM.9565] [10:41] Starting — bulk_auto first_hit=41083
+[DDM.9565] [10:41] DIAG BVH window [40783–41295]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9565] [10:41] Auto T0=41015, source=BVH+AABB
+[DDM.9565] [10:41] T2=41083, target=76561198120557348, weapon=galilar
+[DDM.9565] [10:41] enemy velocity@T0=50.5 u/s
+[DDM.9565] [10:41] T1=41042 (after 2 aim ticks)
+[DDM.9565] [10:41] velocity@T0=73.1 u/s → peek
+[DDM.9565] [10:41] round_time_s=63.0, round_phase=mid, round_number=6
+[DDM.9565] [10:41] ACCEPTED — T0→T1=421.9ms  T1→T2=640.6ms  T0→T2=1062.5ms
+[DDM.9565] Done: 1/4 moments accepted.
+
+Accepted 1/4 moments.
+[DDM.9864] T0Detector ready for map 'de_dust2'
+[DDM.9864] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9864) ===
+[DDM.9864] Parsed 159 player_hurt events.
+[DDM.9864] Parsed 491,580 tick rows.
+[DDM.9864] Parsed 39 player_death events.
+[DDM.9864] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9864] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9864] DIAG player steamid=76561198045898864 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9864] Parsed 43 smoke intervals.
+[DDM.9864] Parsed 7 round_start ticks.
+[DDM.9864] Parsed 6 round_freeze_end ticks.
+[DDM.9864] Player has 0 deaths in demo.
+[DDM.9864] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9864] auto_build_moments: no hits by player found in demo.
+[DDM.9864] Bulk mode: 0 engagement moments generated.
+[DDM.9817] T0Detector ready for map 'de_dust2'
+[DDM.9817] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9817) ===
+[DDM.9817] Parsed 159 player_hurt events.
+[DDM.9817] Parsed 74,170 tick rows.
+[DDM.9817] Parsed 39 player_death events.
+[DDM.9817] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9817] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9817] DIAG player has 23 hits total, tick range: 2656–41669
+[DDM.9817] DIAG all hit ticks: [2656, 9076, 10186, 10522, 10534, 16995, 17001, 18031, 22300, 24485, 24491, 24498, 24745, 30106, 32851, 32851, 32851, 40513, 41202, 41296, 41637, 41644, 41669]
+[DDM.9817] Parsed 43 smoke intervals.
+[DDM.9817] Parsed 7 round_start ticks.
+[DDM.9817] Parsed 6 round_freeze_end ticks.
+[DDM.9817] Player has 2 deaths in demo.
+[DDM.9817] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9817] auto_build_moments: 23 total hits → 13 coarse clusters → 14 sub-clusters (gap>320/64 ticks)
+[DDM.9817] Bulk mode: 14 engagement moments generated.
+[DDM.9817] [0:41] Starting — bulk_auto first_hit=2656
+[DDM.9817] [0:41] DIAG BVH window [2356–2868]: player_ticks=492, enemy_ticks=492 (enemy=76561198872013168)
+[DDM.9817] [0:41] Auto T0=2645, source=BVH+AABB
+[DDM.9817] [0:41] T2=2656, target=76561198872013168, weapon=hkp2000
+[DDM.9817] [0:41] enemy velocity@T0=103.4 u/s
+[DDM.9817] [0:41] T1=2647 (after 2 aim ticks)
+[DDM.9817] [0:41] velocity@T0=240.0 u/s → peek
+[DDM.9817] [0:41] round_time_s=21.41, round_phase=early, round_number=1
+[DDM.9817] [0:41] ACCEPTED — T0→T1=31.2ms  T1→T2=140.6ms  T0→T2=171.9ms
+[DDM.9817] [2:21] Starting — bulk_auto first_hit=9076
+[DDM.9817] [2:21] DIAG BVH window [8776–9288]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [2:21] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=40,vis_failed=452)
+[DDM.9817] [2:39] Starting — bulk_auto first_hit=10186
+[DDM.9817] [2:39] DIAG BVH window [9886–10398]: player_ticks=513, enemy_ticks=513 (enemy=76561198081484775)
+[DDM.9817] [2:39] Auto T0=10142, source=BVH+AABB
+[DDM.9817] [2:39] T2=10186, target=76561198081484775, weapon=famas
+[DDM.9817] [2:39] enemy velocity@T0=108.2 u/s
+[DDM.9817] [2:39] T1=10144 (after 2 aim ticks)
+[DDM.9817] [2:39] velocity@T0=74.8 u/s → peek
+[DDM.9817] [2:39] round_time_s=56.83, round_phase=mid, round_number=2
+[DDM.9817] [2:39] ACCEPTED — T0→T1=31.2ms  T1→T2=656.2ms  T0→T2=687.5ms
+[DDM.9817] [2:44] Starting — bulk_auto first_hit=10522
+[DDM.9817] [2:44] DIAG BVH window [10222–10734]: player_ticks=504, enemy_ticks=504 (enemy=76561198081484775)
+[DDM.9817] [2:44] REJECTED — BVH: not_found(p=504,e=504,no_match=0,flash_skip=0,smoke_blocked=357,vis_failed=147)
+[DDM.9817] [4:25] Starting — bulk_auto first_hit=16995
+[DDM.9817] [4:25] DIAG BVH window [16695–17207]: player_ticks=498, enemy_ticks=498 (enemy=76561198872013168)
+[DDM.9817] [4:25] Auto T0=16973, source=BVH+AABB
+[DDM.9817] [4:25] T2=16995, target=76561198872013168, weapon=m4a1
+[DDM.9817] [4:25] enemy velocity@T0=4.5 u/s
+[DDM.9817] [4:25] T1=16977 (after 2 aim ticks)
+[DDM.9817] [4:25] velocity@T0=57.5 u/s → peek
+[DDM.9817] [4:25] round_time_s=67.42, round_phase=mid, round_number=3
+[DDM.9817] [4:25] ACCEPTED — T0→T1=62.5ms  T1→T2=281.2ms  T0→T2=343.8ms
+[DDM.9817] [4:41] Starting — bulk_auto first_hit=18031
+[DDM.9817] [4:41] DIAG BVH window [17731–18243]: player_ticks=492, enemy_ticks=492 (enemy=76561199063238565)
+[DDM.9817] [4:41] Auto T0=18009, source=BVH+AABB
+[DDM.9817] [4:41] T2=18031, target=76561199063238565, weapon=m4a1
+[DDM.9817] [4:41] enemy velocity@T0=117.0 u/s
+[DDM.9817] [4:41] T1=18022 (after 2 aim ticks)
+[DDM.9817] [4:41] velocity@T0=185.4 u/s → peek
+[DDM.9817] [4:41] round_time_s=83.61, round_phase=late, round_number=3
+[DDM.9817] [4:41] ACCEPTED — T0→T1=203.1ms  T1→T2=140.6ms  T0→T2=343.8ms
+[DDM.9817] [5:48] Starting — bulk_auto first_hit=22300
+[DDM.9817] [5:48] DIAG BVH window [22000–22512]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [5:48] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [6:22] Starting — bulk_auto first_hit=24485
+[DDM.9817] [6:22] DIAG BVH window [24185–24697]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9817] [6:22] Auto T0=24185, source=BVH+AABB
+[DDM.9817] [6:22] REJECTED — T0 at search_start boundary (offset=0 ticks < 20)
+[DDM.9817] [6:26] Starting — bulk_auto first_hit=24745
+[DDM.9817] [6:26] DIAG BVH window [24445–24957]: player_ticks=492, enemy_ticks=492 (enemy=76561199063238565)
+[DDM.9817] [6:26] Auto T0=24726, source=BVH+AABB
+[DDM.9817] [6:26] T2=24745, target=76561199063238565, weapon=m4a1
+[DDM.9817] [6:26] enemy velocity@T0=37.9 u/s
+[DDM.9817] [6:26] T1=24739 (after 2 aim ticks)
+[DDM.9817] [6:26] velocity@T0=195.9 u/s → peek
+[DDM.9817] [6:26] round_time_s=66.47, round_phase=mid, round_number=4
+[DDM.9817] [6:26] ACCEPTED — T0→T1=203.1ms  T1→T2=93.8ms  T0→T2=296.9ms
+[DDM.9817] [7:50] Starting — bulk_auto first_hit=30106
+[DDM.9817] [7:50] DIAG BVH window [29806–30318]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [7:50] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [8:33] Starting — bulk_auto first_hit=32851
+[DDM.9817] [8:33] DIAG BVH window [32551–33063]: player_ticks=492, enemy_ticks=492 (enemy=76561198995880877)
+[DDM.9817] [8:33] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [10:33] Starting — bulk_auto first_hit=40513
+[DDM.9817] [10:33] DIAG BVH window [40213–40725]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [10:33] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [10:43] Starting — bulk_auto first_hit=41202
+[DDM.9817] [10:43] DIAG BVH window [40902–41414]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9817] [10:43] Auto T0=41269, source=BVH+AABB
+[DDM.9817] [10:43] T2=41296, target=76561198995880877, weapon=m4a1
+[DDM.9817] [10:43] enemy velocity@T0=247.5 u/s
+[DDM.9817] [10:43] REJECTED — enemy also moving at T0: 247.5 u/s (threshold=120.0 u/s)
+[DDM.9817] [10:50] Starting — bulk_auto first_hit=41637
+[DDM.9817] [10:50] DIAG BVH window [41337–41849]: player_ticks=513, enemy_ticks=513 (enemy=76561198081484775)
+[DDM.9817] [10:50] Auto T0=41600, source=BVH+AABB
+[DDM.9817] [10:50] T2=41637, target=76561198081484775, weapon=m4a1
+[DDM.9817] [10:50] enemy velocity@T0=99.8 u/s
+[DDM.9817] [10:50] T1=41604 (after 2 aim ticks)
+[DDM.9817] [10:50] velocity@T0=211.2 u/s → peek
+[DDM.9817] [10:50] round_time_s=72.14, round_phase=late, round_number=6
+[DDM.9817] [10:50] ACCEPTED — T0→T1=62.5ms  T1→T2=515.6ms  T0→T2=578.1ms
+[DDM.9817] Done: 6/14 moments accepted.
+
+Accepted 6/14 moments.
+[DDM.9770] T0Detector ready for map 'de_dust2'
+[DDM.9770] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9770) ===
+[DDM.9770] Parsed 159 player_hurt events.
+[DDM.9770] Parsed 39,430 tick rows.
+[DDM.9770] Parsed 39 player_death events.
+[DDM.9770] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9770] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9770] DIAG player has 22 hits total, tick range: 3949–40952
+[DDM.9770] DIAG all hit ticks: [3949, 4043, 4109, 11054, 11058, 17886, 24591, 24617, 24630, 24649, 24655, 24662, 24681, 24687, 34721, 34734, 34740, 40744, 40926, 40933, 40933, 40952]
+[DDM.9770] Parsed 43 smoke intervals.
+[DDM.9770] Parsed 7 round_start ticks.
+[DDM.9770] Parsed 6 round_freeze_end ticks.
+[DDM.9770] Player has 1 deaths in demo.
+[DDM.9770] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9770] auto_build_moments: 22 total hits → 6 coarse clusters → 7 sub-clusters (gap>320/64 ticks)
+[DDM.9770] Bulk mode: 7 engagement moments generated.
+[DDM.9770] [1:01] Starting — bulk_auto first_hit=3949
+[DDM.9770] [1:01] DIAG BVH window [3649–4161]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9770] [1:01] Auto T0=3911, source=BVH+AABB
+[DDM.9770] [1:01] T2=3949, target=76561198995880877, weapon=hkp2000
+[DDM.9770] [1:01] enemy velocity@T0=201.5 u/s
+[DDM.9770] [1:01] REJECTED — enemy also moving at T0: 201.5 u/s (threshold=120.0 u/s)
+[DDM.9770] [2:52] Starting — bulk_auto first_hit=11054
+[DDM.9770] [2:52] DIAG BVH window [10754–11266]: player_ticks=496, enemy_ticks=496 (enemy=76561199063238565)
+[DDM.9770] [2:52] Auto T0=11102, source=BVH+AABB
+[DDM.9770] [2:52] REJECTED — no hit by player in window [11102–11198].
+[DDM.9770] [4:39] Starting — bulk_auto first_hit=17886
+[DDM.9770] [4:39] DIAG BVH window [17586–18098]: player_ticks=492, enemy_ticks=492 (enemy=76561198081484775)
+[DDM.9770] [4:39] Auto T0=17867, source=BVH+AABB
+[DDM.9770] [4:39] T2=17886, target=76561198081484775, weapon=famas
+[DDM.9770] [4:39] enemy velocity@T0=78.2 u/s
+[DDM.9770] [4:39] T1=17869 (after 2 aim ticks)
+[DDM.9770] [4:39] velocity@T0=220.0 u/s → peek
+[DDM.9770] [4:39] round_time_s=81.39, round_phase=late, round_number=3
+[DDM.9770] [4:39] ACCEPTED — T0→T1=31.2ms  T1→T2=265.6ms  T0→T2=296.9ms
+[DDM.9770] [6:24] Starting — bulk_auto first_hit=24591
+[DDM.9770] [6:24] DIAG BVH window [24291–24803]: player_ticks=513, enemy_ticks=513 (enemy=76561199063238565)
+[DDM.9770] [6:24] Auto T0=24522, source=BVH+AABB
+[DDM.9770] [6:24] T2=24591, target=76561199063238565, weapon=m4a1
+[DDM.9770] [6:24] enemy velocity@T0=98.3 u/s
+[DDM.9770] [6:24] T1=24587 (after 2 aim ticks)
+[DDM.9770] [6:24] velocity@T0=117.0 u/s → peek
+[DDM.9770] [6:24] round_time_s=63.28, round_phase=mid, round_number=4
+[DDM.9770] [6:24] ACCEPTED — T0→T1=1015.6ms  T1→T2=62.5ms  T0→T2=1078.1ms
+[DDM.9770] [9:02] Starting — bulk_auto first_hit=34721
+[DDM.9770] [9:02] DIAG BVH window [34421–34933]: player_ticks=511, enemy_ticks=511 (enemy=76561198995880877)
+[DDM.9770] [9:02] Auto T0=34623, source=BVH+AABB
+[DDM.9770] [9:02] REJECTED — no hit by player in window [34623–34719].
+[DDM.9770] [10:36] Starting — bulk_auto first_hit=40744
+[DDM.9770] [10:36] DIAG BVH window [40444–40956]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9770] [10:36] Auto T0=40915, source=BVH+AABB
+[DDM.9770] [10:36] T2=40926, target=76561198872013168, weapon=m4a1
+[DDM.9770] [10:36] enemy velocity@T0=54.2 u/s
+[DDM.9770] [10:36] T1=40919 (after 2 aim ticks)
+[DDM.9770] [10:36] velocity@T0=223.6 u/s → peek
+[DDM.9770] [10:36] round_time_s=61.44, round_phase=mid, round_number=6
+[DDM.9770] [10:36] ACCEPTED — T0→T1=62.5ms  T1→T2=109.4ms  T0→T2=171.9ms
+[DDM.9770] [10:39] Starting — bulk_auto first_hit=40926
+[DDM.9770] [10:39] DIAG BVH window [40626–41138]: player_ticks=513, enemy_ticks=513 (enemy=76561198872013168)
+[DDM.9770] [10:39] Auto T0=40915, source=BVH+AABB
+[DDM.9770] [10:39] T2=40926, target=76561198872013168, weapon=m4a1
+[DDM.9770] [10:39] enemy velocity@T0=54.2 u/s
+[DDM.9770] [10:39] T1=40919 (after 2 aim ticks)
+[DDM.9770] [10:39] velocity@T0=223.6 u/s → peek
+[DDM.9770] [10:39] round_time_s=61.44, round_phase=mid, round_number=6
+[DDM.9770] [10:39] ACCEPTED — T0→T1=62.5ms  T1→T2=109.4ms  T0→T2=171.9ms
+[DDM.9770] Overlapping window rejected: first_hit=40926 < last_accepted_t2=40926 + 300
+[DDM.9770] Done: 3/7 moments accepted.
+
+Accepted 3/7 moments.
+[DDM.9348] T0Detector ready for map 'de_dust2'
+[DDM.9348] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9348) ===
+[DDM.9348] Parsed 159 player_hurt events.
+[DDM.9348] Parsed 56,840 tick rows.
+[DDM.9348] Parsed 39 player_death events.
+[DDM.9348] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9348] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9348] DIAG player has 24 hits total, tick range: 4905–41641
+[DDM.9348] DIAG all hit ticks: [4905, 10090, 10108, 10261, 10267, 10272, 10278, 10284, 10494, 10512, 13327, 16248, 24211, 24218, 24224, 24237, 25073, 25080, 25086, 25093, 34709, 34756, 41080, 41641]
+[DDM.9348] Parsed 43 smoke intervals.
+[DDM.9348] Parsed 7 round_start ticks.
+[DDM.9348] Parsed 6 round_freeze_end ticks.
+[DDM.9348] Player has 2 deaths in demo.
+[DDM.9348] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9348] auto_build_moments: 24 total hits → 9 coarse clusters → 11 sub-clusters (gap>320/64 ticks)
+[DDM.9348] Bulk mode: 11 engagement moments generated.
+[DDM.9348] [1:16] Starting — bulk_auto first_hit=4905
+[DDM.9348] [1:16] DIAG BVH window [4605–5117]: player_ticks=492, enemy_ticks=492 (enemy=76561198081484775)
+[DDM.9348] [1:16] Auto T0=4925, source=BVH+AABB
+[DDM.9348] [1:16] REJECTED — no hit by player in window [4925–5021].
+[DDM.9348] [2:37] Starting — bulk_auto first_hit=10090
+[DDM.9348] [2:37] DIAG BVH window [9790–10302]: player_ticks=513, enemy_ticks=513 (enemy=76561198872013168)
+[DDM.9348] [2:37] Auto T0=10053, source=BVH+AABB
+[DDM.9348] [2:37] T2=10090, target=76561198872013168, weapon=famas
+[DDM.9348] [2:37] enemy velocity@T0=235.4 u/s
+[DDM.9348] [2:37] REJECTED — enemy also moving at T0: 235.4 u/s (threshold=120.0 u/s)
+[DDM.9348] [2:40] Starting — bulk_auto first_hit=10261
+[DDM.9348] [2:40] DIAG BVH window [9961–10473]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9348] [2:40] Auto T0=10245, source=BVH+AABB
+[DDM.9348] [2:40] T2=10261, target=76561198386265483, weapon=famas
+[DDM.9348] [2:40] enemy velocity@T0=223.9 u/s
+[DDM.9348] [2:40] REJECTED — enemy also moving at T0: 223.9 u/s (threshold=120.0 u/s)
+[DDM.9348] [2:43] Starting — bulk_auto first_hit=10494
+[DDM.9348] [2:43] DIAG BVH window [10194–10706]: player_ticks=510, enemy_ticks=510 (enemy=76561198081484775)
+[DDM.9348] [2:43] Auto T0=10285, source=BVH+AABB
+[DDM.9348] [2:43] REJECTED — no hit by player in window [10285–10381].
+[DDM.9348] [3:28] Starting — bulk_auto first_hit=13327
+[DDM.9348] [3:28] DIAG BVH window [13027–13539]: player_ticks=492, enemy_ticks=492 (enemy=76561198872013168)
+[DDM.9348] [3:28] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9348] [4:13] Starting — bulk_auto first_hit=16248
+[DDM.9348] [4:13] DIAG BVH window [15948–16460]: player_ticks=492, enemy_ticks=492 (enemy=76561198995880877)
+[DDM.9348] [4:13] Auto T0=16218, source=BVH+AABB
+[DDM.9348] [4:13] T2=16248, target=76561198995880877, weapon=famas
+[DDM.9348] [4:13] enemy velocity@T0=219.9 u/s
+[DDM.9348] [4:13] REJECTED — enemy also moving at T0: 219.9 u/s (threshold=120.0 u/s)
+[DDM.9348] [6:18] Starting — bulk_auto first_hit=24211
+[DDM.9348] [6:18] DIAG BVH window [23911–24423]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9348] [6:18] Auto T0=23938, source=BVH+AABB
+[DDM.9348] [6:18] REJECTED — no hit by player in window [23938–24034].
+[DDM.9348] [6:31] Starting — bulk_auto first_hit=25073
+[DDM.9348] [6:31] DIAG BVH window [24773–25285]: player_ticks=512, enemy_ticks=512 (enemy=76561198081484775)
+[DDM.9348] [6:31] Auto T0=24892, source=BVH+AABB
+[DDM.9348] [6:31] REJECTED — no hit by player in window [24892–24988].
+[DDM.9348] [9:02] Starting — bulk_auto first_hit=34709
+[DDM.9348] [9:02] DIAG BVH window [34409–34921]: player_ticks=513, enemy_ticks=513 (enemy=76561198081484775)
+[DDM.9348] [9:02] Auto T0=34600, source=BVH+AABB
+[DDM.9348] [9:02] REJECTED — no hit by player in window [34600–34696].
+[DDM.9348] [10:41] Starting — bulk_auto first_hit=41080
+[DDM.9348] [10:41] DIAG BVH window [40780–41292]: player_ticks=513, enemy_ticks=513 (enemy=76561199063238565)
+[DDM.9348] [10:41] Auto T0=41002, source=BVH+AABB
+[DDM.9348] [10:41] T2=41080, target=76561199063238565, weapon=ak47
+[DDM.9348] [10:41] enemy velocity@T0=73.1 u/s
+[DDM.9348] [10:41] T1=41058 (after 2 aim ticks)
+[DDM.9348] [10:41] velocity@T0=40.6 u/s → hold
+[DDM.9348] [10:41] round_time_s=62.8, round_phase=mid, round_number=6
+[DDM.9348] [10:41] ACCEPTED — T0→T1=875.0ms  T1→T2=343.8ms  T0→T2=1218.8ms
+[DDM.9348] [10:50] Starting — bulk_auto first_hit=41641
+[DDM.9348] [10:50] DIAG BVH window [41341–41853]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9348] [10:50] Auto T0=41449, source=BVH+AABB
+[DDM.9348] [10:50] REJECTED — no hit by player in window [41449–41545].
+[DDM.9348] Done: 1/11 moments accepted.
+
+Accepted 1/11 moments.
+[DDM.9664] T0Detector ready for map 'de_dust2'
+[DDM.9664] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9664) ===
+[DDM.9664] Parsed 159 player_hurt events.
+[DDM.9664] Parsed 491,580 tick rows.
+[DDM.9664] Parsed 39 player_death events.
+[DDM.9664] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9664] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9664] DIAG player steamid=76561197987713664 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9664] Parsed 43 smoke intervals.
+[DDM.9664] Parsed 7 round_start ticks.
+[DDM.9664] Parsed 6 round_freeze_end ticks.
+[DDM.9664] Player has 0 deaths in demo.
+[DDM.9664] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9664] auto_build_moments: no hits by player found in demo.
+[DDM.9664] Bulk mode: 0 engagement moments generated.
+[DDM.9372] T0Detector ready for map 'de_dust2'
+[DDM.9372] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9372) ===
+[DDM.9372] Parsed 159 player_hurt events.
+[DDM.9372] Parsed 32,970 tick rows.
+[DDM.9372] Parsed 39 player_death events.
+[DDM.9372] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9372] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9372] DIAG player has 15 hits total, tick range: 10177–34711
+[DDM.9372] DIAG all hit ticks: [10177, 10196, 10820, 16419, 16498, 16560, 16615, 24179, 24185, 24191, 24197, 24202, 24375, 24381, 34711]
+[DDM.9372] Parsed 43 smoke intervals.
+[DDM.9372] Parsed 7 round_start ticks.
+[DDM.9372] Parsed 6 round_freeze_end ticks.
+[DDM.9372] Player has 2 deaths in demo.
+[DDM.9372] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9372] auto_build_moments: 15 total hits → 5 coarse clusters → 7 sub-clusters (gap>320/64 ticks)
+[DDM.9372] Bulk mode: 7 engagement moments generated.
+[DDM.9372] [2:39] Starting — bulk_auto first_hit=10177
+[DDM.9372] [2:39] DIAG BVH window [9877–10389]: player_ticks=511, enemy_ticks=511 (enemy=76561198995880877)
+[DDM.9372] [2:39] REJECTED — BVH: not_found(p=511,e=511,no_match=0,flash_skip=0,smoke_blocked=511,vis_failed=0)
+[DDM.9372] [2:49] Starting — bulk_auto first_hit=10820
+[DDM.9372] [2:49] DIAG BVH window [10520–11032]: player_ticks=492, enemy_ticks=492 (enemy=76561198995880877)
+[DDM.9372] [2:49] Auto T0=10684, source=BVH+AABB
+[DDM.9372] [2:49] REJECTED — no hit by player in window [10684–10780].
+[DDM.9372] [4:16] Starting — bulk_auto first_hit=16419
+[DDM.9372] [4:16] DIAG BVH window [16119–16631]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9372] [4:16] Auto T0=16393, source=BVH+AABB
+[DDM.9372] [4:16] T2=16419, target=76561198995880877, weapon=m4a1
+[DDM.9372] [4:16] enemy velocity@T0=230.0 u/s
+[DDM.9372] [4:16] REJECTED — enemy also moving at T0: 230.0 u/s (threshold=120.0 u/s)
+[DDM.9372] [4:17] Starting — bulk_auto first_hit=16498
+[DDM.9372] [4:17] DIAG BVH window [16198–16710]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9372] [4:17] Auto T0=16415, source=BVH+AABB
+[DDM.9372] [4:17] T2=16419, target=76561198995880877, weapon=m4a1
+[DDM.9372] [4:17] enemy velocity@T0=211.7 u/s
+[DDM.9372] [4:17] REJECTED — enemy also moving at T0: 211.7 u/s (threshold=120.0 u/s)
+[DDM.9372] [6:17] Starting — bulk_auto first_hit=24179
+[DDM.9372] [6:17] DIAG BVH window [23879–24391]: player_ticks=513, enemy_ticks=513 (enemy=76561198872013168)
+[DDM.9372] [6:17] Auto T0=24089, source=BVH+AABB
+[DDM.9372] [6:17] T2=24179, target=76561198872013168, weapon=m4a1
+[DDM.9372] [6:17] enemy velocity@T0=212.2 u/s
+[DDM.9372] [6:17] REJECTED — enemy also moving at T0: 212.2 u/s (threshold=120.0 u/s)
+[DDM.9372] [6:20] Starting — bulk_auto first_hit=24375
+[DDM.9372] [6:20] DIAG BVH window [24075–24587]: player_ticks=498, enemy_ticks=498 (enemy=76561198386265483)
+[DDM.9372] [6:20] Auto T0=24223, source=BVH+AABB
+[DDM.9372] [6:20] REJECTED — no hit by player in window [24223–24319].
+[DDM.9372] [9:02] Starting — bulk_auto first_hit=34711
+[DDM.9372] [9:02] DIAG BVH window [34411–34923]: player_ticks=492, enemy_ticks=492 (enemy=76561198081484775)
+[DDM.9372] [9:02] Auto T0=34626, source=BVH+AABB
+[DDM.9372] [9:02] T2=34711, target=76561198081484775, weapon=m4a1
+[DDM.9372] [9:02] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9372] Done: 0/7 moments accepted.
+
+Accepted 0/7 moments.
+[DDM.9516] T0Detector ready for map 'de_dust2'
+[DDM.9516] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9516) ===
+[DDM.9516] Parsed 159 player_hurt events.
+[DDM.9516] Parsed 491,580 tick rows.
+[DDM.9516] Parsed 39 player_death events.
+[DDM.9516] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9516] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9516] DIAG player steamid=76561198004115516 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9516] Parsed 43 smoke intervals.
+[DDM.9516] Parsed 7 round_start ticks.
+[DDM.9516] Parsed 6 round_freeze_end ticks.
+[DDM.9516] Player has 0 deaths in demo.
+[DDM.9516] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9516] auto_build_moments: no hits by player found in demo.
+[DDM.9516] Bulk mode: 0 engagement moments generated.
+  N=16 median=62.5 %@125ms=0.0% %<180ms=68.8%
+
+=== Running variant grace=0ms ===
+[DDM.9483] T0Detector ready for map 'de_dust2'
+[DDM.9483] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9483) ===
+[DDM.9483] Parsed 159 player_hurt events.
+[DDM.9483] Parsed 38,430 tick rows.
+[DDM.9483] Parsed 39 player_death events.
+[DDM.9483] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9483] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9483] DIAG player has 11 hits total, tick range: 2668–40943
+[DDM.9483] DIAG all hit ticks: [2668, 2677, 13109, 13258, 15839, 22100, 22119, 22132, 22329, 24382, 40943]
+[DDM.9483] Parsed 43 smoke intervals.
+[DDM.9483] Parsed 7 round_start ticks.
+[DDM.9483] Parsed 6 round_freeze_end ticks.
+[DDM.9483] Player has 6 deaths in demo.
+[DDM.9483] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9483] auto_build_moments: 11 total hits → 6 coarse clusters → 7 sub-clusters (gap>320/64 ticks)
+[DDM.9483] Bulk mode: 7 engagement moments generated.
+[DDM.9483] [0:41] Starting — bulk_auto first_hit=2668
+[DDM.9483] [0:41] DIAG BVH window [2368–2880]: player_ticks=501, enemy_ticks=501 (enemy=76561198005107817)
+[DDM.9483] [0:41] Auto T0=2642, source=BVH+AABB
+[DDM.9483] [0:41] T2=2668, target=76561198005107817, weapon=glock
+[DDM.9483] [0:41] enemy velocity@T0=240.0 u/s
+[DDM.9483] [0:41] REJECTED — enemy also moving at T0: 240.0 u/s (threshold=120.0 u/s)
+[DDM.9483] [3:24] Starting — bulk_auto first_hit=13109
+[DDM.9483] [3:24] DIAG BVH window [12809–13321]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9483] [3:24] Auto T0=13023, source=BVH+AABB
+[DDM.9483] [3:24] T2=13109, target=76561198408199043, weapon=deagle
+[DDM.9483] [3:24] enemy velocity@T0=242.5 u/s
+[DDM.9483] [3:24] REJECTED — enemy also moving at T0: 242.5 u/s (threshold=120.0 u/s)
+[DDM.9483] [4:07] Starting — bulk_auto first_hit=15839
+[DDM.9483] [4:07] DIAG BVH window [15539–16051]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9483] [4:07] Auto T0=15789, source=BVH+AABB
+[DDM.9483] [4:07] T2=15839, target=76561198168401372, weapon=deagle
+[DDM.9483] [4:07] enemy velocity@T0=4.1 u/s
+[DDM.9483] [4:07] T1=15789 (pre_aimed)
+[DDM.9483] [4:07] velocity@T0=174.4 u/s → peek
+[DDM.9483] [4:07] round_time_s=48.92, round_phase=mid, round_number=3
+[DDM.9483] [4:07] ACCEPTED — T0→T1=0.0ms  T1→T2=781.2ms  T0→T2=781.2ms
+[DDM.9483] [5:45] Starting — bulk_auto first_hit=22100
+[DDM.9483] [5:45] DIAG BVH window [21800–22312]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9483] [5:45] Auto T0=22069, source=BVH+AABB
+[DDM.9483] [5:45] T2=22100, target=76561198408199043, weapon=ak47
+[DDM.9483] [5:45] enemy velocity@T0=0.0 u/s
+[DDM.9483] [5:45] T1=22069 (pre_aimed)
+[DDM.9483] [5:45] velocity@T0=188.1 u/s → peek
+[DDM.9483] [5:45] round_time_s=24.95, round_phase=early, round_number=4
+[DDM.9483] [5:45] ACCEPTED — T0→T1=0.0ms  T1→T2=484.4ms  T0→T2=484.4ms
+[DDM.9483] [5:48] Starting — bulk_auto first_hit=22329
+[DDM.9483] [5:48] DIAG BVH window [22029–22541]: player_ticks=492, enemy_ticks=492 (enemy=76561198005107817)
+[DDM.9483] [5:48] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9483] [6:20] Starting — bulk_auto first_hit=24382
+[DDM.9483] [6:20] DIAG BVH window [24082–24594]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9483] [6:20] Auto T0=24229, source=BVH+AABB
+[DDM.9483] [6:20] REJECTED — no hit by player in window [24229–24325].
+[DDM.9483] [10:39] Starting — bulk_auto first_hit=40943
+[DDM.9483] [10:39] DIAG BVH window [40643–41155]: player_ticks=492, enemy_ticks=492 (enemy=76561197998926770)
+[DDM.9483] [10:39] Auto T0=40910, source=BVH+AABB
+[DDM.9483] [10:39] T2=40943, target=76561197998926770, weapon=galilar
+[DDM.9483] [10:39] enemy velocity@T0=217.4 u/s
+[DDM.9483] [10:39] REJECTED — enemy also moving at T0: 217.4 u/s (threshold=120.0 u/s)
+[DDM.9483] Done: 2/7 moments accepted.
+
+Accepted 2/7 moments.
+[DDM.9168] T0Detector ready for map 'de_dust2'
+[DDM.9168] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9168) ===
+[DDM.9168] Parsed 159 player_hurt events.
+[DDM.9168] Parsed 33,550 tick rows.
+[DDM.9168] Parsed 39 player_death events.
+[DDM.9168] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9168] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9168] DIAG player has 13 hits total, tick range: 3976–40961
+[DDM.9168] DIAG all hit ticks: [3976, 3995, 4062, 4072, 4091, 4101, 10079, 16262, 16553, 24195, 24241, 24254, 40961]
+[DDM.9168] Parsed 43 smoke intervals.
+[DDM.9168] Parsed 7 round_start ticks.
+[DDM.9168] Parsed 6 round_freeze_end ticks.
+[DDM.9168] Player has 6 deaths in demo.
+[DDM.9168] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9168] auto_build_moments: 13 total hits → 5 coarse clusters → 6 sub-clusters (gap>320/64 ticks)
+[DDM.9168] Bulk mode: 6 engagement moments generated.
+[DDM.9168] [1:02] Starting — bulk_auto first_hit=3976
+[DDM.9168] [1:02] DIAG BVH window [3676–4188]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9168] [1:02] Auto T0=3934, source=BVH+AABB
+[DDM.9168] [1:02] T2=3976, target=76561198408199043, weapon=glock
+[DDM.9168] [1:02] enemy velocity@T0=20.9 u/s
+[DDM.9168] [1:02] T1=3935 (after 2 aim ticks)
+[DDM.9168] [1:02] velocity@T0=253.7 u/s → peek
+[DDM.9168] [1:02] round_time_s=41.55, round_phase=mid, round_number=1
+[DDM.9168] [1:02] ACCEPTED — T0→T1=15.6ms  T1→T2=640.6ms  T0→T2=656.2ms
+[DDM.9168] [2:37] Starting — bulk_auto first_hit=10079
+[DDM.9168] [2:37] DIAG BVH window [9779–10291]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9168] [2:37] Auto T0=10008, source=BVH+AABB
+[DDM.9168] [2:37] T2=10079, target=76561198120557348, weapon=tec9
+[DDM.9168] [2:37] enemy velocity@T0=111.3 u/s
+[DDM.9168] [2:37] T1=10009 (after 2 aim ticks)
+[DDM.9168] [2:37] velocity@T0=229.8 u/s → peek
+[DDM.9168] [2:37] round_time_s=54.73, round_phase=mid, round_number=2
+[DDM.9168] [2:37] ACCEPTED — T0→T1=15.6ms  T1→T2=1093.8ms  T0→T2=1109.4ms
+[DDM.9168] [4:14] Starting — bulk_auto first_hit=16262
+[DDM.9168] [4:14] DIAG BVH window [15962–16474]: player_ticks=513, enemy_ticks=513 (enemy=76561198120557348)
+[DDM.9168] [4:14] Auto T0=16234, source=BVH+AABB
+[DDM.9168] [4:14] T2=16262, target=76561198120557348, weapon=tec9
+[DDM.9168] [4:14] enemy velocity@T0=34.8 u/s
+[DDM.9168] [4:14] T1=16240 (after 2 aim ticks)
+[DDM.9168] [4:14] velocity@T0=231.2 u/s → peek
+[DDM.9168] [4:14] round_time_s=55.88, round_phase=mid, round_number=3
+[DDM.9168] [4:14] ACCEPTED — T0→T1=93.8ms  T1→T2=343.8ms  T0→T2=437.5ms
+[DDM.9168] [4:18] Starting — bulk_auto first_hit=16553
+[DDM.9168] [4:18] DIAG BVH window [16253–16765]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9168] [4:18] Auto T0=16262, source=BVH+AABB
+[DDM.9168] [4:18] REJECTED — T0 at search_start boundary (offset=9 ticks < 20)
+[DDM.9168] [6:18] Starting — bulk_auto first_hit=24195
+[DDM.9168] [6:18] DIAG BVH window [23895–24407]: player_ticks=513, enemy_ticks=513 (enemy=76561198168401372)
+[DDM.9168] [6:18] Auto T0=24095, source=BVH+AABB
+[DDM.9168] [6:18] REJECTED — no hit by player in window [24095–24191].
+[DDM.9168] [10:40] Starting — bulk_auto first_hit=40961
+[DDM.9168] [10:40] DIAG BVH window [40661–41173]: player_ticks=492, enemy_ticks=492 (enemy=76561197998926770)
+[DDM.9168] [10:40] Auto T0=40911, source=BVH+AABB
+[DDM.9168] [10:40] T2=40961, target=76561197998926770, weapon=ak47
+[DDM.9168] [10:40] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9168] Done: 3/6 moments accepted.
+
+Accepted 3/6 moments.
+[DDM.9775] T0Detector ready for map 'de_dust2'
+[DDM.9775] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9775) ===
+[DDM.9775] Parsed 159 player_hurt events.
+[DDM.9775] Parsed 40,660 tick rows.
+[DDM.9775] Parsed 39 player_death events.
+[DDM.9775] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9775] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9775] DIAG player has 9 hits total, tick range: 2670–43018
+[DDM.9775] DIAG all hit ticks: [2670, 2684, 4904, 10485, 16594, 16614, 17860, 33255, 43018]
+[DDM.9775] Parsed 43 smoke intervals.
+[DDM.9775] Parsed 7 round_start ticks.
+[DDM.9775] Parsed 6 round_freeze_end ticks.
+[DDM.9775] Player has 6 deaths in demo.
+[DDM.9775] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9775] auto_build_moments: 7 total hits → 5 coarse clusters → 5 sub-clusters (gap>320/64 ticks)
+[DDM.9775] Bulk mode: 5 engagement moments generated.
+[DDM.9775] [0:41] Starting — bulk_auto first_hit=2670
+[DDM.9775] [0:41] DIAG BVH window [2370–2882]: player_ticks=506, enemy_ticks=506 (enemy=76561198005107817)
+[DDM.9775] [0:41] Auto T0=2615, source=BVH+AABB
+[DDM.9775] [0:41] T2=2670, target=76561198005107817, weapon=p250
+[DDM.9775] [0:41] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9775] [1:16] Starting — bulk_auto first_hit=4904
+[DDM.9775] [1:16] DIAG BVH window [4604–5116]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9775] [1:16] Auto T0=4925, source=BVH+AABB
+[DDM.9775] [1:16] REJECTED — player died at tick 4905 before T0 4925 in same round (phantom-after-death gate)
+[DDM.9775] [2:43] Starting — bulk_auto first_hit=10485
+[DDM.9775] [2:43] DIAG BVH window [10185–10697]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9775] [2:43] Auto T0=10285, source=BVH+AABB
+[DDM.9775] [2:43] REJECTED — no hit by player in window [10285–10381].
+[DDM.9775] [4:19] Starting — bulk_auto first_hit=16594
+[DDM.9775] [4:19] DIAG BVH window [16294–16806]: player_ticks=512, enemy_ticks=512 (enemy=76561198168401372)
+[DDM.9775] [4:19] Auto T0=16535, source=BVH+AABB
+[DDM.9775] [4:19] T2=16594, target=76561198168401372, weapon=glock
+[DDM.9775] [4:19] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9775] [4:39] Starting — bulk_auto first_hit=17860
+[DDM.9775] [4:39] DIAG BVH window [17560–18072]: player_ticks=492, enemy_ticks=492 (enemy=76561198408199043)
+[DDM.9775] [4:39] Auto T0=17672, source=BVH+AABB
+[DDM.9775] [4:39] REJECTED — no hit by player in window [17672–17768].
+[DDM.9775] Done: 0/5 moments accepted.
+
+Accepted 0/5 moments.
+[DDM.9739] T0Detector ready for map 'de_dust2'
+[DDM.9739] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9739) ===
+[DDM.9739] Parsed 159 player_hurt events.
+[DDM.9739] Parsed 491,580 tick rows.
+[DDM.9739] Parsed 39 player_death events.
+[DDM.9739] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9739] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9739] DIAG player steamid=76561198210626739 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9739] Parsed 43 smoke intervals.
+[DDM.9739] Parsed 7 round_start ticks.
+[DDM.9739] Parsed 6 round_freeze_end ticks.
+[DDM.9739] Player has 0 deaths in demo.
+[DDM.9739] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9739] auto_build_moments: no hits by player found in demo.
+[DDM.9739] Bulk mode: 0 engagement moments generated.
+[DDM.9877] T0Detector ready for map 'de_dust2'
+[DDM.9877] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9877) ===
+[DDM.9877] Parsed 159 player_hurt events.
+[DDM.9877] Parsed 45,570 tick rows.
+[DDM.9877] Parsed 39 player_death events.
+[DDM.9877] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9877] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9877] DIAG player has 21 hits total, tick range: 10131–41493
+[DDM.9877] DIAG all hit ticks: [10131, 10218, 10230, 10243, 10256, 10269, 10751, 16265, 24199, 24231, 33273, 33659, 33665, 33672, 33678, 34746, 34752, 41455, 41468, 41481, 41493]
+[DDM.9877] Parsed 43 smoke intervals.
+[DDM.9877] Parsed 7 round_start ticks.
+[DDM.9877] Parsed 6 round_freeze_end ticks.
+[DDM.9877] Player has 6 deaths in demo.
+[DDM.9877] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9877] auto_build_moments: 21 total hits → 8 coarse clusters → 8 sub-clusters (gap>320/64 ticks)
+[DDM.9877] Bulk mode: 8 engagement moments generated.
+[DDM.9877] [2:38] Starting — bulk_auto first_hit=10131
+[DDM.9877] [2:38] DIAG BVH window [9831–10343]: player_ticks=513, enemy_ticks=513 (enemy=76561198168401372)
+[DDM.9877] [2:38] REJECTED — BVH: not_found(p=513,e=513,no_match=0,flash_skip=0,smoke_blocked=513,vis_failed=0)
+[DDM.9877] [2:47] Starting — bulk_auto first_hit=10751
+[DDM.9877] [2:47] DIAG BVH window [10451–10963]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9877] [2:47] Auto T0=10696, source=BVH+AABB
+[DDM.9877] [2:47] T2=10751, target=76561198168401372, weapon=tec9
+[DDM.9877] [2:47] enemy velocity@T0=218.8 u/s
+[DDM.9877] [2:47] REJECTED — enemy also moving at T0: 218.8 u/s (threshold=120.0 u/s)
+[DDM.9877] [4:14] Starting — bulk_auto first_hit=16265
+[DDM.9877] [4:14] DIAG BVH window [15965–16477]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9877] [4:14] Auto T0=16187, source=BVH+AABB
+[DDM.9877] [4:14] T2=16265, target=76561198120557348, weapon=deagle
+[DDM.9877] [4:14] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9877] [6:18] Starting — bulk_auto first_hit=24199
+[DDM.9877] [6:18] DIAG BVH window [23899–24411]: player_ticks=513, enemy_ticks=513 (enemy=76561198120557348)
+[DDM.9877] [6:18] Auto T0=23943, source=BVH+AABB
+[DDM.9877] [6:18] REJECTED — no hit by player in window [23943–24039].
+[DDM.9877] [8:39] Starting — bulk_auto first_hit=33273
+[DDM.9877] [8:39] DIAG BVH window [32973–33485]: player_ticks=513, enemy_ticks=513 (enemy=76561198408199043)
+[DDM.9877] [8:39] Auto T0=33209, source=BVH+AABB
+[DDM.9877] [8:39] T2=33273, target=76561198408199043, weapon=ak47
+[DDM.9877] [8:39] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9877] [8:45] Starting — bulk_auto first_hit=33659
+[DDM.9877] [8:45] DIAG BVH window [33359–33871]: player_ticks=511, enemy_ticks=511 (enemy=76561198005107817)
+[DDM.9877] [8:45] Auto T0=33639, source=BVH+AABB
+[DDM.9877] [8:45] T2=33659, target=76561198005107817, weapon=ak47
+[DDM.9877] [8:45] enemy velocity@T0=30.0 u/s
+[DDM.9877] [8:45] T1=33655 (after 2 aim ticks)
+[DDM.9877] [8:45] velocity@T0=106.1 u/s → peek
+[DDM.9877] [8:45] round_time_s=77.83, round_phase=late, round_number=5
+[DDM.9877] [8:45] ACCEPTED — T0→T1=250.0ms  T1→T2=62.5ms  T0→T2=312.5ms
+[DDM.9877] [9:02] Starting — bulk_auto first_hit=34746
+[DDM.9877] [9:02] DIAG BVH window [34446–34958]: player_ticks=498, enemy_ticks=498 (enemy=76561198120557348)
+[DDM.9877] [9:02] Auto T0=34727, source=BVH+AABB
+[DDM.9877] [9:02] T2=34746, target=76561198120557348, weapon=ak47
+[DDM.9877] [9:02] REJECTED — not a clean 1v1: Third-party damage from ['76561197998926770']
+[DDM.9877] [10:47] Starting — bulk_auto first_hit=41455
+[DDM.9877] [10:47] DIAG BVH window [41155–41667]: player_ticks=513, enemy_ticks=513 (enemy=76561198005107817)
+[DDM.9877] [10:47] Auto T0=41274, source=BVH+AABB
+[DDM.9877] [10:47] REJECTED — no hit by player in window [41274–41370].
+[DDM.9877] Done: 1/8 moments accepted.
+
+Accepted 1/8 moments.
+[DDM.9565] T0Detector ready for map 'de_dust2'
+[DDM.9565] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9565) ===
+[DDM.9565] Parsed 159 player_hurt events.
+[DDM.9565] Parsed 23,040 tick rows.
+[DDM.9565] Parsed 39 player_death events.
+[DDM.9565] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9565] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9565] DIAG player has 4 hits total, tick range: 16643–41083
+[DDM.9565] DIAG all hit ticks: [16643, 18029, 33097, 41083]
+[DDM.9565] Parsed 43 smoke intervals.
+[DDM.9565] Parsed 7 round_start ticks.
+[DDM.9565] Parsed 6 round_freeze_end ticks.
+[DDM.9565] Player has 6 deaths in demo.
+[DDM.9565] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9565] auto_build_moments: 4 total hits → 4 coarse clusters → 4 sub-clusters (gap>320/64 ticks)
+[DDM.9565] Bulk mode: 4 engagement moments generated.
+[DDM.9565] [4:20] Starting — bulk_auto first_hit=16643
+[DDM.9565] [4:20] DIAG BVH window [16343–16855]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9565] [4:20] Auto T0=16605, source=BVH+AABB
+[DDM.9565] [4:20] T2=16643, target=76561198168401372, weapon=deagle
+[DDM.9565] [4:20] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9565] [4:41] Starting — bulk_auto first_hit=18029
+[DDM.9565] [4:41] DIAG BVH window [17729–18241]: player_ticks=492, enemy_ticks=492 (enemy=76561198005107817)
+[DDM.9565] [4:41] Auto T0=18005, source=BVH+AABB
+[DDM.9565] [4:41] T2=18029, target=76561198005107817, weapon=m4a1
+[DDM.9565] [4:41] enemy velocity@T0=164.8 u/s
+[DDM.9565] [4:41] REJECTED — enemy also moving at T0: 164.8 u/s (threshold=120.0 u/s)
+[DDM.9565] [8:37] Starting — bulk_auto first_hit=33097
+[DDM.9565] [8:37] DIAG BVH window [32797–33309]: player_ticks=492, enemy_ticks=492 (enemy=76561198408199043)
+[DDM.9565] [8:37] Auto T0=32797, source=BVH+AABB
+[DDM.9565] [8:37] REJECTED — T0 at search_start boundary (offset=0 ticks < 20)
+[DDM.9565] [10:41] Starting — bulk_auto first_hit=41083
+[DDM.9565] [10:41] DIAG BVH window [40783–41295]: player_ticks=492, enemy_ticks=492 (enemy=76561198120557348)
+[DDM.9565] [10:41] Auto T0=41015, source=BVH+AABB
+[DDM.9565] [10:41] T2=41083, target=76561198120557348, weapon=galilar
+[DDM.9565] [10:41] enemy velocity@T0=50.5 u/s
+[DDM.9565] [10:41] T1=41042 (after 2 aim ticks)
+[DDM.9565] [10:41] velocity@T0=73.1 u/s → peek
+[DDM.9565] [10:41] round_time_s=63.0, round_phase=mid, round_number=6
+[DDM.9565] [10:41] ACCEPTED — T0→T1=421.9ms  T1→T2=640.6ms  T0→T2=1062.5ms
+[DDM.9565] Done: 1/4 moments accepted.
+
+Accepted 1/4 moments.
+[DDM.9864] T0Detector ready for map 'de_dust2'
+[DDM.9864] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9864) ===
+[DDM.9864] Parsed 159 player_hurt events.
+[DDM.9864] Parsed 491,580 tick rows.
+[DDM.9864] Parsed 39 player_death events.
+[DDM.9864] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9864] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9864] DIAG player steamid=76561198045898864 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9864] Parsed 43 smoke intervals.
+[DDM.9864] Parsed 7 round_start ticks.
+[DDM.9864] Parsed 6 round_freeze_end ticks.
+[DDM.9864] Player has 0 deaths in demo.
+[DDM.9864] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9864] auto_build_moments: no hits by player found in demo.
+[DDM.9864] Bulk mode: 0 engagement moments generated.
+[DDM.9817] T0Detector ready for map 'de_dust2'
+[DDM.9817] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9817) ===
+[DDM.9817] Parsed 159 player_hurt events.
+[DDM.9817] Parsed 74,170 tick rows.
+[DDM.9817] Parsed 39 player_death events.
+[DDM.9817] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9817] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9817] DIAG player has 23 hits total, tick range: 2656–41669
+[DDM.9817] DIAG all hit ticks: [2656, 9076, 10186, 10522, 10534, 16995, 17001, 18031, 22300, 24485, 24491, 24498, 24745, 30106, 32851, 32851, 32851, 40513, 41202, 41296, 41637, 41644, 41669]
+[DDM.9817] Parsed 43 smoke intervals.
+[DDM.9817] Parsed 7 round_start ticks.
+[DDM.9817] Parsed 6 round_freeze_end ticks.
+[DDM.9817] Player has 2 deaths in demo.
+[DDM.9817] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9817] auto_build_moments: 23 total hits → 13 coarse clusters → 14 sub-clusters (gap>320/64 ticks)
+[DDM.9817] Bulk mode: 14 engagement moments generated.
+[DDM.9817] [0:41] Starting — bulk_auto first_hit=2656
+[DDM.9817] [0:41] DIAG BVH window [2356–2868]: player_ticks=492, enemy_ticks=492 (enemy=76561198872013168)
+[DDM.9817] [0:41] Auto T0=2645, source=BVH+AABB
+[DDM.9817] [0:41] T2=2656, target=76561198872013168, weapon=hkp2000
+[DDM.9817] [0:41] enemy velocity@T0=103.4 u/s
+[DDM.9817] [0:41] T1=2646 (after 2 aim ticks)
+[DDM.9817] [0:41] velocity@T0=240.0 u/s → peek
+[DDM.9817] [0:41] round_time_s=21.41, round_phase=early, round_number=1
+[DDM.9817] [0:41] ACCEPTED — T0→T1=15.6ms  T1→T2=156.2ms  T0→T2=171.9ms
+[DDM.9817] [2:21] Starting — bulk_auto first_hit=9076
+[DDM.9817] [2:21] DIAG BVH window [8776–9288]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [2:21] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=40,vis_failed=452)
+[DDM.9817] [2:39] Starting — bulk_auto first_hit=10186
+[DDM.9817] [2:39] DIAG BVH window [9886–10398]: player_ticks=513, enemy_ticks=513 (enemy=76561198081484775)
+[DDM.9817] [2:39] Auto T0=10142, source=BVH+AABB
+[DDM.9817] [2:39] T2=10186, target=76561198081484775, weapon=famas
+[DDM.9817] [2:39] enemy velocity@T0=108.2 u/s
+[DDM.9817] [2:39] T1=10143 (after 2 aim ticks)
+[DDM.9817] [2:39] velocity@T0=74.8 u/s → peek
+[DDM.9817] [2:39] round_time_s=56.83, round_phase=mid, round_number=2
+[DDM.9817] [2:39] ACCEPTED — T0→T1=15.6ms  T1→T2=671.9ms  T0→T2=687.5ms
+[DDM.9817] [2:44] Starting — bulk_auto first_hit=10522
+[DDM.9817] [2:44] DIAG BVH window [10222–10734]: player_ticks=504, enemy_ticks=504 (enemy=76561198081484775)
+[DDM.9817] [2:44] REJECTED — BVH: not_found(p=504,e=504,no_match=0,flash_skip=0,smoke_blocked=357,vis_failed=147)
+[DDM.9817] [4:25] Starting — bulk_auto first_hit=16995
+[DDM.9817] [4:25] DIAG BVH window [16695–17207]: player_ticks=498, enemy_ticks=498 (enemy=76561198872013168)
+[DDM.9817] [4:25] Auto T0=16973, source=BVH+AABB
+[DDM.9817] [4:25] T2=16995, target=76561198872013168, weapon=m4a1
+[DDM.9817] [4:25] enemy velocity@T0=4.5 u/s
+[DDM.9817] [4:25] T1=16977 (after 2 aim ticks)
+[DDM.9817] [4:25] velocity@T0=57.5 u/s → peek
+[DDM.9817] [4:25] round_time_s=67.42, round_phase=mid, round_number=3
+[DDM.9817] [4:25] ACCEPTED — T0→T1=62.5ms  T1→T2=281.2ms  T0→T2=343.8ms
+[DDM.9817] [4:41] Starting — bulk_auto first_hit=18031
+[DDM.9817] [4:41] DIAG BVH window [17731–18243]: player_ticks=492, enemy_ticks=492 (enemy=76561199063238565)
+[DDM.9817] [4:41] Auto T0=18009, source=BVH+AABB
+[DDM.9817] [4:41] T2=18031, target=76561199063238565, weapon=m4a1
+[DDM.9817] [4:41] enemy velocity@T0=117.0 u/s
+[DDM.9817] [4:41] T1=18022 (after 2 aim ticks)
+[DDM.9817] [4:41] velocity@T0=185.4 u/s → peek
+[DDM.9817] [4:41] round_time_s=83.61, round_phase=late, round_number=3
+[DDM.9817] [4:41] ACCEPTED — T0→T1=203.1ms  T1→T2=140.6ms  T0→T2=343.8ms
+[DDM.9817] [5:48] Starting — bulk_auto first_hit=22300
+[DDM.9817] [5:48] DIAG BVH window [22000–22512]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [5:48] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [6:22] Starting — bulk_auto first_hit=24485
+[DDM.9817] [6:22] DIAG BVH window [24185–24697]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9817] [6:22] Auto T0=24185, source=BVH+AABB
+[DDM.9817] [6:22] REJECTED — T0 at search_start boundary (offset=0 ticks < 20)
+[DDM.9817] [6:26] Starting — bulk_auto first_hit=24745
+[DDM.9817] [6:26] DIAG BVH window [24445–24957]: player_ticks=492, enemy_ticks=492 (enemy=76561199063238565)
+[DDM.9817] [6:26] Auto T0=24726, source=BVH+AABB
+[DDM.9817] [6:26] T2=24745, target=76561199063238565, weapon=m4a1
+[DDM.9817] [6:26] enemy velocity@T0=37.9 u/s
+[DDM.9817] [6:26] T1=24739 (after 2 aim ticks)
+[DDM.9817] [6:26] velocity@T0=195.9 u/s → peek
+[DDM.9817] [6:26] round_time_s=66.47, round_phase=mid, round_number=4
+[DDM.9817] [6:26] ACCEPTED — T0→T1=203.1ms  T1→T2=93.8ms  T0→T2=296.9ms
+[DDM.9817] [7:50] Starting — bulk_auto first_hit=30106
+[DDM.9817] [7:50] DIAG BVH window [29806–30318]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [7:50] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [8:33] Starting — bulk_auto first_hit=32851
+[DDM.9817] [8:33] DIAG BVH window [32551–33063]: player_ticks=492, enemy_ticks=492 (enemy=76561198995880877)
+[DDM.9817] [8:33] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [10:33] Starting — bulk_auto first_hit=40513
+[DDM.9817] [10:33] DIAG BVH window [40213–40725]: player_ticks=492, enemy_ticks=492 (enemy=76561198386265483)
+[DDM.9817] [10:33] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9817] [10:43] Starting — bulk_auto first_hit=41202
+[DDM.9817] [10:43] DIAG BVH window [40902–41414]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9817] [10:43] Auto T0=41269, source=BVH+AABB
+[DDM.9817] [10:43] T2=41296, target=76561198995880877, weapon=m4a1
+[DDM.9817] [10:43] enemy velocity@T0=247.5 u/s
+[DDM.9817] [10:43] REJECTED — enemy also moving at T0: 247.5 u/s (threshold=120.0 u/s)
+[DDM.9817] [10:50] Starting — bulk_auto first_hit=41637
+[DDM.9817] [10:50] DIAG BVH window [41337–41849]: player_ticks=513, enemy_ticks=513 (enemy=76561198081484775)
+[DDM.9817] [10:50] Auto T0=41600, source=BVH+AABB
+[DDM.9817] [10:50] T2=41637, target=76561198081484775, weapon=m4a1
+[DDM.9817] [10:50] enemy velocity@T0=99.8 u/s
+[DDM.9817] [10:50] T1=41604 (after 2 aim ticks)
+[DDM.9817] [10:50] velocity@T0=211.2 u/s → peek
+[DDM.9817] [10:50] round_time_s=72.14, round_phase=late, round_number=6
+[DDM.9817] [10:50] ACCEPTED — T0→T1=62.5ms  T1→T2=515.6ms  T0→T2=578.1ms
+[DDM.9817] Done: 6/14 moments accepted.
+
+Accepted 6/14 moments.
+[DDM.9770] T0Detector ready for map 'de_dust2'
+[DDM.9770] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9770) ===
+[DDM.9770] Parsed 159 player_hurt events.
+[DDM.9770] Parsed 39,430 tick rows.
+[DDM.9770] Parsed 39 player_death events.
+[DDM.9770] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9770] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9770] DIAG player has 22 hits total, tick range: 3949–40952
+[DDM.9770] DIAG all hit ticks: [3949, 4043, 4109, 11054, 11058, 17886, 24591, 24617, 24630, 24649, 24655, 24662, 24681, 24687, 34721, 34734, 34740, 40744, 40926, 40933, 40933, 40952]
+[DDM.9770] Parsed 43 smoke intervals.
+[DDM.9770] Parsed 7 round_start ticks.
+[DDM.9770] Parsed 6 round_freeze_end ticks.
+[DDM.9770] Player has 1 deaths in demo.
+[DDM.9770] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9770] auto_build_moments: 22 total hits → 6 coarse clusters → 7 sub-clusters (gap>320/64 ticks)
+[DDM.9770] Bulk mode: 7 engagement moments generated.
+[DDM.9770] [1:01] Starting — bulk_auto first_hit=3949
+[DDM.9770] [1:01] DIAG BVH window [3649–4161]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9770] [1:01] Auto T0=3911, source=BVH+AABB
+[DDM.9770] [1:01] T2=3949, target=76561198995880877, weapon=hkp2000
+[DDM.9770] [1:01] enemy velocity@T0=201.5 u/s
+[DDM.9770] [1:01] REJECTED — enemy also moving at T0: 201.5 u/s (threshold=120.0 u/s)
+[DDM.9770] [2:52] Starting — bulk_auto first_hit=11054
+[DDM.9770] [2:52] DIAG BVH window [10754–11266]: player_ticks=496, enemy_ticks=496 (enemy=76561199063238565)
+[DDM.9770] [2:52] Auto T0=11102, source=BVH+AABB
+[DDM.9770] [2:52] REJECTED — no hit by player in window [11102–11198].
+[DDM.9770] [4:39] Starting — bulk_auto first_hit=17886
+[DDM.9770] [4:39] DIAG BVH window [17586–18098]: player_ticks=492, enemy_ticks=492 (enemy=76561198081484775)
+[DDM.9770] [4:39] Auto T0=17867, source=BVH+AABB
+[DDM.9770] [4:39] T2=17886, target=76561198081484775, weapon=famas
+[DDM.9770] [4:39] enemy velocity@T0=78.2 u/s
+[DDM.9770] [4:39] T1=17868 (after 2 aim ticks)
+[DDM.9770] [4:39] velocity@T0=220.0 u/s → peek
+[DDM.9770] [4:39] round_time_s=81.39, round_phase=late, round_number=3
+[DDM.9770] [4:39] ACCEPTED — T0→T1=15.6ms  T1→T2=281.2ms  T0→T2=296.9ms
+[DDM.9770] [6:24] Starting — bulk_auto first_hit=24591
+[DDM.9770] [6:24] DIAG BVH window [24291–24803]: player_ticks=513, enemy_ticks=513 (enemy=76561199063238565)
+[DDM.9770] [6:24] Auto T0=24522, source=BVH+AABB
+[DDM.9770] [6:24] T2=24591, target=76561199063238565, weapon=m4a1
+[DDM.9770] [6:24] enemy velocity@T0=98.3 u/s
+[DDM.9770] [6:24] T1=24587 (after 2 aim ticks)
+[DDM.9770] [6:24] velocity@T0=117.0 u/s → peek
+[DDM.9770] [6:24] round_time_s=63.28, round_phase=mid, round_number=4
+[DDM.9770] [6:24] ACCEPTED — T0→T1=1015.6ms  T1→T2=62.5ms  T0→T2=1078.1ms
+[DDM.9770] [9:02] Starting — bulk_auto first_hit=34721
+[DDM.9770] [9:02] DIAG BVH window [34421–34933]: player_ticks=511, enemy_ticks=511 (enemy=76561198995880877)
+[DDM.9770] [9:02] Auto T0=34623, source=BVH+AABB
+[DDM.9770] [9:02] REJECTED — no hit by player in window [34623–34719].
+[DDM.9770] [10:36] Starting — bulk_auto first_hit=40744
+[DDM.9770] [10:36] DIAG BVH window [40444–40956]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9770] [10:36] Auto T0=40915, source=BVH+AABB
+[DDM.9770] [10:36] T2=40926, target=76561198872013168, weapon=m4a1
+[DDM.9770] [10:36] enemy velocity@T0=54.2 u/s
+[DDM.9770] [10:36] T1=40919 (after 2 aim ticks)
+[DDM.9770] [10:36] velocity@T0=223.6 u/s → peek
+[DDM.9770] [10:36] round_time_s=61.44, round_phase=mid, round_number=6
+[DDM.9770] [10:36] ACCEPTED — T0→T1=62.5ms  T1→T2=109.4ms  T0→T2=171.9ms
+[DDM.9770] [10:39] Starting — bulk_auto first_hit=40926
+[DDM.9770] [10:39] DIAG BVH window [40626–41138]: player_ticks=513, enemy_ticks=513 (enemy=76561198872013168)
+[DDM.9770] [10:39] Auto T0=40915, source=BVH+AABB
+[DDM.9770] [10:39] T2=40926, target=76561198872013168, weapon=m4a1
+[DDM.9770] [10:39] enemy velocity@T0=54.2 u/s
+[DDM.9770] [10:39] T1=40919 (after 2 aim ticks)
+[DDM.9770] [10:39] velocity@T0=223.6 u/s → peek
+[DDM.9770] [10:39] round_time_s=61.44, round_phase=mid, round_number=6
+[DDM.9770] [10:39] ACCEPTED — T0→T1=62.5ms  T1→T2=109.4ms  T0→T2=171.9ms
+[DDM.9770] Overlapping window rejected: first_hit=40926 < last_accepted_t2=40926 + 300
+[DDM.9770] Done: 3/7 moments accepted.
+
+Accepted 3/7 moments.
+[DDM.9348] T0Detector ready for map 'de_dust2'
+[DDM.9348] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9348) ===
+[DDM.9348] Parsed 159 player_hurt events.
+[DDM.9348] Parsed 56,840 tick rows.
+[DDM.9348] Parsed 39 player_death events.
+[DDM.9348] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9348] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9348] DIAG player has 24 hits total, tick range: 4905–41641
+[DDM.9348] DIAG all hit ticks: [4905, 10090, 10108, 10261, 10267, 10272, 10278, 10284, 10494, 10512, 13327, 16248, 24211, 24218, 24224, 24237, 25073, 25080, 25086, 25093, 34709, 34756, 41080, 41641]
+[DDM.9348] Parsed 43 smoke intervals.
+[DDM.9348] Parsed 7 round_start ticks.
+[DDM.9348] Parsed 6 round_freeze_end ticks.
+[DDM.9348] Player has 2 deaths in demo.
+[DDM.9348] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9348] auto_build_moments: 24 total hits → 9 coarse clusters → 11 sub-clusters (gap>320/64 ticks)
+[DDM.9348] Bulk mode: 11 engagement moments generated.
+[DDM.9348] [1:16] Starting — bulk_auto first_hit=4905
+[DDM.9348] [1:16] DIAG BVH window [4605–5117]: player_ticks=492, enemy_ticks=492 (enemy=76561198081484775)
+[DDM.9348] [1:16] Auto T0=4925, source=BVH+AABB
+[DDM.9348] [1:16] REJECTED — no hit by player in window [4925–5021].
+[DDM.9348] [2:37] Starting — bulk_auto first_hit=10090
+[DDM.9348] [2:37] DIAG BVH window [9790–10302]: player_ticks=513, enemy_ticks=513 (enemy=76561198872013168)
+[DDM.9348] [2:37] Auto T0=10053, source=BVH+AABB
+[DDM.9348] [2:37] T2=10090, target=76561198872013168, weapon=famas
+[DDM.9348] [2:37] enemy velocity@T0=235.4 u/s
+[DDM.9348] [2:37] REJECTED — enemy also moving at T0: 235.4 u/s (threshold=120.0 u/s)
+[DDM.9348] [2:40] Starting — bulk_auto first_hit=10261
+[DDM.9348] [2:40] DIAG BVH window [9961–10473]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9348] [2:40] Auto T0=10245, source=BVH+AABB
+[DDM.9348] [2:40] T2=10261, target=76561198386265483, weapon=famas
+[DDM.9348] [2:40] enemy velocity@T0=223.9 u/s
+[DDM.9348] [2:40] REJECTED — enemy also moving at T0: 223.9 u/s (threshold=120.0 u/s)
+[DDM.9348] [2:43] Starting — bulk_auto first_hit=10494
+[DDM.9348] [2:43] DIAG BVH window [10194–10706]: player_ticks=510, enemy_ticks=510 (enemy=76561198081484775)
+[DDM.9348] [2:43] Auto T0=10285, source=BVH+AABB
+[DDM.9348] [2:43] REJECTED — no hit by player in window [10285–10381].
+[DDM.9348] [3:28] Starting — bulk_auto first_hit=13327
+[DDM.9348] [3:28] DIAG BVH window [13027–13539]: player_ticks=492, enemy_ticks=492 (enemy=76561198872013168)
+[DDM.9348] [3:28] REJECTED — BVH: not_found(p=492,e=492,no_match=0,flash_skip=0,smoke_blocked=0,vis_failed=492)
+[DDM.9348] [4:13] Starting — bulk_auto first_hit=16248
+[DDM.9348] [4:13] DIAG BVH window [15948–16460]: player_ticks=492, enemy_ticks=492 (enemy=76561198995880877)
+[DDM.9348] [4:13] Auto T0=16218, source=BVH+AABB
+[DDM.9348] [4:13] T2=16248, target=76561198995880877, weapon=famas
+[DDM.9348] [4:13] enemy velocity@T0=219.9 u/s
+[DDM.9348] [4:13] REJECTED — enemy also moving at T0: 219.9 u/s (threshold=120.0 u/s)
+[DDM.9348] [6:18] Starting — bulk_auto first_hit=24211
+[DDM.9348] [6:18] DIAG BVH window [23911–24423]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9348] [6:18] Auto T0=23938, source=BVH+AABB
+[DDM.9348] [6:18] REJECTED — no hit by player in window [23938–24034].
+[DDM.9348] [6:31] Starting — bulk_auto first_hit=25073
+[DDM.9348] [6:31] DIAG BVH window [24773–25285]: player_ticks=512, enemy_ticks=512 (enemy=76561198081484775)
+[DDM.9348] [6:31] Auto T0=24892, source=BVH+AABB
+[DDM.9348] [6:31] REJECTED — no hit by player in window [24892–24988].
+[DDM.9348] [9:02] Starting — bulk_auto first_hit=34709
+[DDM.9348] [9:02] DIAG BVH window [34409–34921]: player_ticks=513, enemy_ticks=513 (enemy=76561198081484775)
+[DDM.9348] [9:02] Auto T0=34600, source=BVH+AABB
+[DDM.9348] [9:02] REJECTED — no hit by player in window [34600–34696].
+[DDM.9348] [10:41] Starting — bulk_auto first_hit=41080
+[DDM.9348] [10:41] DIAG BVH window [40780–41292]: player_ticks=513, enemy_ticks=513 (enemy=76561199063238565)
+[DDM.9348] [10:41] Auto T0=41002, source=BVH+AABB
+[DDM.9348] [10:41] T2=41080, target=76561199063238565, weapon=ak47
+[DDM.9348] [10:41] enemy velocity@T0=73.1 u/s
+[DDM.9348] [10:41] T1=41058 (after 2 aim ticks)
+[DDM.9348] [10:41] velocity@T0=40.6 u/s → hold
+[DDM.9348] [10:41] round_time_s=62.8, round_phase=mid, round_number=6
+[DDM.9348] [10:41] ACCEPTED — T0→T1=875.0ms  T1→T2=343.8ms  T0→T2=1218.8ms
+[DDM.9348] [10:50] Starting — bulk_auto first_hit=41641
+[DDM.9348] [10:50] DIAG BVH window [41341–41853]: player_ticks=492, enemy_ticks=492 (enemy=76561198168401372)
+[DDM.9348] [10:50] Auto T0=41449, source=BVH+AABB
+[DDM.9348] [10:50] REJECTED — no hit by player in window [41449–41545].
+[DDM.9348] Done: 1/11 moments accepted.
+
+Accepted 1/11 moments.
+[DDM.9664] T0Detector ready for map 'de_dust2'
+[DDM.9664] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9664) ===
+[DDM.9664] Parsed 159 player_hurt events.
+[DDM.9664] Parsed 491,580 tick rows.
+[DDM.9664] Parsed 39 player_death events.
+[DDM.9664] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9664] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9664] DIAG player steamid=76561197987713664 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9664] Parsed 43 smoke intervals.
+[DDM.9664] Parsed 7 round_start ticks.
+[DDM.9664] Parsed 6 round_freeze_end ticks.
+[DDM.9664] Player has 0 deaths in demo.
+[DDM.9664] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9664] auto_build_moments: no hits by player found in demo.
+[DDM.9664] Bulk mode: 0 engagement moments generated.
+[DDM.9372] T0Detector ready for map 'de_dust2'
+[DDM.9372] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9372) ===
+[DDM.9372] Parsed 159 player_hurt events.
+[DDM.9372] Parsed 32,970 tick rows.
+[DDM.9372] Parsed 39 player_death events.
+[DDM.9372] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9372] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9372] DIAG player has 15 hits total, tick range: 10177–34711
+[DDM.9372] DIAG all hit ticks: [10177, 10196, 10820, 16419, 16498, 16560, 16615, 24179, 24185, 24191, 24197, 24202, 24375, 24381, 34711]
+[DDM.9372] Parsed 43 smoke intervals.
+[DDM.9372] Parsed 7 round_start ticks.
+[DDM.9372] Parsed 6 round_freeze_end ticks.
+[DDM.9372] Player has 2 deaths in demo.
+[DDM.9372] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9372] auto_build_moments: 15 total hits → 5 coarse clusters → 7 sub-clusters (gap>320/64 ticks)
+[DDM.9372] Bulk mode: 7 engagement moments generated.
+[DDM.9372] [2:39] Starting — bulk_auto first_hit=10177
+[DDM.9372] [2:39] DIAG BVH window [9877–10389]: player_ticks=511, enemy_ticks=511 (enemy=76561198995880877)
+[DDM.9372] [2:39] REJECTED — BVH: not_found(p=511,e=511,no_match=0,flash_skip=0,smoke_blocked=511,vis_failed=0)
+[DDM.9372] [2:49] Starting — bulk_auto first_hit=10820
+[DDM.9372] [2:49] DIAG BVH window [10520–11032]: player_ticks=492, enemy_ticks=492 (enemy=76561198995880877)
+[DDM.9372] [2:49] Auto T0=10684, source=BVH+AABB
+[DDM.9372] [2:49] REJECTED — no hit by player in window [10684–10780].
+[DDM.9372] [4:16] Starting — bulk_auto first_hit=16419
+[DDM.9372] [4:16] DIAG BVH window [16119–16631]: player_ticks=513, enemy_ticks=513 (enemy=76561198995880877)
+[DDM.9372] [4:16] Auto T0=16393, source=BVH+AABB
+[DDM.9372] [4:16] T2=16419, target=76561198995880877, weapon=m4a1
+[DDM.9372] [4:16] enemy velocity@T0=230.0 u/s
+[DDM.9372] [4:16] REJECTED — enemy also moving at T0: 230.0 u/s (threshold=120.0 u/s)
+[DDM.9372] [4:17] Starting — bulk_auto first_hit=16498
+[DDM.9372] [4:17] DIAG BVH window [16198–16710]: player_ticks=513, enemy_ticks=513 (enemy=76561198386265483)
+[DDM.9372] [4:17] Auto T0=16415, source=BVH+AABB
+[DDM.9372] [4:17] T2=16419, target=76561198995880877, weapon=m4a1
+[DDM.9372] [4:17] enemy velocity@T0=211.7 u/s
+[DDM.9372] [4:17] REJECTED — enemy also moving at T0: 211.7 u/s (threshold=120.0 u/s)
+[DDM.9372] [6:17] Starting — bulk_auto first_hit=24179
+[DDM.9372] [6:17] DIAG BVH window [23879–24391]: player_ticks=513, enemy_ticks=513 (enemy=76561198872013168)
+[DDM.9372] [6:17] Auto T0=24089, source=BVH+AABB
+[DDM.9372] [6:17] T2=24179, target=76561198872013168, weapon=m4a1
+[DDM.9372] [6:17] enemy velocity@T0=212.2 u/s
+[DDM.9372] [6:17] REJECTED — enemy also moving at T0: 212.2 u/s (threshold=120.0 u/s)
+[DDM.9372] [6:20] Starting — bulk_auto first_hit=24375
+[DDM.9372] [6:20] DIAG BVH window [24075–24587]: player_ticks=498, enemy_ticks=498 (enemy=76561198386265483)
+[DDM.9372] [6:20] Auto T0=24223, source=BVH+AABB
+[DDM.9372] [6:20] REJECTED — no hit by player in window [24223–24319].
+[DDM.9372] [9:02] Starting — bulk_auto first_hit=34711
+[DDM.9372] [9:02] DIAG BVH window [34411–34923]: player_ticks=492, enemy_ticks=492 (enemy=76561198081484775)
+[DDM.9372] [9:02] Auto T0=34626, source=BVH+AABB
+[DDM.9372] [9:02] T2=34711, target=76561198081484775, weapon=m4a1
+[DDM.9372] [9:02] REJECTED — teammate phantom kill detected in [T0..T2]
+[DDM.9372] Done: 0/7 moments accepted.
+
+Accepted 0/7 moments.
+[DDM.9516] T0Detector ready for map 'de_dust2'
+[DDM.9516] === Parsing: astralis-vs-spirit-m1-dust2-p1.dem (match_id=9516) ===
+[DDM.9516] Parsed 159 player_hurt events.
+[DDM.9516] Parsed 491,580 tick rows.
+[DDM.9516] Parsed 39 player_death events.
+[DDM.9516] DIAG player_hurt columns: ['armor', 'attacker_name', 'attacker_steamid', 'dmg_armor', 'dmg_health', 'health', 'hitgroup', 'tick', 'user_name', 'user_steamid', 'weapon']
+[DDM.9516] DIAG sample attacker_steamid values (raw): ['76561198005107817', '76561198386265483', '76561198081484775', '76561198408199043', '76561197998926770']
+[DDM.9516] DIAG player steamid=76561198004115516 NOT FOUND in attacker_steamid. Check format mismatch above.
+[DDM.9516] Parsed 43 smoke intervals.
+[DDM.9516] Parsed 7 round_start ticks.
+[DDM.9516] Parsed 6 round_freeze_end ticks.
+[DDM.9516] Player has 0 deaths in demo.
+[DDM.9516] auto_build_moments: filtered out 8 knife/AWP hits.
+[DDM.9516] auto_build_moments: no hits by player found in demo.
+[DDM.9516] Bulk mode: 0 engagement moments generated.
+  N=16 median=62.5 %@125ms=0.0% %<180ms=68.8%
+
+
+=== COMPARISON TABLE (peek engagements only) ===
+variant        |    N |   min |   p25 |   med |   p75 |  %@125ms |  %<180ms
+--------------------------------------------------------------------------------
+grace=120      |   16 |     0 |   125 |   133 |   250 |    37.5% |    56.2%
+grace=30       |   16 |     0 |    31 |    62 |   203 |     0.0% |    68.8%
+grace=0        |   16 |     0 |    16 |    62 |   203 |     0.0% |    68.8%
+
+=== PER-PLAYER MEDIANS ===
+player     |  baseline |  grace=30 |   grace=0
+--------------------------------------------------
+donk       |         0 |         0 |         0
+tN1R       |       188 |        31 |        16
+sh1ro      |         - |         - |         -
+zweih      |         - |         - |         -
+zont1x     |       250 |       250 |       250
+magixx     |       422 |       422 |       422
+chopper    |         - |         - |         -
+Staehr     |       133 |        62 |        62
+HooXi      |       125 |        62 |        62
+jabbi      |         - |         - |         -
+device     |         - |         - |         -
+ryu        |         - |         - |         -
+cadiaN     |         - |         - |         -

@@ -62,6 +62,53 @@ Plans:
 
 ---
 
+### Phase 10: T1 detection fix batch (B-1 + B-4)
+
+**Goal:** Eliminate the 125ms hard floor on `rt_visible_to_aim_ms` (B-1: `T1_GRACE_MS=120` redundant filter) and the silent pre-aim censorship (B-4: `T1_NOT_AIMED_THRESHOLD=1.0°` drops best engagements to NaN). Per REVIEW-2026-05-16.md these MUST ship together — fixing only one leaves the other class of distribution distortion intact. Blocks public re-posting (donk 172ms / m0NESY 203ms numbers currently artifact-compromised).
+
+**Scope (in):**
+1. `T1_GRACE_MS = 0` in `config.py` (or remove grace logic from `_detect_t1`); keep `moving_towards + sustained + sig_change` semantic chain intact
+2. Pre-aimed branch in `ddm_analyzer._detect_t1`: when `curr_dist ≤ T1_NOT_AIMED_THRESHOLD` at T0+grace with no significant correction → set T1=T0, `rt_visible_to_aim_ms=0`
+3. Optional: new column `t1_source ∈ {"sustained_aim", "pre_aimed"}` for downstream visibility (B-4 makes the branch explicit in DB)
+4. Rewrite `tests/test_ddm_analyzer_t1.py::test_t1_grace_period_excludes_early_ticks` — currently asserts buggy behaviour (`T1=NaN` when aim happens before grace); must assert grace-removed behaviour
+5. New `tests/test_ddm_analyzer_t1.py::test_t1_pre_aimed_returns_t0` — coverage for B-4 branch
+6. Empirical validation: run pipeline on 1 reference demo (e.g. donk-furia-m3-nuke), query T0→T1 min / p10 / median; assert no pinning at 125ms (or at any tick-quantum value) and left tail present
+7. `grace_experiment.py` cross-check: production behaviour matches the `grace=0` variant of the 3-variant comparison
+
+**Out of scope (later phases):**
+- B-2 (DuelAttemptFinder is_alive gate) — separate pipeline, Phase A item 3
+- B-3 (`find_first_visible_enemy_in_window` flash gate) — separate pipeline, Phase A item 4
+- Full corpus re-batch — gated on this phase shipping (Phase A item 6)
+- Threshold re-derivation (`_ABSOLUTE_ELITE_CEILING`, `_FALLBACK_THRESHOLDS`) — needs clean re-batched data (Phase A item 7)
+- Distribution-shape regression suite (`tests/test_distribution_shape.py`) — Phase A item 5, separate phase
+- W-3 fix (`T1_MOVING_TOWARDS_TOLERANCE`) — Phase B per REVIEW
+
+**Success criteria (hard gates):**
+- SC-1: `T1_GRACE_MS=0` (or removed) shipped; `test_t1_grace_period_excludes_early_ticks` rewritten
+- SC-2: Pre-aimed branch shipped; `test_t1_pre_aimed_returns_t0` green
+- SC-3: All existing tests pass (367+ pre-fix → 368+ post-fix)
+- SC-4: Single demo re-analysis shows T0→T1 distribution unflattened — `min < 125ms`, no value pinning >10% of N at any tick-quantum
+- SC-5: `grace_experiment.py` output validates production = `grace=0` variant
+
+**Plans:** 3 plans (Wave 0 test rewrite + frozen baseline → Wave 1 code fixes → Wave 2 manual gates).
+
+**Status:** SHIPPED 2026-05-16 — all 5 SCs PASS. 11 commits across 3 waves (99cb296..801f722). 370/370 pytest GREEN. SC-4 single-demo (5-pro subset of dust2): min=0.0ms, n_at_125ms=0, n_pre_aimed=n_with_flag=2. SC-5 grace=0 parity %@125ms delta=0.0pp. Full corpus re-batch (Phase A item 6) gated AFTER this ship before any marketing claim refresh.
+
+Plans:
+- [x] 10-00-PLAN.md — Wave 0: rewrite 2 T1 tests + add 5 new RED tests + freeze pre-fix grace_experiment baseline (SHIPPED 2026-05-16)
+- [x] 10-01-PLAN.md — Wave 1: T1_GRACE_MS=0 + _detect_t1 pre-aim branch + t1_source schema migration + full pytest GREEN (SHIPPED 2026-05-16)
+- [x] 10-02-PLAN.md — Wave 2: /check-phase6 gate + SC-4 single-demo distribution + SC-5 grace_experiment parity diff (SHIPPED 2026-05-16)
+
+**Linked artifacts:**
+- Audit: `.planning/REVIEW-2026-05-16.md` (BLOCKER section B-1 + B-4, Phase A items 1-2)
+- Brief: `.planning/CODE_REVIEW_BRIEF_2026_05_16.md`
+- DB evidence: `memory/project_t1_grace_floor_bug_2026_05_16.md` (1145 engagements pinned at 8-tick delta; 25-43% per-pro pinning rate)
+- Methodology principle: `memory/feedback_redundant_grace_filter_creates_floor_artifact_2026_05_16.md`
+- Pattern (B-4): `memory/feedback_pre_aim_censorship_inverse_survivorship.md`
+- Validation tooling: `grace_experiment.py` (3-variant in-memory experiment)
+
+---
+
 (All v1.0 phase details archived to [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md). Future phase details live here as they're added.)
 
 ## Progress

@@ -308,7 +308,7 @@ class TestAnalyzeEpisodeReturnDict:
              patch.object(analyzer, "is_1v1_duel", return_value=(True, "")), \
              patch.object(analyzer, "_teammate_hurt_target", return_value=False), \
              patch.object(analyzer, "_compute_velocity", return_value=0.0), \
-             patch.object(analyzer, "_detect_t1", return_value=-1), \
+             patch.object(analyzer, "_detect_t1", return_value=(-1, "none")), \
              patch.object(analyzer, "_classify_engagement", return_value="hold"), \
              patch.object(analyzer, "_compute_round_phase", return_value=(30.0, "mid", 1)):
 

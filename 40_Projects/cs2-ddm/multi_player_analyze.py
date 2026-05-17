@@ -57,9 +57,11 @@ def extract_steamids(demo_path: str) -> List[int]:
     from demoparser2 import DemoParser  # local import — keep startup cost low
 
     parser = DemoParser(demo_path)
-    # parse_ticks defaults to all ticks; we keep it that way but only read steamid.
-    # Demos with weird first-round joins may need a wider window.
-    df = parser.parse_ticks(["steamid"])
+    # W-6 fix (REVIEW-2026-05-16): bound to first 6400 ticks (~100s @ 64 tickrate)
+    # to match docstring. Roster is stable from round 1; full-demo parse here is
+    # wasted work. Demos with mid-match player joins (rare in pro demos) may need
+    # a wider window — bump if extract_steamids() returns < 10 SIDs.
+    df = parser.parse_ticks(["steamid"], ticks=list(range(0, 6400)))
     if df is None or df.empty:
         return []
     sids = (
@@ -148,6 +150,13 @@ def main() -> None:
         print(f"ERROR: demo not found: {demo_path}")
         sys.exit(1)
     demo_name = Path(demo_path).name
+
+    # Phase A item 1 fix (REVIEW-2026-05-16 + Phase 10 Plan 02 deviation #1):
+    # ensure analytics.db schema is current before any INSERT. Without this,
+    # stale-schema DBs fail silently with `no such column: <name>` on engagements
+    # writes (surfaced during Phase 10 SC-4 when t1_source column was needed).
+    # batch_runner.py auto-migrates; this CLI did not — fixed now.
+    _db.init_db(str(DB_PATH))
 
     print(f"\n=== multi_player_analyze :: {demo_name} ===\n")
 
