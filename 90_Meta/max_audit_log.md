@@ -59,6 +59,10 @@ Forcing function: Max $200/mo subscription. Discipline test — does usage justi
 | 2026-05-16 | 09:36 | C | 0.1 | cs2-ddm | Reddit shimszy post draft review (acknowledgment pattern, T1_GRACE_MS bug explanation) | indirect: Djok v1 marketing content development |
 | 2026-05-16 | 11:08 | C | 0.05 | cs2-ddm | Phase 10 T1 detection fix planning (B-1+B-4 bundle, plan-checker iter2 PASSED) | indirect: Djok v1 data-layer foundation for user acquisition funnel |
 | 2026-05-16 | 15:20 | C | 1.0 | autorss_feed | Phase 27 Neuroband Tier B executed (cognition-tagged reactions, 46 tests, 137 reactions backfilled, canonical schema locked) | indirect: foundational reward signal infrastructure for v1.7 RL monetization pathway |
+| 2026-05-18 | 05:00 | C | 0.7 | autorss_feed | v1.8 Observability: Phases 37+38 shipped (failure miner + score drift flag, 24/24 tests, direct inline pattern) | indirect: pipeline monitoring + auto-remediation foundation |
+| 2026-05-18 | 14:00 | A | 1.0 | DBO_Faktura_KB | Pipeline setup: PDF convert + chunk + index (functional + arm modules) | direct: KB coverage for Faktura bank internal + customer support |
+| 2026-05-18 | 10:00 | C | 1.5 | autorss_feed | v2.0 milestone: Scorer Non-Identifiability (7 phases, 13 REQs, data gate + Stage A/B/C) | indirect: v2.0 foundation (scorer non-identifiability architecture for RL monetization) |
+| 2026-05-18 | 15:15 | C | 1.0 | autorss_feed | v2.3 Curator Quality & Pre-Filter opened (6 phases P59-P64 parallel to v2.0) | indirect: pre-filter cost-optimization foundation for curator scaling |
 
 ---
 
