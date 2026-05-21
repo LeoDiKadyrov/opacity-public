@@ -64,6 +64,7 @@ Forcing function: Max $200/mo subscription. Discipline test — does usage justi
 | 2026-05-18 | 10:00 | C | 1.5 | autorss_feed | v2.0 milestone: Scorer Non-Identifiability (7 phases, 13 REQs, data gate + Stage A/B/C) | indirect: v2.0 foundation (scorer non-identifiability architecture for RL monetization) |
 | 2026-05-18 | 15:15 | C | 1.0 | autorss_feed | v2.3 Curator Quality & Pre-Filter opened (6 phases P59-P64 parallel to v2.0) | indirect: pre-filter cost-optimization foundation for curator scaling |
 | 2026-05-19 | 15:00 | C | 1.0 | autorss_feed | Phase 62 per-source threshold override completion (TDD RED→GREEN T2+T3) | indirect: curator scaling infrastructure (per-source override for threshold tuning) |
+| 2026-05-20 | 12:00 | C | 0.6 | autorss_feed | v2.7 Adaptive Routing & Lifecycle opened (10 phases P74-P83), pipeline scheduling, TZ risk flagged | indirect: RL meta foundation (learnable router + α-blend lifecycle) |
 
 ---
 

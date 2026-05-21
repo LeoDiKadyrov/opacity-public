@@ -18,7 +18,7 @@ created: 2026-05-12
 - [x] Cs2-ddm scientific framing — какие peer-reviewed работы по reaction time analytics в esports существуют, что заявка про T0→T1 split добавляет к literature
 - [x] Boyd Varty tracking method — что из core principles переносимо на product/career exploration без metaphor inflation
 - [x] КПТ vs ППК evidence base — где они конвергируют, где расходятся, что Психодемия cohort должен понимать о различиях
-- [ ] Solo founder $200/mo MRR patterns — кейс-стади who actually achieved this in 30 days, без paid traffic
+- [x] Solo founder $200/mo MRR patterns — кейс-стади who actually achieved this in 30 days, без paid traffic
 - [ ] ИИС-А налоговый вычет 2026 — actual rules, limits, что меняется этим годом
 
 ## Completed (worker marks)
