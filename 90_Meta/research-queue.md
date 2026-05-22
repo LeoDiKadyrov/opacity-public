@@ -19,7 +19,7 @@ created: 2026-05-12
 - [x] Boyd Varty tracking method — что из core principles переносимо на product/career exploration без metaphor inflation
 - [x] КПТ vs ППК evidence base — где они конвергируют, где расходятся, что Психодемия cohort должен понимать о различиях
 - [x] Solo founder $200/mo MRR patterns — кейс-стади who actually achieved this in 30 days, без paid traffic
-- [ ] ИИС-А налоговый вычет 2026 — actual rules, limits, что меняется этим годом
+- [x] ИИС-А налоговый вычет 2026 — actual rules, limits, что меняется этим годом
 
 ## Completed (worker marks)
 
