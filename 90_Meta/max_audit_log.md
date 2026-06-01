@@ -66,6 +66,13 @@ Forcing function: Max $200/mo subscription. Discipline test — does usage justi
 | 2026-05-19 | 15:00 | C | 1.0 | autorss_feed | Phase 62 per-source threshold override completion (TDD RED→GREEN T2+T3) | indirect: curator scaling infrastructure (per-source override for threshold tuning) |
 | 2026-05-20 | 12:00 | C | 0.6 | autorss_feed | v2.7 Adaptive Routing & Lifecycle opened (10 phases P74-P83), pipeline scheduling, TZ risk flagged | indirect: RL meta foundation (learnable router + α-blend lifecycle) |
 | 2026-05-21 | 15:00 | C | 1.0 | autorss_feed | v3.3 scope дефинирован (999.62-66 backlog, NO Telegram/email, YES curator trust features) | indirect: curator improvements infrastructure toward future monetization |
+| 2026-05-31 | 14:00 | D | 1.0 | paralich | Инициализация прототипа игры (paralich) | none |
+| 2026-05-31 | 21:00 | D | 1.0 | paralich | Дизайн sleep-paralysis хоррора: стек + механика | none |
+| 2026-05-31 | 17:00 | D | 1.0 | paralich | Phase 1: split-pause дизайн (title-safe/in-game-punishment) | none |
+| 2026-05-31 | 17:30 | D | 1.0 | paralich | Phase 1 планирование (4 плана, 3 волны) | none |
+| 2026-05-31 | 18:00 | D | 1.0 | paralich | Phase 2 discuss: комната, свет, камера, PS1 интенсивность | none |
+| 2026-05-31 | 18:21 | D | 1.0 | asmr | YouTube ASMR канал: видео WoW записано, план оформления, референс Acepe | none |
+| 2026-05-31 | 18:30 | D | 1.0 | paralich | Phase 2 планирование (3 плана, 15/15 решений, gate 100%) | none |
 
 ---
 
