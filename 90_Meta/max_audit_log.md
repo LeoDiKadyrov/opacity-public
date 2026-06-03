@@ -73,6 +73,15 @@ Forcing function: Max $200/mo subscription. Discipline test — does usage justi
 | 2026-05-31 | 18:00 | D | 1.0 | paralich | Phase 2 discuss: комната, свет, камера, PS1 интенсивность | none |
 | 2026-05-31 | 18:21 | D | 1.0 | asmr | YouTube ASMR канал: видео WoW записано, план оформления, референс Acepe | none |
 | 2026-05-31 | 18:30 | D | 1.0 | paralich | Phase 2 планирование (3 плана, 15/15 решений, gate 100%) | none |
+| 2026-06-01 | 05:00 | D | 1.0 | paralich | Phase 3 Gaze & Apparition: FSM + gaze-tuning (decide-by-play, context locked) | none |
+| 2026-06-01 | 05:30 | D | 1.0 | paralich | Phase 3 планирование: гейз-сенсор + apparition FSM (3 плана, 9/9 решений) | none |
+| 2026-06-01 | 07:40 | D | 1.0 | paralich | Phase 03 завершена: code review fix (7/8) + verification (4/4) + completion | none |
+| 2026-06-01 | 07:00 | D | 1.0 | paralich | Phase 4 planning setup: gaze-FSM polished, ready for sequencer + audio phase | none |
+| 2026-06-01 | 08:00 | D | 1.0 | paralich | Phase 4 context: episode & audio sequencer design (5-min arc, 4 events, gaze-read hybrid timing) | none |
+| 2026-06-01 | 08:55 | D | 1.0 | paralich | Phase 4 планирование: 4 плана, 16/16 решений, gate passed, коммит dd60707 | none |
+| 2026-06-01 | 10:49 | D | 1.0 | paralich | Phase 04.1 вставлена (episode atmosphere refinement, Ksenia notes capture) | none |
+| 2026-06-01 | 11:30 | D | 1.0 | paralich | Phase 04.1 discuss: 10 decisions locked (materialize, watcher, arc remap, cut child) | none |
+| 2026-06-01 | 17:00 | D | 1.0 | paralich | Phase 04.1 planning: 2 waves ready for execution, GSD gotcha fix | none |
 
 ---
 

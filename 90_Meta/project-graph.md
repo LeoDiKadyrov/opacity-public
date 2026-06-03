@@ -1,18 +1,19 @@
 ---
 type: meta
-updated: 2026-05-31
+updated: 2026-06-01
 auto_generated: true
 ---
 # Project Graph
 
-Auto-generated from PROJECT.md ledgers in `Claude_experiments/`. 20 projects across 8 domains.
+Auto-generated from PROJECT.md ledgers in `Claude_experiments/`. 21 projects across 8 domains.
 
-## ? (2 projects)
+## ? (3 projects)
 
 - • **Claude_experiments** — Персональная система второго мозга для Арыстана Кадырова. Автоматически компилирует источники знаний (Obsidian заметки, рабочие KB, Telegram канал, YouGile чаты) в Evergreen-заметки и ежедневный брифинг через Claude API. После v2.0 — pipeline self-aware (health, cost), cross-project linked (ledgers, memory router) и outbound-capable (drafts → gated autonomous). Запускается по расписанию в 7:00 GMT+5 + ручные вызовы.
 - • **china-ebat** — TODO: what
+- • **paralich** — A short first-person indie horror prototype about sleep paralysis. You wake in the night unable to move — only your gaze can shift. Apparitions visit the room. The horror is built from atmosphere and the tension of *where to look*, not from chasing or combat. Web-based (three.js), PS1/low-poly aesthetic, ~3-5 minute single episode. This is a prototype to prove the core feel, not a finished game.
 
-_Cross-pollinate candidates within `?`:_ Claude_experiments, china-ebat
+_Cross-pollinate candidates within `?`:_ Claude_experiments, china-ebat, paralich
 
 ## ai (3 projects)
 
@@ -94,6 +95,7 @@ _Cross-pollinate candidates within `work`:_ DBO_Faktura_KB, Digital_ruble, Olga_
 - `intercept` (ai, active)
 - `korzina_weekly` (productivity, active)
 - `moex_tracker` (finance, active)
+- `paralich` (?, ?)
 - `pedigree` (personal, active)
 - `pongayer` (gaming, active)
 - `psyskills` (content, active)
