@@ -15,7 +15,7 @@ from demoparser2 import DemoParser
 from typing import Tuple, List, Dict, Optional
 
 from t0_detector import T0Detector
-from duel_attempts import DuelAttempt, DuelAttemptFinder
+from duel_attempts import DuelAttempt
 import bisect
 
 import config
@@ -221,41 +221,6 @@ class DDMAnalyzer:
 
         self.analysis_moments = moments
         return len(moments)
-
-    def find_all_duel_attempts(
-        self,
-        player_fire_df: pd.DataFrame,
-        all_ticks_df: pd.DataFrame,
-        all_hurt_df: pd.DataFrame,
-        all_death_df: pd.DataFrame,
-        active_smokes: Optional[pd.DataFrame] = None,
-    ) -> List[DuelAttempt]:
-        """
-        Find all duel attempts (hit + miss) from weapon_fire clusters.
-        Returns empty list if T0Detector is unavailable.
-        """
-        if self.t0_detector is None:
-            self.logger.warning("find_all_duel_attempts: T0Detector unavailable, skipping.")
-            return []
-
-        finder = DuelAttemptFinder(
-            t0_detector=self.t0_detector,
-            player_steamid=self.player_steamid,
-            match_id=self.match_id,
-            map_name=self.map_name,
-            tickrate=self.tickrate,
-            velocity_peek_threshold=self.player_velocity_threshold,
-            logger=self.logger,
-        )
-        attempts = finder.find_attempts(
-            player_fire_df, all_ticks_df, all_hurt_df, all_death_df, active_smokes
-        )
-        self.logger.info(
-            f"find_all_duel_attempts: {len(attempts)} attempts "
-            f"({sum(getattr(a, 'was_killed', False) for a in attempts)} kills; "
-            f"death_events_parsed={len(all_death_df)})"
-        )
-        return attempts
 
     # ── Quality filter ────────────────────────────────────────────────────────
 
@@ -919,7 +884,6 @@ class DDMAnalyzer:
         self,
         bulk_mode: bool = False,
         profile: bool = False,
-        attempts_mode: bool = False,
     ) -> Tuple[pd.DataFrame, List[DuelAttempt]]:
         if profile:
             tracemalloc.start()
@@ -1153,15 +1117,9 @@ class DDMAnalyzer:
                 print("  RSS            : install psutil for OS-level RAM stats")
             print("-----------------------------------------------------\n")
 
+        # OF-2: geometry attempts removed; tuple shape kept for caller compatibility.
+        # Episodes live in outcome_first.reconstruct_all_players.
         attempts: List[DuelAttempt] = []
-        if attempts_mode:
-            attempts = self.find_all_duel_attempts(
-                player_fire_df=player_fire_df,
-                all_ticks_df=all_ticks_df,
-                all_hurt_df=all_hurt_df,
-                all_death_df=all_death_df,
-                active_smokes=smoke_events,
-            )
 
         results_df = pd.DataFrame(results)
         if not results_df.empty:

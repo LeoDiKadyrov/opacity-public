@@ -77,8 +77,6 @@ def analyze_demo_worker(args: Tuple[str, int, int, str, int]) -> Dict:
 
     try:
         # Imports inside worker — clean namespace after Windows spawn
-        import dataclasses
-
         import pandas as pd
 
         from ddm_analyzer import DDMAnalyzer
@@ -102,7 +100,7 @@ def analyze_demo_worker(args: Tuple[str, int, int, str, int]) -> Dict:
             tickrate=tickrate,
             debug_prints=False,
         )
-        results_df, attempts = analyzer.analyze_demo(bulk_mode=True, attempts_mode=True)
+        results_df, _ = analyzer.analyze_demo(bulk_mode=True)
 
         # Inject demo_name into engagement rows already saved by analyze_demo()
         if not results_df.empty and match_id is not None and db_path != ":memory:":
@@ -117,13 +115,15 @@ def analyze_demo_worker(args: Tuple[str, int, int, str, int]) -> Dict:
                 # H-03: log instead of swallow — silent failure leaves demo_name=NULL permanently
                 logger.warning(f"demo_name UPDATE failed for match_id={match_id}: {_upd_err}")
 
-        # Save duel_attempts to DB (analyze_demo does NOT save these)
-        n_attempts = 0
-        if attempts:
-            n_attempts = len(attempts)
-            att_df = pd.DataFrame([dataclasses.asdict(a) for a in attempts])
-            att_df["demo_name"] = demo_name
-            _db.save_to_db(att_df, db_path, "duel_attempts", match_id)
+        # OF-2: ground-truth duel episodes (outcome-first) replace geometry attempts
+        from outcome_first import reconstruct_all_players
+        ep_counts = reconstruct_all_players(
+            demo_path,
+            player_sids=[player_steamid],
+            match_ids_by_sid={player_steamid: match_id},
+            db_path=db_path,
+        )
+        n_attempts = ep_counts.get(player_steamid, 0)  # n_attempts key kept for UI compatibility
 
         # Mark as processed AFTER all writes succeed
         _db.mark_processed(

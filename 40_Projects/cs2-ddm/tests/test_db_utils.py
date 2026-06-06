@@ -362,9 +362,9 @@ def test_round_number_migration_on_legacy_engagements(tmp_path):
 
 
 def test_allowed_tables_set():
-    """_ALLOWED_TABLES = exactly {engagements, duel_attempts} (Phase 10a leak guard)."""
+    """_ALLOWED_TABLES = exactly {engagements, duel_attempts, duel_episodes} (OF-2 updated)."""
     assert db_utils._ALLOWED_TABLES == {
-        "engagements", "duel_attempts"
+        "engagements", "duel_attempts", "duel_episodes"
     }, f"Unexpected _ALLOWED_TABLES={db_utils._ALLOWED_TABLES}"
 
 

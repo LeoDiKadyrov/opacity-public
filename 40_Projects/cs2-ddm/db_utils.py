@@ -14,7 +14,7 @@ import pandas as pd
 # CR-01: whitelist allowed table names to prevent SQL injection via f-string interpolation
 # Phase v2-interpretation-narrative D-09 / R-11: explicitly DOES NOT include `ddm_fits`
 # (Phase 10a worktree leak guard — DDM dropped per project_ddm_validation_final_2026_05_12).
-_ALLOWED_TABLES = {"engagements", "duel_attempts"}
+_ALLOWED_TABLES = {"engagements", "duel_attempts", "duel_episodes"}
 
 
 def save_to_db(
@@ -126,6 +126,25 @@ def _migrate_schema(conn: sqlite3.Connection) -> None:
         )
     """)
 
+    # duel_episodes: OF-2 outcome-first ground-truth duels (opponent/outcome
+    # from player_hurt/player_death events, never BVH-guessed)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS duel_episodes (
+            match_id TEXT,
+            demo_name TEXT DEFAULT NULL,
+            player_steamid INTEGER,
+            opponent_steamid INTEGER,
+            first_event_tick INTEGER,
+            last_event_tick INTEGER,
+            outcome TEXT,
+            initiator TEXT,
+            p_was_attacker_first INTEGER,
+            n_hits_p_on_e INTEGER DEFAULT 0,
+            n_hits_e_on_p INTEGER DEFAULT 0,
+            anchor_weapon TEXT DEFAULT NULL
+        )
+    """)
+
     # processed_matches: idempotency tracker for batch runner
     conn.execute("""
         CREATE TABLE IF NOT EXISTS processed_matches (
@@ -165,9 +184,9 @@ def mark_processed(
 
 
 def get_next_match_id(db_path: str) -> int:
-    """Return MAX(match_id) + 1 across engagements and duel_attempts tables.
+    """Return MAX(match_id) + 1 across engagements, duel_attempts, and duel_episodes tables.
 
-    Returns 1 if both tables are empty or absent.
+    Returns 1 if all tables are empty or absent.
     """
     with closing(sqlite3.connect(db_path)) as conn:
         r1 = conn.execute(
@@ -176,7 +195,10 @@ def get_next_match_id(db_path: str) -> int:
         r2 = conn.execute(
             "SELECT MAX(CAST(match_id AS INTEGER)) FROM duel_attempts"
         ).fetchone()[0] if _table_exists(conn, "duel_attempts") else None
-        current_max = max(r1 or 0, r2 or 0)
+        r3 = conn.execute(
+            "SELECT MAX(CAST(match_id AS INTEGER)) FROM duel_episodes"
+        ).fetchone()[0] if _table_exists(conn, "duel_episodes") else None
+        current_max = max(r1 or 0, r2 or 0, r3 or 0)
         return current_max + 1
 
 
@@ -198,6 +220,8 @@ def force_reprocess_demo(db_path: str, demo_filename: str, player_steamid: int) 
             # L-03: cast to str — engagements/duel_attempts store match_id as TEXT
             conn.execute("DELETE FROM engagements WHERE match_id=?", (str(old_match_id),))
             conn.execute("DELETE FROM duel_attempts WHERE match_id=?", (str(old_match_id),))
+            if _table_exists(conn, "duel_episodes"):
+                conn.execute("DELETE FROM duel_episodes WHERE match_id=?", (str(old_match_id),))
             conn.execute(
                 "DELETE FROM processed_matches WHERE demo_filename=? AND player_steamid=?",
                 (demo_filename, player_steamid),

@@ -2,15 +2,20 @@
 """
 Kill rate normalization analysis.
 
-Re-runs demos via attempts_mode to track both hits and misses, then
-prints a per-player kill rate comparison table.
+DEPRECATED PIPELINE (OF-2): kill-rate from geometry attempts was built on the
+removed opponent-selector (DuelAttemptFinder). Hit/miss semantics move to
+duel_episodes (n_hits_p_on_e) in OF-3. Module kept for DuelAttempt typing +
+historical CSV reads only.
+
+Re-runs demos to track both hits and misses, then prints a per-player kill rate
+comparison table.
 
 Usage:
     python kill_rate_analysis.py                # process demos + save *_attempts.csv
     python kill_rate_analysis.py --load-only    # load existing *_attempts.csv, skip demo processing
 
 Output per player (when demo processing):
-    {player}_attempts.csv  — all duel attempts with was_killed + bullets columns
+    {player}_attempts.csv  -- all duel attempts with was_killed + bullets columns
 
 Comparison table printed to stdout in both modes.
 """
@@ -75,7 +80,7 @@ def run_player(name: str, steamid: int, demo_paths: List[str]) -> List[DuelAttem
                 player_steamid=steamid,
                 match_id=match_id,
             )
-            _, attempts = analyzer.analyze_demo(bulk_mode=True, attempts_mode=True)
+            _, attempts = analyzer.analyze_demo(bulk_mode=True)  # OF-2: always [] -- geometry attempts removed
             kills = sum(a.was_killed for a in attempts)
             print(f"    → {len(attempts)} attempts ({kills} kills, {len(attempts) - kills} misses)")
             all_attempts.extend(attempts)

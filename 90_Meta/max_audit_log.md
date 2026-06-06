@@ -82,6 +82,8 @@ Forcing function: Max $200/mo subscription. Discipline test — does usage justi
 | 2026-06-01 | 10:49 | D | 1.0 | paralich | Phase 04.1 вставлена (episode atmosphere refinement, Ksenia notes capture) | none |
 | 2026-06-01 | 11:30 | D | 1.0 | paralich | Phase 04.1 discuss: 10 decisions locked (materialize, watcher, arc remap, cut child) | none |
 | 2026-06-01 | 17:00 | D | 1.0 | paralich | Phase 04.1 planning: 2 waves ready for execution, GSD gotcha fix | none |
+| 2026-06-05 | 09:45 | B | 1.0 | autorss_feed | v4.0 Gravedigger roadmap: 5 фаз, 17 REQs | indirect: опенсорс-экспорт BLUE |
+| 2026-06-05 | 15:20 | C | 1.0 | cs2-ddm | OF-1 PASS + OF-2 scope (mульти-плеер, outcome-first ветка, отдельная B-5 phase) | indirect: Djok v1 foundation — настоящие противники и исходы для дуэльных метрик |
 
 ---
 

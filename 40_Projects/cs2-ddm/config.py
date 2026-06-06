@@ -49,6 +49,22 @@ AWP_WEAPON_NAMES: frozenset = frozenset([
     "g3sg1", "weapon_g3sg1",    # G3SG1 (T auto-sniper)
 ])
 
+# OF-2: weapon categories excluded from gun-only episode anchoring.
+# Utility damage (HE/molotov/inferno tick-damage/flash/smoke) does NOT start
+# a duel episode. "inferno" = demoparser2 weapon string for molotov burn ticks.
+UTILITY_WEAPON_NAMES: frozenset = frozenset([
+    "hegrenade", "weapon_hegrenade",
+    "molotov", "weapon_molotov",
+    "incgrenade", "weapon_incgrenade",
+    "inferno",
+    "flashbang", "weapon_flashbang",
+    "smokegrenade", "weapon_smokegrenade",
+])
+
+# OF-2: lookback window (ticks) for weapon_fire initiator attribution
+# in outcome_first.py. 128 ticks = 2s @ 64 Hz. Matches OF-1 spike semantics.
+_INITIATOR_LOOKBACK_TICKS: int = 128
+
 # Duel attempt clustering: new cluster when fire event gap exceeds this value.
 # 128 ticks ≈ 2 seconds at 64 Hz. Clusters separate distinct engagements.
 # Previously 320 (5s) — oversized clusters merged multiple enemies into a single

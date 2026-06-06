@@ -288,33 +288,6 @@ class T0Detector:
 
         return visible
 
-    def find_first_visible_enemy_in_window(
-        self,
-        all_ticks_df: pd.DataFrame,
-        player_steamid: int,
-        start_tick: int,
-        end_tick: int,
-        active_smokes: Optional[pd.DataFrame] = None,
-    ) -> Optional[Tuple[int, int, float]]:
-        """
-        Scan [start_tick, end_tick] tick-by-tick. Return (tick, enemy_steamid,
-        crosshair_angle_deg) for the earliest tick at which any enemy is
-        visible to the player via BVH. Ties within the same tick broken by
-        smallest crosshair angle. Returns None if never visible in window.
-        """
-        # Pre-slice to window — avoids O(N_demo) pandas scan per tick
-        window_df = all_ticks_df[
-            (all_ticks_df["tick"] >= start_tick) & (all_ticks_df["tick"] <= end_tick)
-        ]
-        for t in range(int(start_tick), int(end_tick) + 1):
-            visible = self.find_visible_enemies_at_tick(
-                window_df, player_steamid, t, active_smokes
-            )
-            if visible:
-                enemy_sid, angle = min(visible, key=lambda x: x[1])
-                return (t, enemy_sid, angle)
-        return None
-
     # ── Smoke overlay ─────────────────────────────────────────────────────────
 
     def _is_smoke_obscured(

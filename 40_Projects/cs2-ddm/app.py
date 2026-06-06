@@ -170,11 +170,7 @@ if plots_clicked:
 def _run_analysis(player_steamid: int, tickrate: int, demos: list,
                    enemy_vel: float, player_vel: float):
     """Shared analysis loop used by both Analyze and Re-analyze buttons."""
-    import dataclasses
-    from duel_attempts import DuelAttempt
-
     all_results = []
-    all_attempts = []
     progress_bar = st.progress(0, text="Starting…")
 
     for i, (filename, demo_path) in enumerate(demos):
@@ -188,29 +184,23 @@ def _run_analysis(player_steamid: int, tickrate: int, demos: list,
                     enemy_velocity_threshold=enemy_vel,
                     player_velocity_threshold=player_vel,
                 )
-                results_df, attempts = analyzer.analyze_demo(bulk_mode=True, attempts_mode=True)
+                results_df, _ = analyzer.analyze_demo(bulk_mode=True)
                 if not results_df.empty:
                     save_results(results_df, RESULTS_CSV, analyzer.match_id)
                     all_results.append(results_df)
-                kills = sum(a.was_killed for a in attempts)
-                misses = len(attempts) - kills
-                kill_pct = f"{100 * kills / len(attempts):.0f}%" if attempts else "n/a"
                 label = f"✓ `{filename}` — **{len(results_df)}** engagement(s)"
-                if attempts:
-                    label += f" | attempts: {len(attempts)} ({kills} kills, {misses} misses, kill rate {kill_pct})"
                 if not results_df.empty:
                     st.success(label)
                 else:
                     st.warning(f"⚠ `{filename}` — no valid engagements found")
-                all_attempts.extend(attempts)
             except Exception as e:
                 import traceback
                 st.error(f"✗ `{filename}` — {e}")
                 st.code(traceback.format_exc())
 
     progress_bar.progress(1.0, text="Done!")
-    attempts_df = pd.DataFrame([dataclasses.asdict(a) for a in all_attempts]) if all_attempts else pd.DataFrame()
-    return all_results, attempts_df
+    # OF-2: geometry attempts removed; attempts_df always empty (kept for session_state compat)
+    return all_results, pd.DataFrame()
 
 
 if reanalyze_clicked:

@@ -1,17 +1,17 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: Djok MVP
+milestone: outcome-first
+milestone_name: Outcome-First Duel Reconstruction
 status: idle
-stopped_at: Phase 10 SHIPPED — awaiting next milestone declaration
-last_updated: "2026-05-16T21:30:00.000Z"
-last_activity: 2026-05-16 -- Phase 10 (B-1 + B-4 T1 detection fix batch) SHIPPED; all 5 SCs PASS
+stopped_at: Phase OF-1 COMPLETE — gate GO; OF-2 авторизован к планированию (не начат)
+last_updated: "2026-06-05T14:00:00.000Z"
+last_activity: 2026-06-05 -- OF-1 spike executed inline; all 3 gates PASS -> GO (OF-1-VERDICT.md)
 progress:
-  total_phases: 6
+  total_phases: 3
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
-  percent: 96
+  total_plans: 1
+  completed_plans: 1
+  percent: 33
 ---
 
 # Project State
@@ -21,7 +21,9 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-30)
 
 **Core value:** Not just metrics — specific insight: what exactly to change in training to be closer to donk
-**Current focus:** Phase 10 SHIPPED 2026-05-16 (B-1 floor fix + B-4 pre-aim censorship fix). Milestone v1.0 ARCHIVED (milestones/v1.0-ROADMAP.md). v2-interpretation-narrative DISCARDED 2026-05-14 (project pivot). Next: Phase A items (full corpus re-batch, threshold re-derivation, distribution-shape regression suite) — not yet planned as formal GSD phases. Awaiting `/gsd-new-milestone v1.1` to scope them.
+**Current focus:** Milestone **outcome-first** — Phase **OF-1 COMPLETE 2026-06-05, gate = GO** (all 3 PASS: opponent-truth 100% vs 5.9%; win-rate 56.7% in 40–70% band; holder-vs-initiator 9.7pp ≈ 5σ). See `phases/OF-1-outcome-first-validation-spike/OF-1-VERDICT.md`. Next step: PLAN OF-2 (core rebuild — outcome-first as production duel path, deprecate geometry-first opponent guess). CAVEAT-1 stands: OF-3 measurability gate mandatory before any claim. Spike side-product: steamid float-corruption bug class (`pd.to_numeric` + None) — OF-2 must use string-path sid coercion.
+
+Prior: Phase 10 SHIPPED 2026-05-16 (B-1 floor + B-4 pre-aim fixes). Milestone v1.0 ARCHIVED. v2-interpretation-narrative DISCARDED 2026-05-14.
 
 ## Current Position
 
@@ -119,6 +121,7 @@ Progress: [████████████████████] 96% (v0
 
 ## Session Continuity
 
-Last session: 2026-05-16T21:30:00.000Z
-Stopped at: Phase 10 SHIPPED — staged re-batch on top-5 demos BLOCKED on missing demo files (only astralis-vs-spirit-m1-dust2-p1.dem present locally)
-Resume file: .planning/phases/10-t1-detection-fix-batch-b-1-b-4/10-02-SUMMARY.md
+Last session: 2026-06-05 (OF-1 spike executed inline)
+Stopped at: OF-1 COMPLETE — gate GO (OF-1-VERDICT.md + OF-1-00-SUMMARY.md written). Artifacts: outcome_first_spike.py + outcome_first_spike_results.json (repo root, uncommitted). OF-2 authorized for PLANNING only (CAVEAT-2: not started).
+Resume file: .planning/milestones/outcome-first-ROADMAP.md (OF-2 sketch) + OF-1-VERDICT.md
+Note: donk corpus = for_analysis/spirit/, 86 demos on disk, 81 with donk events, 0 parse failures.

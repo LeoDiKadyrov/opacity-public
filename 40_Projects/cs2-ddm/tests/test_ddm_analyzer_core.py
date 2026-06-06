@@ -852,28 +852,6 @@ class TestAnalyzeDemoOrchestration:
         assert len(result) == 1
         assert result.iloc[0]["t0_source"] == "BVH+AABB"
 
-    def test_find_all_duel_attempts_returns_list(self):
-        """find_all_duel_attempts() returns a list (empty when no T0Detector)."""
-        analyzer = DDMAnalyzer.__new__(DDMAnalyzer)
-        analyzer.player_steamid = 1
-        analyzer.match_id = "test"
-        analyzer.map_name = "de_test"
-        analyzer.tickrate = 64
-        analyzer.t0_detector = None  # no BVH available
-        import logging
-        analyzer.logger = logging.getLogger("test")
-        analyzer.player_velocity_threshold = 50.0
-
-        result = analyzer.find_all_duel_attempts(
-            player_fire_df=pd.DataFrame(columns=["tick", "weapon"]),
-            all_ticks_df=pd.DataFrame(),
-            all_hurt_df=pd.DataFrame(columns=["tick", "attacker_steamid", "user_steamid"]),
-            all_death_df=pd.DataFrame(columns=["tick", "attacker_steamid", "user_steamid"]),
-        )
-        assert isinstance(result, list)
-        assert result == []
-
-
 class TestComputeRoundPhase:
     """Tests for _compute_round_phase — round time and phase classification."""
 
@@ -1077,51 +1055,6 @@ class TestComputeVelocity:
         })
         vel = analyzer._compute_velocity(self.PLAYER_SID, 100, ticks_df, "player")
         assert math.isnan(vel)
-
-
-def test_analyze_demo_parses_player_death(monkeypatch):
-    """analyze_demo must parse player_death events and pass them downstream."""
-    import pandas as pd
-    from unittest.mock import MagicMock
-    from ddm_analyzer import DDMAnalyzer
-
-    analyzer = DDMAnalyzer.__new__(DDMAnalyzer)
-    analyzer.demo_path = "/fake.dem"
-    analyzer.player_steamid = 1
-    analyzer.match_id = "m1"
-    analyzer.map_name = "de_test"
-    analyzer.tickrate = 64
-    analyzer.debug_prints = False
-    analyzer.analysis_moments = []
-    analyzer.enemy_velocity_threshold = 120
-    analyzer.player_velocity_threshold = 50
-    analyzer.t0_detector = None
-    analyzer.logger = MagicMock()
-
-    parser = MagicMock()
-    parser.parse_ticks.return_value = pd.DataFrame(columns=["X", "Y", "Z", "pitch", "yaw", "steamid", "name"])
-
-    # Phase 9.1 SC2: production batches events via parse_events([...]).
-    death_df = pd.DataFrame([{"tick": 500, "attacker_steamid": "1", "user_steamid": "99"}])
-    parser.parse_events.side_effect = lambda events, *a, **kw: [
-        ("player_hurt",  pd.DataFrame(columns=["tick", "attacker_steamid", "user_steamid"])),
-        ("player_death", death_df),
-        ("weapon_fire",  pd.DataFrame(columns=["tick", "user_steamid"])),
-        ("round_start",  pd.DataFrame(columns=["tick"])),
-    ]
-    analyzer.parser = parser
-
-    captured = {}
-
-    def fake_find_all(**kw):
-        captured["death_df"] = kw.get("all_death_df")
-        return []
-    analyzer.find_all_duel_attempts = fake_find_all
-
-    df, attempts = analyzer.analyze_demo(bulk_mode=False, attempts_mode=True)
-    assert "death_df" in captured
-    assert not captured["death_df"].empty
-    assert int(captured["death_df"].iloc[0]["tick"]) == 500
 
 
 # ─────────────────────────────────────────────────────────────────────────────

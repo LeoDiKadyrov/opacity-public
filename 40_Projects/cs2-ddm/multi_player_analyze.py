@@ -32,8 +32,6 @@ import pandas as pd
 REPO_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(REPO_ROOT))
 
-import dataclasses
-
 from ddm_analyzer import DDMAnalyzer
 from csv_utils import save_results
 import db_utils as _db
@@ -111,9 +109,7 @@ def analyze_one(demo_path: str, player_sid: int, demo_name: str) -> int:
         print(f"    ERROR initialising analyzer: {e}")
         return 0
     try:
-        # attempts_mode=True so duel_attempts gets populated for the
-        # kill_rate / hit_rate metrics in the report.
-        results_df, attempts = analyzer.analyze_demo(bulk_mode=True, attempts_mode=True)
+        results_df, _ = analyzer.analyze_demo(bulk_mode=True)
     except Exception as e:
         print(f"    ERROR during analysis: {e}")
         return 0
@@ -121,13 +117,14 @@ def analyze_one(demo_path: str, player_sid: int, demo_name: str) -> int:
         print(f"    no engagements found for {player_sid}")
         return 0
     save_results(results_df, str(CSV_PATH), match_id)
-    if attempts:
-        att_df = pd.DataFrame([dataclasses.asdict(a) for a in attempts])
-        att_df["demo_name"] = demo_name
-        try:
-            _db.save_to_db(att_df, str(DB_PATH), "duel_attempts", match_id)
-        except Exception as e:
-            print(f"    WARN: duel_attempts save failed: {e}")
+    # OF-2: ground-truth duel episodes replace geometry attempts
+    from outcome_first import reconstruct_all_players
+    reconstruct_all_players(
+        demo_path,
+        player_sids=[player_sid],
+        match_ids_by_sid={player_sid: match_id},
+        db_path=str(DB_PATH),
+    )
     return len(results_df)
 
 
