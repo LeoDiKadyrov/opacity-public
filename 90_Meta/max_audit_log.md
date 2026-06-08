@@ -106,9 +106,11 @@ Verdict: insufficient sample — fill end of week
 
 (empty)
 
-### Week 4 — 2026-05-30 → 2026-06-05
+### Week 4 — 2026-05-30 → 2026-06-05 (+ tail до 06-07)
 
-(empty)
+A: 0h | B: 1h | C: 2h | D: 16h | Total: 19h
+Ratio A+B: 5% | A+B+C: 16% | D: 84%
+Verdict (2026-06-07): 🔴 RED, стоп-правило сработало. 15h prime-time ушли в paralich (хоррор-игра, нет в periphery Goals.md) + 1h asmr — comfort-sink занял место осознанно вынесенных стримов. γ↑ (5 regret overdue стареют), δ↓ (play не exit-work), k=0 (Danina 37d, ноль касаний warm network). Faktura exit = drift: cushion 6%, +0₽, psy static, независимого дохода 0. 3 решения: (1) paralich → recreation cap 2h/нед вне prime; (2) DM Danina сегодня prime — heartbeat флагнул в прошлый раз, не сделано; (3) household liquid в Goals.md + закрыть Beijing flights (30d overdue). Съехало: Danina DM, звонок дочери (16d), Открытые двери B2B (12d) — всё проиграло 16h игры про сонный паралич. Полный вердикт: [[.cybernetic/last-weekly-verdict]].
 
 ### Final review — 2026-06-06 → 2026-06-08
 
