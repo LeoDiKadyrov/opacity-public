@@ -85,6 +85,8 @@ Forcing function: Max $200/mo subscription. Discipline test — does usage justi
 | 2026-06-05 | 09:45 | B | 1.0 | autorss_feed | v4.0 Gravedigger roadmap: 5 фаз, 17 REQs | indirect: опенсорс-экспорт BLUE |
 | 2026-06-05 | 15:20 | C | 1.0 | cs2-ddm | OF-1 PASS + OF-2 scope (mульти-плеер, outcome-first ветка, отдельная B-5 phase) | indirect: Djok v1 foundation — настоящие противники и исходы для дуэльных метрик |
 | 2026-06-06 | 11:00 | C | 1.0 | autorss_feed | Post-v4.0 ops: дайджест 1×/день, telegram = только 6 фиксированных папок | indirect: curator infrastructure ops configuration |
+| 2026-06-08 | 09:15 | A | 0.2 | Digital_ruble | ORAD адрес пустой в OrganisationIdentifiersRequest | direct: ORAD mapping blocks org account opening в ПлЦР |
+| 2026-06-08 | 18:30 | B | 1.0 | ai_interview_coach | Резюме/pitch: Faktura CBDC + "geek manager" (техника+коммуникация) | indirect: подготовка к senior-ролям в финтех (Revolut/Plata) |
 
 ---
 

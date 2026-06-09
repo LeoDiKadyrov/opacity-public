@@ -68,7 +68,7 @@ The pattern: "What's the secret to growth? It's consistency." AI asks and answer
 The fix: If you ask a question, let it breathe. Give context before the answer.
 ## The Ascending Excitement
 The pattern: Bullet points always escalate: "First... Second... And most importantly...!"
-The fix: Put your strongest point wherever it naturally belongs — sometimes that's the middle.
+The fix: Put your strongest point wherever it naturally belongs. Sometimes that's the middle.
 ## SECTION 3: BANNED FORMATTING HABITS
 
 •Excessive bold: AI bolds every key phrase. Rule: max 1–2 bold elements per post.
@@ -78,13 +78,13 @@ them.
 numbers (3, 7, 11, 13) feel curated.
 •Hashtag block at the end: Mostly useless on LinkedIn now. Max 1–2 specific hashtags.
 ## SECTION 4: TONE TRAPS
-•Toxic positivity: "Every setback is a setup for a comeback!" — Be honest. If something sucked, say
+•Toxic positivity: "Every setback is a setup for a comeback!" Be honest. If something sucked, say
 it.
-•The expert lecture voice: "There are three fundamental principles..." — Share what you learned,
+•The expert lecture voice: "There are three fundamental principles..." Share what you learned,
 don't lecture.
-•The inspirational close: "The future belongs to those who dare to dream" — End with something
+•The inspirational close: "The future belongs to those who dare to dream." End with something
 specific to YOUR story.
-•The humble brag: "I never expected this, but..." — Share wins directly and honestly.
+•The humble brag: "I never expected this, but..." Share wins directly and honestly.
 
 ## THE 7-POINT SNIFF TEST
 Before publishing ANY AI-assisted content, run it through these questions:
