@@ -1,7 +1,7 @@
 ---
 milestone: outcome-first
 name: Outcome-First Duel Reconstruction
-status: scoped       # scoped → not started. Phase OF-1 is executable; OF-2/OF-3 plan AFTER the gate.
+status: in-progress  # OF-1 PASS (GO) → OF-2 SHIPPED+CLOSED 2026-06-10 → OF-3 next (discuss/plan)
 created: 2026-06-05
 author_diagnosis: 2026-06-05 conversation (djok post-mortem) — see OF-1-CONTEXT.md §Death diagnosis
 depends_on: v1.0 (shipped 2026-05-07, archived), Phase 10 (T1 fix, shipped 2026-05-16)
@@ -44,13 +44,18 @@ This rebuild was deliberately deferred (see memory `project-djok-strategic-verdi
 **Plans:** OF-1-00-PLAN.md (the spike)
 **Output:** OF-1-VERDICT.md (PASS → OF-2 may be planned; FAIL → park, milestone closed)
 
-### Phase OF-2: Core Rebuild (PLANNED 2026-06-05 — OF-1 gate GO)
+### Phase OF-2: Core Rebuild (SHIPPED 2026-06-05, CLOSED 2026-06-10)
 **Goal:** Make outcome-first the production duel path. Delete the geometry-first opponent guess (`DuelAttemptFinder` + `find_first_visible_enemy_in_window`). TDD (Wave 0 RED tests first). New `duel_episodes` table for ground-truth opponent + outcome + initiator. Keep `t0_detector.find_t0(known_enemy)` — BVH is correct when given a KNOWN enemy; it was only wrong as an opponent *selector*. Reaction timing → OF-3 (user decision 2026-06-05).
-**Plans:** OF-2-00 (Wave-0 RED tests) → OF-2-01 (outcome_first.py + db) → OF-2-02 (selector deletion + pipeline wiring) → OF-2-03 (R-8 parity vs spike baseline, checkpoint). Checker PASSED iter 2/3. See `.planning/phases/OF-2-core-rebuild/`.
+**Result:** 4/4 plans, 12 commits `cf4b62a..5a5f36b` (branch `outcome-first`), 365/365 tests GREEN. R-8 parity vs spike: won=1428/lost=1090 identical to the unit; win-rate 56.7%; initiator separation 10.4pp; dust2 17/16 exact; 0 corrupted steamids. Episode-count band FAIL* reclassified as **band miscalibration**: gun-only anchor removed exactly 816 episodes, all unresolved utility-only (19.6% of spike episodes, the ±5% band assumed ≤5%). User approved `of2_parity_inspection.md` 2026-06-10; verifier skipped by user decision. SC-2 satisfied.
+**Plans:** OF-2-00 (Wave-0 RED tests) → OF-2-01 (outcome_first.py + db) → OF-2-02 (selector deletion + pipeline wiring) → OF-2-03 (R-8 parity, checkpoint). See `.planning/phases/OF-2-core-rebuild/`.
 
 ### Phase OF-3: Re-validation + Metric + Measurability Gate (PLAN ONLY AFTER OF-2)
 **Goal:** Re-batch donk's corpus through outcome-first; build `tests/test_distribution_shape.py` regression suite (catches tick-quantum pinning + implausible distributions — the class of bug that hid for months); derive the counter-peek/hold-success metric on clean data; run a CAVEAT-1 measurability/stability gate before any marketing claim. If the metric fails the stability gate → that is the real, final answer on djok-as-coaching-product.
-**Not planned yet.** Sketch only.
+**Plans:** 4 plans in 4 waves (PLANNED 2026-06-10). Branch `outcome-first`; merge to main only when «всё прям будет работать».
+- [ ] OF-3-01-PLAN.md — TDD Wave-0: RED tests (T1 LANDS + T0 backward) + duel_episodes timing migration + config constants + requires_db marker
+- [ ] OF-3-02-PLAN.md — reaction_timing.py (T0 backward search D-05 + T1 LANDS detector D-01, kills B-5) wired into reconstruct_all_players; D-02 threshold A/B checkpoint
+- [ ] OF-3-03-PLAN.md — staged N=1→5→81 donk re-batch (D-14) + 7-section physics-bounded inspection artifact + distribution-shape @requires_db tier (D-15); N=5 user checkpoint
+- [ ] OF-3-04-PLAN.md — Gate-A (win-rate) + Gate-B (RT split-half reliability) measurability gate; thresholds approved pre-run (D-10); Gate-B FAIL→STOP (D-11); OF-3-VERDICT.md closes SC-3
 
 ## Milestone Success Criteria
 

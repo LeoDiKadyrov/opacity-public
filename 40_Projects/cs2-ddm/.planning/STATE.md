@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: outcome-first
 milestone_name: Outcome-First Duel Reconstruction
-status: idle
-stopped_at: Phase OF-1 COMPLETE — gate GO; OF-2 авторизован к планированию (не начат)
-last_updated: "2026-06-05T14:00:00.000Z"
-last_activity: 2026-06-05 -- OF-1 spike executed inline; all 3 gates PASS -> GO (OF-1-VERDICT.md)
+status: executing
+stopped_at: "Phase OF-3 context gathered — 4 gray areas resolved (T1 LANDS-semantics delegated with mandate, T0 backward no-clamp, two-layer gate with pre-run number approval, duel_episodes timing columns + staged rebatch). Next: /gsd-plan-phase OF-3. Branch `outcome-first` holds all OF work — merge to main only when «всё прям будет работать». B-5 still live in deprecated `ddm_analyzer._detect_t1`; new detector lands in outcome-first path per OF-3-CONTEXT D-04."
+last_updated: "2026-06-10T18:04:39.303Z"
+last_activity: 2026-06-10 -- Phase OF-3 planning complete
 progress:
-  total_phases: 3
+  total_phases: 7
   completed_phases: 1
-  total_plans: 1
-  completed_plans: 1
-  percent: 33
+  total_plans: 3
+  completed_plans: 3
+  percent: 100
 ---
 
 # Project State
@@ -21,7 +21,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-30)
 
 **Core value:** Not just metrics — specific insight: what exactly to change in training to be closer to donk
-**Current focus:** Milestone **outcome-first** — Phase **OF-1 COMPLETE 2026-06-05, gate = GO** (all 3 PASS: opponent-truth 100% vs 5.9%; win-rate 56.7% in 40–70% band; holder-vs-initiator 9.7pp ≈ 5σ). See `phases/OF-1-outcome-first-validation-spike/OF-1-VERDICT.md`. Next step: PLAN OF-2 (core rebuild — outcome-first as production duel path, deprecate geometry-first opponent guess). CAVEAT-1 stands: OF-3 measurability gate mandatory before any claim. Spike side-product: steamid float-corruption bug class (`pd.to_numeric` + None) — OF-2 must use string-path sid coercion.
+**Current focus:** Milestone **outcome-first** — Phase **OF-2 COMPLETE 2026-06-05, closed 2026-06-10** (user-approved via `of2_parity_inspection.md`, verifier skipped by user decision). 4/4 plans, 12 commits `cf4b62a..5a5f36b` on branch `outcome-first`, suite 365/365 GREEN. `outcome_first.py` is the production duel path; `duel_episodes` table live; geometry opponent-selector deleted (`DuelAttemptFinder` gutted, `find_first_visible_enemy_in_window` removed; `find_t0(known_enemy)` + `DuelAttempt` dataclass kept). R-8 parity: won=1428/lost=1090 identical to spike; gun-only anchor removed exactly 816 unresolved utility-only episodes (FAIL* on episode-count band = band miscalibration, not a defect — utility anchors were 19.6% of spike episodes, not ≤5%). Next step: **discuss+plan OF-3** (reaction timing on KNOWN enemy: T0 backward search via find_t0, redefined T1 = crosshair LANDS ≤3° (B-5 fix), distribution-shape regression suite, donk corpus re-batch, CAVEAT-1 measurability gate). CAVEAT-1 stands: no marketing claim before the OF-3 gate.
 
 Prior: Phase 10 SHIPPED 2026-05-16 (B-1 floor + B-4 pre-aim fixes). Milestone v1.0 ARCHIVED. v2-interpretation-narrative DISCARDED 2026-05-14.
 
@@ -29,8 +29,8 @@ Prior: Phase 10 SHIPPED 2026-05-16 (B-1 floor + B-4 pre-aim fixes). Milestone v1
 
 Phase: 10 COMPLETE (`.planning/phases/10-t1-detection-fix-batch-b-1-b-4/`). v1.0 ARCHIVED.
 Plan: 3/3 Phase 10 plans done (Wave 0 TDD + Wave 1 code fix + Wave 2 manual gates). 12 commits 99cb296..6fa9ffd on main.
-Status: Ready for next milestone declaration
-Last activity: 2026-05-16 -- Phase 10 SHIPPED; ROADMAP.md flipped; multi_player_analyze.py init_db bug fixed (commit 32ce270)
+Status: Ready to execute
+Last activity: 2026-06-10 -- Phase OF-3 planning complete
 
 Progress: [████████████████████] 96% (v0.x engine + v1.0 + Phase 10 complete; pending Phase A items not yet planned)
 
@@ -121,7 +121,7 @@ Progress: [████████████████████] 96% (v0
 
 ## Session Continuity
 
-Last session: 2026-06-05 (OF-1 spike executed inline)
-Stopped at: OF-1 COMPLETE — gate GO (OF-1-VERDICT.md + OF-1-00-SUMMARY.md written). Artifacts: outcome_first_spike.py + outcome_first_spike_results.json (repo root, uncommitted). OF-2 authorized for PLANNING only (CAVEAT-2: not started).
-Resume file: .planning/milestones/outcome-first-ROADMAP.md (OF-2 sketch) + OF-1-VERDICT.md
-Note: donk corpus = for_analysis/spirit/, 86 demos on disk, 81 with donk events, 0 parse failures.
+Last session: 2026-06-10 (OF-2 closed; OF-3 context gathered)
+Stopped at: Phase OF-3 context gathered — 4 gray areas resolved (T1 LANDS-semantics delegated with mandate, T0 backward no-clamp, two-layer gate with pre-run number approval, duel_episodes timing columns + staged rebatch). Next: /gsd-plan-phase OF-3. Branch `outcome-first` holds all OF work — merge to main only when «всё прям будет работать». B-5 still live in deprecated `ddm_analyzer._detect_t1`; new detector lands in outcome-first path per OF-3-CONTEXT D-04.
+Resume file: .planning/phases/OF-3-revalidation-measurability-gate/OF-3-CONTEXT.md
+Note: donk corpus = for_analysis/spirit/, 86 demos on disk, 81 with donk events, 0 parse failures. pytest: `py -m pytest --override-ini="addopts=--strict-markers" -q` (`-p no:cov` broken on this machine).
