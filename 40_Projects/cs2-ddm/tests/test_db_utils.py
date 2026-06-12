@@ -374,3 +374,27 @@ def test_save_to_db_rejects_unknown_table_still(tmp_path):
     df = _sample_df()
     with pytest.raises(ValueError, match="Unknown table"):
         db_utils.save_to_db(df, db, "ddm_fits", "match1")
+
+
+def test_duel_episodes_timing_migration_idempotent(tmp_path):
+    """OF-3 D-13 — duel_episodes gains 7 timing columns; init_db is idempotent."""
+    db = str(tmp_path / "timing.db")
+    expected_cols = {
+        "t0_tick",
+        "t0_source",
+        "t1_tick",
+        "t1_source",
+        "crosshair_angle_at_t0_deg",
+        "rt_visible_to_land_ms",
+        "rt_visible_to_hit_ms",
+    }
+
+    db_utils.init_db(db)
+    with closing(sqlite3.connect(db)) as conn:
+        cols = {c[1] for c in conn.execute("PRAGMA table_info(duel_episodes)").fetchall()}
+    assert expected_cols.issubset(cols)
+
+    db_utils.init_db(db)  # idempotent re-run must not raise
+    with closing(sqlite3.connect(db)) as conn:
+        cols = {c[1] for c in conn.execute("PRAGMA table_info(duel_episodes)").fetchall()}
+    assert expected_cols.issubset(cols)

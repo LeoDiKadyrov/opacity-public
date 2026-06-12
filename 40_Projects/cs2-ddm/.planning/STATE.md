@@ -4,8 +4,8 @@ milestone: outcome-first
 milestone_name: Outcome-First Duel Reconstruction
 status: executing
 stopped_at: "Phase OF-3 context gathered — 4 gray areas resolved (T1 LANDS-semantics delegated with mandate, T0 backward no-clamp, two-layer gate with pre-run number approval, duel_episodes timing columns + staged rebatch). Next: /gsd-plan-phase OF-3. Branch `outcome-first` holds all OF work — merge to main only when «всё прям будет работать». B-5 still live in deprecated `ddm_analyzer._detect_t1`; new detector lands in outcome-first path per OF-3-CONTEXT D-04."
-last_updated: "2026-06-10T18:04:39.303Z"
-last_activity: 2026-06-10 -- Phase OF-3 planning complete
+last_updated: "2026-06-11T04:04:37.000Z"
+last_activity: 2026-06-11 -- OF-3-01 (TDD + schema + config foundation) executed
 progress:
   total_phases: 7
   completed_phases: 1
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-30)
 
 **Core value:** Not just metrics — specific insight: what exactly to change in training to be closer to donk
-**Current focus:** Milestone **outcome-first** — Phase **OF-2 COMPLETE 2026-06-05, closed 2026-06-10** (user-approved via `of2_parity_inspection.md`, verifier skipped by user decision). 4/4 plans, 12 commits `cf4b62a..5a5f36b` on branch `outcome-first`, suite 365/365 GREEN. `outcome_first.py` is the production duel path; `duel_episodes` table live; geometry opponent-selector deleted (`DuelAttemptFinder` gutted, `find_first_visible_enemy_in_window` removed; `find_t0(known_enemy)` + `DuelAttempt` dataclass kept). R-8 parity: won=1428/lost=1090 identical to spike; gun-only anchor removed exactly 816 unresolved utility-only episodes (FAIL* on episode-count band = band miscalibration, not a defect — utility anchors were 19.6% of spike episodes, not ≤5%). Next step: **discuss+plan OF-3** (reaction timing on KNOWN enemy: T0 backward search via find_t0, redefined T1 = crosshair LANDS ≤3° (B-5 fix), distribution-shape regression suite, donk corpus re-batch, CAVEAT-1 measurability gate). CAVEAT-1 stands: no marketing claim before the OF-3 gate.
+**Current focus:** Phase OF-3 — Re-validation + Metric + Measurability Gate
 
 Prior: Phase 10 SHIPPED 2026-05-16 (B-1 floor + B-4 pre-aim fixes). Milestone v1.0 ARCHIVED. v2-interpretation-narrative DISCARDED 2026-05-14.
 
 ## Current Position
 
-Phase: 10 COMPLETE (`.planning/phases/10-t1-detection-fix-batch-b-1-b-4/`). v1.0 ARCHIVED.
-Plan: 3/3 Phase 10 plans done (Wave 0 TDD + Wave 1 code fix + Wave 2 manual gates). 12 commits 99cb296..6fa9ffd on main.
-Status: Ready to execute
-Last activity: 2026-06-10 -- Phase OF-3 planning complete
+Phase: OF-3 (Re-validation + Metric + Measurability Gate) — EXECUTING
+Plan: 2 of 4 (OF-3-01 complete)
+Status: Executing Phase OF-3
+Last activity: 2026-06-11 -- OF-3-01 (TDD + schema + config foundation) executed
 
 Progress: [████████████████████] 96% (v0.x engine + v1.0 + Phase 10 complete; pending Phase A items not yet planned)
 
@@ -60,6 +60,9 @@ Progress: [████████████████████] 96% (v0
 
 ### Decisions
 
+- [OF-3-01] TARGET_REACHED_THRESHOLD=3.0, T0_BACKWARD_SEARCH_CAP_TICKS=640, _T0_SEARCH_PARSE_WINDOW_TICKS=640 locked in config.py per D-02/D-05 rationale; A/B re-evaluation deferred to OF-3-02's N=1 staged run
+- [OF-3-01] duel_episodes gains 7 timing columns (t0_tick, t0_source, t1_tick, t1_source, crosshair_angle_at_t0_deg, rt_visible_to_land_ms, rt_visible_to_hit_ms) via idempotent `_episode_timing_migrations`; requires_db pytest marker registered (D-15)
+- [OF-3-01] reaction_timing.py deliberately NOT created — tests/test_reaction_timing.py (7 tests) and the Tier-1 synthetic test in tests/test_distribution_shape.py are RED by design (Wave-0 TDD); GREEN implementation lands in OF-3-02
 - [10-00] Wave 0 TDD-first: 5 RED tests staged BEFORE production code edit; frozen `grace_experiment_pre_fix.txt` baseline captured pre-edit for SC-5 parity diff
 - [10-01] `T1_GRACE_MS = 0` keeps constant (not removed) — future re-experimentation = one-line config flip, not algorithm edit (defensive plumbing pattern)
 - [10-01] `_detect_t1` returns `Tuple[int, str]` not `int`; `t1_source ∈ {"sustained_aim", "pre_aimed", "none"}` distinguishes branch labels for downstream consumers
@@ -121,7 +124,7 @@ Progress: [████████████████████] 96% (v0
 
 ## Session Continuity
 
-Last session: 2026-06-10 (OF-2 closed; OF-3 context gathered)
-Stopped at: Phase OF-3 context gathered — 4 gray areas resolved (T1 LANDS-semantics delegated with mandate, T0 backward no-clamp, two-layer gate with pre-run number approval, duel_episodes timing columns + staged rebatch). Next: /gsd-plan-phase OF-3. Branch `outcome-first` holds all OF work — merge to main only when «всё прям будет работать». B-5 still live in deprecated `ddm_analyzer._detect_t1`; new detector lands in outcome-first path per OF-3-CONTEXT D-04.
-Resume file: .planning/phases/OF-3-revalidation-measurability-gate/OF-3-CONTEXT.md
+Last session: 2026-06-11 (OF-3-01 executed)
+Stopped at: OF-3-01 complete — config constants (TARGET_REACHED_THRESHOLD/T0_BACKWARD_SEARCH_CAP_TICKS/_T0_SEARCH_PARSE_WINDOW_TICKS), duel_episodes 7-column timing migration, requires_db marker, and RED tests (tests/test_reaction_timing.py 7 tests + tests/test_distribution_shape.py Tier-1/Tier-2) all committed (9f8b174, ea2abd1, ca5a4b8). 366/366 pre-existing tests still GREEN; 2 new files RED-by-design (Wave-0 TDD). Next: OF-3-02 implements reaction_timing.compute_timing to turn RED -> GREEN.
+Resume file: .planning/phases/OF-3-revalidation-measurability-gate/OF-3-02-PLAN.md
 Note: donk corpus = for_analysis/spirit/, 86 demos on disk, 81 with donk events, 0 parse failures. pytest: `py -m pytest --override-ini="addopts=--strict-markers" -q` (`-p no:cov` broken on this machine).

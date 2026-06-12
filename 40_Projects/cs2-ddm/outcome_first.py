@@ -37,10 +37,13 @@ if hasattr(sys.stdout, "reconfigure"):
 from config import (
     _INITIATOR_LOOKBACK_TICKS,
     _KILL_CONFIRM_WINDOW_TICKS,
+    _T0_SEARCH_PARSE_WINDOW_TICKS,
     DB_PATH,
     UTILITY_WEAPON_NAMES,
 )
 from db_utils import init_db, save_to_db
+import reaction_timing
+from t0_detector import T0Detector
 
 logger = logging.getLogger(__name__)
 
@@ -241,6 +244,83 @@ def group_episodes(
 # Demo parsing
 # ---------------------------------------------------------------------------
 
+# Tick props required by reaction_timing.compute_timing: position + aim
+# (X, Y, Z, pitch, yaw) plus steamid for per-sid lookup. Mirrors
+# DDMAnalyzer._TICKS_REQUIRED (ddm_analyzer.py line 51).
+_TIMING_TICK_PROPS: List[str] = ["X", "Y", "Z", "pitch", "yaw", "steamid"]
+
+
+def _parse_demo_header_map(demo_path: str) -> str:
+    """Return the map_name from the demo header, or 'unknown' on failure."""
+    from demoparser2 import DemoParser
+
+    try:
+        parser = DemoParser(demo_path)
+        header = parser.parse_header()
+        return header.get("map_name", "unknown")
+    except Exception:
+        logger.exception("Could not parse demo header for %s", demo_path)
+        return "unknown"
+
+
+def _parse_timing_ticks(
+    demo_path: str,
+    episodes_by_sid: Dict[int, List[dict]],
+) -> Tuple[pd.DataFrame, Dict[int, pd.DataFrame]]:
+    """Selective parse_ticks covering [first_event_tick - WINDOW, last_event_tick]
+    for every episode across all players (D-08, Pitfall 2).
+
+    Returns (ticks_df, ticks_by_sid). Empty DataFrame + {} if no episodes.
+    """
+    from demoparser2 import DemoParser
+
+    all_ticks: List[int] = []
+    for eps in episodes_by_sid.values():
+        for ep in eps:
+            first_tick = int(ep["first_event_tick"])
+            last_tick = int(ep["last_event_tick"])
+            all_ticks.append(first_tick - _T0_SEARCH_PARSE_WINDOW_TICKS)
+            all_ticks.append(last_tick)
+
+    if not all_ticks:
+        return pd.DataFrame(columns=_TIMING_TICK_PROPS + ["tick"]), {}
+
+    import numpy as np
+
+    window_min = max(0, min(all_ticks))
+    window_max = max(all_ticks)
+    window = np.arange(window_min, window_max + 1, dtype=np.int64)
+
+    parser = DemoParser(demo_path)
+    ticks_df = pd.DataFrame(parser.parse_ticks(_TIMING_TICK_PROPS, ticks=window.tolist()))
+    if ticks_df.empty:
+        return ticks_df, {}
+
+    ticks_df["steamid"] = _coerce_sid(ticks_df["steamid"])
+    ticks_df["tick"] = pd.to_numeric(ticks_df["tick"], errors="coerce")
+    ticks_df.dropna(subset=["tick"], inplace=True)
+    ticks_df["tick"] = ticks_df["tick"].astype("int64")
+
+    # Pitfall 2: warn if the parsed window does not fully cover the backward
+    # search start for any episode (find_t0 would falsely return never_visible).
+    parsed_min = int(ticks_df["tick"].min())
+    for eps in episodes_by_sid.values():
+        for ep in eps:
+            search_start = int(ep["first_event_tick"]) - _T0_SEARCH_PARSE_WINDOW_TICKS
+            if search_start < parsed_min:
+                logger.warning(
+                    "Timing tick window does not cover backward search start "
+                    "(search_start=%d < parsed_min=%d) for episode first_event_tick=%d",
+                    search_start, parsed_min, ep["first_event_tick"],
+                )
+
+    ticks_by_sid: Dict[int, pd.DataFrame] = {
+        int(sid): g.sort_values("tick")
+        for sid, g in ticks_df.groupby("steamid", sort=False)
+    }
+    return ticks_df, ticks_by_sid
+
+
 def _parse_demo_events(
     demo_path: str,
 ) -> Tuple[Optional[pd.DataFrame], Optional[pd.DataFrame], Optional[pd.DataFrame]]:
@@ -306,17 +386,51 @@ def reconstruct_all_players(
         logger.exception("Failed to parse demo events from %s", demo_path)
         return {sid: 0 for sid in player_sids}
 
-    results: Dict[int, int] = {}
+    # Build episodes for ALL players first so the selective timing-tick parse
+    # (D-08) can cover the union window across every player's episodes.
+    episodes_by_sid: Dict[int, List[dict]] = {}
     for sid in player_sids:
         try:
             events = collect_exchanges(hurt_df, death_df, sid)
-            eps = group_episodes(
+            episodes_by_sid[sid] = group_episodes(
                 events,
                 fires_df,
                 sid,
                 demo=demo_name,
                 match_id=str(match_ids_by_sid[sid]),
             )
+        except Exception:
+            logger.exception(
+                "Failed to group episodes for %s in %s", sid, demo_name
+            )
+            episodes_by_sid[sid] = []
+
+    # OF-3: per-episode timing pass (D-01/D-03/D-05/D-06/D-08). Parse the
+    # union tick window once per demo and instantiate T0Detector once
+    # (D-07: no needless re-instantiation; BVH/.tri load is the costly step).
+    timing_cols = [
+        "t0_tick", "t0_source", "t1_tick", "t1_source",
+        "crosshair_angle_at_t0_deg", "rt_visible_to_land_ms", "rt_visible_to_hit_ms",
+    ]
+    t0_detector = None
+    ticks_df = pd.DataFrame()
+    ticks_by_sid: Dict[int, pd.DataFrame] = {}
+    try:
+        ticks_df, ticks_by_sid = _parse_timing_ticks(demo_path, episodes_by_sid)
+        if any(episodes_by_sid.values()):
+            map_name = _parse_demo_header_map(demo_path)
+            t0_detector = T0Detector(map_name)
+    except Exception:
+        logger.exception(
+            "Failed to prepare OF-3 timing pass for %s; episodes will be "
+            "written without timing columns",
+            demo_name,
+        )
+
+    results: Dict[int, int] = {}
+    for sid in player_sids:
+        eps = episodes_by_sid.get(sid, [])
+        try:
             if eps:
                 df = pd.DataFrame(eps)
                 df["player_steamid"] = sid
@@ -328,6 +442,17 @@ def reconstruct_all_players(
                 # Drop the backward-compat 'opponent' alias before DB write
                 if "opponent" in df.columns:
                     df = df.drop(columns=["opponent"])
+
+                if t0_detector is not None:
+                    timings = []
+                    for _, row in df.iterrows():
+                        t = reaction_timing.compute_timing(
+                            row.to_dict(), ticks_df, t0_detector, ticks_by_sid=ticks_by_sid
+                        )
+                        timings.append(t)
+                    timing_df = pd.DataFrame(timings, index=df.index, columns=timing_cols)
+                    df = pd.concat([df, timing_df], axis=1)
+
                 save_to_db(df, db_path, "duel_episodes", match_ids_by_sid[sid])
             results[sid] = len(eps)
         except Exception:

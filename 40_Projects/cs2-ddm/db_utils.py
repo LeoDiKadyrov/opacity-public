@@ -145,6 +145,23 @@ def _migrate_schema(conn: sqlite3.Connection) -> None:
         )
     """)
 
+    # OF-3 (2026-06-10): reaction timing columns on duel_episodes (D-13).
+    # Idempotent ADD COLUMN (mirrors the engagements t1_source precedent).
+    # NULL on legacy (pre-OF-3) rows; populated by reaction_timing.compute_timing.
+    ep_cols = {c[1] for c in conn.execute("PRAGMA table_info(duel_episodes)").fetchall()}
+    _episode_timing_migrations = [
+        ("t0_tick", "INTEGER DEFAULT NULL"),
+        ("t0_source", "TEXT DEFAULT NULL"),       # 'BVH+AABB' | 'long_visible' | 'never_visible'
+        ("t1_tick", "INTEGER DEFAULT NULL"),
+        ("t1_source", "TEXT DEFAULT NULL"),       # 'lands' | 'never_landed' | 'no_t0'
+        ("crosshair_angle_at_t0_deg", "REAL DEFAULT NULL"),
+        ("rt_visible_to_land_ms", "REAL DEFAULT NULL"),
+        ("rt_visible_to_hit_ms", "REAL DEFAULT NULL"),
+    ]
+    for col, col_def in _episode_timing_migrations:
+        if col not in ep_cols:
+            conn.execute(f"ALTER TABLE duel_episodes ADD COLUMN {col} {col_def}")
+
     # processed_matches: idempotency tracker for batch runner
     conn.execute("""
         CREATE TABLE IF NOT EXISTS processed_matches (

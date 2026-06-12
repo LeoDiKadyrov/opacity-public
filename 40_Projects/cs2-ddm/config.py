@@ -162,6 +162,37 @@ T1_MOVING_TOWARDS_TOLERANCE: float = 0.01
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# OF-3 reaction timing (duel_episodes path)
+# ─────────────────────────────────────────────────────────────────────────────
+
+# OF-3 (2026-06-10): reaction timing on KNOWN opponent (duel_episodes path).
+# TARGET_REACHED_THRESHOLD: crosshair "LANDS" tolerance for the new T1 predicate
+#   (D-01/D-02). T1 = first tick angular_dist(crosshair, enemy) <= this, sustained
+#   T1_SUSTAINED_AIM_TICKS+1 ticks. This is a LANDING criterion (wider than the
+#   deprecated pre-aim T1_NOT_AIMED_THRESHOLD=1.0). Quantization rule: demoparser2
+#   angular step ~0.022 deg; 3.0/0.022 ~= 136x, clears the >=3x-step rule comfortably.
+#   D-02 A/B (fixed 3.0 vs distance-scaled) is resolved on 1 demo in OF-3-02; this is
+#   the locked default unless that A/B run shows >10% tick-quantum pinning or >10
+#   impossible b5-class rows that distance-scaling resolves.
+TARGET_REACHED_THRESHOLD: float = 3.0
+
+# T0_BACKWARD_SEARCH_CAP_TICKS: cost-cap for the D-05 backward visibility search.
+#   This is a SEARCH BOUNDARY, NOT a value clamp -- when the cap is hit the row is
+#   LABELED t0_source="long_visible" (NOT assigned a clamped T0 that masquerades as a
+#   real measurement). This is the explicit D-05 distinction vs the B-1 floor-artifact
+#   class. 640 ticks ~= 10s @ 64Hz; double the deprecated _SELECTIVE_WINDOW_BEFORE_TICKS
+#   (384) because backward T0 search looks further back than the old hurt-anchored window.
+#   Tunable on the N=1 staged run (lowering it is label-safe: more long_visible, no clamp).
+T0_BACKWARD_SEARCH_CAP_TICKS: int = 640
+
+# _T0_SEARCH_PARSE_WINDOW_TICKS: ticks BEFORE first_event_tick that the OF-3 timing
+#   pass must parse_ticks so find_t0 can scan the full backward cap. Must be
+#   >= T0_BACKWARD_SEARCH_CAP_TICKS (Pitfall 2: the deprecated _SELECTIVE_WINDOW_BEFORE_TICKS
+#   =384 is too small for the 640-tick cap -> find_t0 would falsely return never_visible).
+_T0_SEARCH_PARSE_WINDOW_TICKS: int = 640
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Data Model
 # ─────────────────────────────────────────────────────────────────────────────
 
