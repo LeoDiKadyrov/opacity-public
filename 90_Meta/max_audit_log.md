@@ -116,6 +116,12 @@ A: 0h | B: 1h | C: 2h | D: 16h | Total: 19h
 Ratio A+B: 5% | A+B+C: 16% | D: 84%
 Verdict (2026-06-07): 🔴 RED, стоп-правило сработало. 15h prime-time ушли в paralich (хоррор-игра, нет в periphery Goals.md) + 1h asmr — comfort-sink занял место осознанно вынесенных стримов. γ↑ (5 regret overdue стареют), δ↓ (play не exit-work), k=0 (Danina 37d, ноль касаний warm network). Faktura exit = drift: cushion 6%, +0₽, psy static, независимого дохода 0. 3 решения: (1) paralich → recreation cap 2h/нед вне prime; (2) DM Danina сегодня prime — heartbeat флагнул в прошлый раз, не сделано; (3) household liquid в Goals.md + закрыть Beijing flights (30d overdue). Съехало: Danina DM, звонок дочери (16d), Открытые двери B2B (12d) — всё проиграло 16h игры про сонный паралич. Полный вердикт: [[.cybernetic/last-weekly-verdict]].
 
+### Week 5 — 2026-06-08 → 2026-06-14
+
+A: 0.2h | B: 1h | C: 2h | D: 0h | Total: 3.2h
+Ratio A+B: 37.5% | A+B+C: 100% | D: 0%
+Verdict (2026-06-14): 🔴 RED, stop-rule сработал 2-ю неделю подряд (A+B<50%, прошлая неделя 5%). paralich исчез (D=0h), но total объём упал с 19h до 3.2h. γ↑ (все 5 regret items старше: Beijing 37d, Danina 32d, дочь 23d, B2B 19d, cushion 14d, ничего не сдвинулось вторую неделю), δ↑ формально (нет D), k=0 (Danina DM второй раз не сделан). Faktura exit = 🟡 неоднозначный drift: B-категория содержит ai_interview_coach (резюме под Revolut/Plata senior-роли) — потенциальный drift в "ещё один наёмный трек" вместо bridge-to-independence, противоречит антицели Goals.md. Cushion 109k/1.8M (6%) третью неделю без движения, baseline не заполнен. 3 решения: (1) Danina DM сегодня — 32d, повтор решения с прошлой недели; (2) заполнить Goals.md Cushion baseline целиком (RUB/жена/брокер); (3) явно решить — ai_interview_coach это cushion-ускоритель или drift в новый найм. Red flag: B2B "Открытые двери" regret-item (19d) рассинхронизирован с Goals.md, где трек помечен закрытым. Полный вердикт: [[.cybernetic/last-weekly-verdict]].
+
 ### Final review — 2026-06-06 → 2026-06-08
 
 (verdict: keep Max / downgrade Pro / extend trial)
