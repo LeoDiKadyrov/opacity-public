@@ -89,6 +89,9 @@ Forcing function: Max $200/mo subscription. Discipline test — does usage justi
 | 2026-06-08 | 18:30 | B | 1.0 | ai_interview_coach | Резюме/pitch: Faktura CBDC + "geek manager" (техника+коммуникация) | indirect: подготовка к senior-ролям в финтех (Revolut/Plata) |
 | 2026-06-10 | 12:30 | C | 1.0 | psyskills | Анализ заметок для бланка концептуализации (BASIC ID) | indirect: клинические шаблоны для психодинамического инструмента |
 | 2026-06-10 | 17:30 | C | 1.0 | cs2-ddm | OF-2 closed + OF-3 context (T1/T0 predicates delegated, 2-layer gate) | indirect: методология дуэльных метрик для Djok v1 |
+| 2026-06-16 | 06:50 | A | 1.0 | Digital_ruble | Анализ ПОД/ФТ: различия GetAMLPrivReq vs GetAMLCorpReq структур | direct: ЦР-специалисты координация реализации проверок |
+| 2026-06-16 | 08:00 | A | 0.5 | Digital_ruble | Анализ ошибок УЦ (3013), error routing matrix, вопросы сертификации СКПЭП | direct: блокер для пилотных банков |
+| 2026-06-16 | 09:00 | A | 1.0 | Digital_ruble | Отладка 500 ошибки /getAMLPrivReq (CR.Main), анализ ПОД/ФТ verification flow | direct: блокер для АМЛ-проверок в пилотных банках |
 
 ---
 

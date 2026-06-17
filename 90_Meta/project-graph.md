@@ -1,6 +1,6 @@
 ---
 type: meta
-updated: 2026-06-15
+updated: 2026-06-16
 auto_generated: true
 ---
 # Project Graph
@@ -18,7 +18,9 @@ _Cross-pollinate candidates within `?`:_ Claude_experiments, china-ebat, bagdan_
 
 ## ai (3 projects)
 
-- ▶ **ai_interview_coach** — TODO: describe project goal — why it exists, not what code does.
+- ▶ **ai_interview_coach** — Инструменты для поиска работы: авто-сорсинг вакансий + матч под резюме + тейлоринг.
+  Цель — убрать ежедневный ручной труд (full-time + Психодемия + зал не оставляют времени).
+  Фокус: international remote (fintech PM/implementation), hh.ru РФ/КЗ вторично.
 - ▶ **health-agent-plugin** — Claude Code plugin providing health analytics skills. Users run skills like `/analyze`, `/plan-panel`, `/add-result` against their personal health data. Skills compare lab results and training data to 5 longevity protocols: Blueprint, Medicine 3.0, AHA Life's Essential 8, Sinclair, WHO.
 - ▶ **intercept** — <h1 align="center">Interceptor</h1>
 
