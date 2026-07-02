@@ -1,20 +1,24 @@
 ---
 type: meta
-updated: 2026-06-28
+updated: 2026-06-30
 auto_generated: true
 ---
 # Project Graph
 
-Auto-generated from PROJECT.md ledgers in `Claude_experiments/`. 22 projects across 8 domains.
+Auto-generated from PROJECT.md ledgers in `Claude_experiments/`. 23 projects across 8 domains.
 
-## ? (4 projects)
+## ? (5 projects)
 
 - • **Claude_experiments** — Персональная система второго мозга для Арыстана Кадырова. Автоматически компилирует источники знаний (Obsidian заметки, рабочие KB, Telegram канал, YouGile чаты) в Evergreen-заметки и ежедневный брифинг через Claude API. После v2.0 — pipeline self-aware (health, cost), cross-project linked (ledgers, memory router) и outbound-capable (drafts → gated autonomous). Запускается по расписанию в 7:00 GMT+5 + ручные вызовы.
 - • **china-ebat** — TODO: what
 - • **bagdan_jitsu** — A BJJ training-log system for individual practitioners: a Telegram bot turns unstructured ru/en training notes into a normalized sequence model (positions, stimuli, actions), and a web canvas (React + React Flow + elkjs) lets the user view and fully edit those sequences by mouse. Pet project of Leo + Богдан (repo owner: https://github.com/theBodyan/bjj, local clone at `bjj/`).
 - • **paralich** — A short first-person indie horror prototype about sleep paralysis. You wake in the night unable to move — only your gaze can shift. Apparitions visit the room. The horror is built from atmosphere and the tension of *where to look*, not from chasing or combat. Web-based (three.js), PS1/low-poly aesthetic, ~3-5 minute single episode. This is a prototype to prove the core feel, not a finished game.
+- ▶ **faktura-trans** — examples/
+    example_transcript.md   — transcript format reference
+    example_summary.md      — эталон: 4 разделов (ошибки / сроки / орг / шаги)
+    protocol_template.md    — Confluence table shape in markdown
 
-_Cross-pollinate candidates within `?`:_ Claude_experiments, china-ebat, bagdan_jitsu, paralich
+_Cross-pollinate candidates within `?`:_ Claude_experiments, china-ebat, bagdan_jitsu, paralich, faktura-trans
 
 ## ai (3 projects)
 
@@ -95,6 +99,7 @@ _Cross-pollinate candidates within `work`:_ DBO_Faktura_KB, Digital_ruble, Olga_
 - `china-ebat` (?, ?)
 - `cs2-ddm` (gaming, active)
 - `djok-landing` (gaming, active)
+- `faktura-trans` (?, active)
 - `health-agent-plugin` (ai, active)
 - `intercept` (ai, active)
 - `korzina_weekly` (productivity, active)
