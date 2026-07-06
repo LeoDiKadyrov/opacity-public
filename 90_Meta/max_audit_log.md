@@ -93,6 +93,7 @@ Forcing function: Max $200/mo subscription. Discipline test — does usage justi
 | 2026-06-16 | 08:00 | A | 0.5 | Digital_ruble | Анализ ошибок УЦ (3013), error routing matrix, вопросы сертификации СКПЭП | direct: блокер для пилотных банков |
 | 2026-06-16 | 09:00 | A | 1.0 | Digital_ruble | Отладка 500 ошибки /getAMLPrivReq (CR.Main), анализ ПОД/ФТ verification flow | direct: блокер для АМЛ-проверок в пилотных банках |
 | 2026-06-17 | 19:00 | C | 1.0 | psyskills | Skill architecture brainstorm + BRAINSTORM_PROMOTIONS/SPIKES триаж | indirect: Foundation для clinical tool pipeline (risk-screen, strategy gate) |
+| 2026-07-04 | 19:59 | C | 1.0 | pavlovian | Видео: скелет павловской сессии 1950 (государственная интервенция в науку) | indirect: ψ-контент foundation (история советской психологии) |
 
 ---
 
